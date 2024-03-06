@@ -5,17 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Socio extends Model
+class Eleccion extends Model
 {
     use HasFactory;
-    protected $guarded = ['id', 'created_at', 'update_at'];
+    protected $fillable = ['nombre', 'fecha_inicio', 'fecha_fin'];
 
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
-
-    public function candidaturas()
+    public function candidatos()
     {
         return $this->hasMany(Candidato::class);
     }

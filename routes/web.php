@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\EleccionController;
 use App\Http\Controllers\RolController;
 use App\Http\Controllers\UserController;
+use App\Livewire\Administrador\EleccionAsigarCandidato;
 use App\Livewire\Administrador\UsuarioCrear;
 use Illuminate\Support\Facades\Route;
 
@@ -43,6 +45,21 @@ Route::controller(RolController::class)->group(function () {
     Route::put('rol/editar/{id}', 'editar')->name('rol.editar');
     Route::delete('rol/eliminar/{id}', 'eliminar')->name('rol.eliminar');
 });
+
+Route::controller(EleccionController::class)->group(function () {
+    Route::get('eleccion', 'vistaTodas')->name('eleccion.vista.todas');
+    Route::get('eleccion/crear', 'vistaCrear')->name('eleccion.vista.crear');
+    Route::post('eleccion/crear', 'crear')->name('eleccion.crear');
+    Route::get('eleccion/ver/{id}', 'vistaVer')->name('eleccion.vista.ver');
+    Route::get('eleccion/editar/{id}', 'vistaEditar')->name('eleccion.vista.editar');
+    Route::put('eleccion/editar/{id}', 'editar')->name('eleccion.editar');
+    Route::delete('eleccion/eliminar/{id}', 'eliminar')->name('eleccion.eliminar');
+    Route::get('eleccion/candidato/{id}', 'vistaAsignarCandidato')->name('eleccion.vista.asignar.candidato');
+    Route::put('eleccion/candidato/{id}', 'asignarCandidato')->name('eleccion.asignar.candidato');
+});
+
+Route::get('/administrador/eleccion/candidato/{id}', EleccionAsigarCandidato::class)->name('administrador.eleccion.asignar.candidato');
+
 
 Route::middleware([
     'auth:sanctum',
