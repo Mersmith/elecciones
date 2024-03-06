@@ -16,7 +16,9 @@ class UserController extends Controller
 
     public function vistaCrear()
     {
-        return view('administrador.usuario.crear');
+        $roles = Rol::all();
+
+        return view('administrador.usuario.crear', compact('roles'));
     }
 
     public function crear(Request $request)

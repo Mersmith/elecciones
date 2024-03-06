@@ -30,3 +30,5 @@ php artisan make:request RolRequest
 
 php artisan make:model UserRol -mfsc
 php artisan make:request UserRolRequest
+
+php artisan make:livewire Administrador/UsuarioCrear

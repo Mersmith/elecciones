@@ -21,7 +21,6 @@ return new class extends Migration
             $table->string('nombres');
             $table->string('codigo')->unique();
             $table->string('celular')->nullable();
-            $table->string('rol')->default("socio");
             $table->string('dni')->unique();
             $table->enum('sexo', ['M', 'F'])->default('M');
             $table->date('fecha_nacimiento')->nullable();

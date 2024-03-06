@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\RolController;
 use App\Http\Controllers\UserController;
+use App\Livewire\Administrador\UsuarioCrear;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,6 +31,8 @@ Route::controller(UserController::class)->group(function () {
     Route::get('usuario/rol/{id}', 'vistaAsignarRol')->name('usuario.vista.asignar.rol');
     Route::put('usuario/rol/{id}', 'asignarRol')->name('usuario.asignar.rol');
 });
+
+Route::get('/administrador/usuario/crear', UsuarioCrear::class)->name('administrador.usuario.crear');
 
 Route::controller(RolController::class)->group(function () {
     Route::get('rol', 'vistaTodas')->name('rol.vista.todas');

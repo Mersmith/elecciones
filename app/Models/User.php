@@ -63,4 +63,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Rol::class, 'user_rols', 'user_id', 'rol_id');
     }
+
+    public function socio()
+    {
+        return $this->hasOne(Socio::class);
+    }
 }
