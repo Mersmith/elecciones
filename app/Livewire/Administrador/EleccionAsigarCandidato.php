@@ -21,6 +21,12 @@ class EleccionAsigarCandidato extends Component
 
     protected $paginate = 20;
 
+    public function mount($id)
+    {
+        $this->eleccionId = $id;
+        $this->eleccion = Eleccion::find($id);
+    }
+
     public function updatingBuscarSocio()
     {
         $this->resetPage();
@@ -29,12 +35,6 @@ class EleccionAsigarCandidato extends Component
     public function updatingBuscarCandidato()
     {
         $this->resetPage();
-    }
-
-    public function mount($id)
-    {
-        $this->eleccionId = $id;
-        $this->eleccion = Eleccion::find($id);
     }
 
     public function asignarCandidato($socioId)

@@ -12,6 +12,7 @@
                 <a href="{{ route('eleccion.vista.ver', $item->id) }}">Ver</a>
                 <a href="{{ route('eleccion.vista.editar', $item->id) }}">Editar</a>
                 <a href="{{ route('administrador.eleccion.asignar.candidato', $item->id) }}">Candidato</a>
+                <a href="{{ route('administrador.eleccion.votacion.votar', $item->id) }}">Votar</a>
             </li>
         @endforeach
     </ul>

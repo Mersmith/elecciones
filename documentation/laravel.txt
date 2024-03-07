@@ -40,3 +40,6 @@ php artisan make:model Candidato -mfsc
 php artisan make:request CandidatoRequest
 
 php artisan make:livewire Administrador/EleccionAsigarCandidato
+
+php artisan make:model Votacion -mfsc
+php artisan make:livewire Administrador/VotacionVotar
