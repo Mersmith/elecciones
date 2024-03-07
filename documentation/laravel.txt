@@ -43,3 +43,4 @@ php artisan make:livewire Administrador/EleccionAsigarCandidato
 
 php artisan make:model Votacion -mfsc
 php artisan make:livewire Administrador/VotacionVotar
+php artisan make:livewire Administrador/VotacionResultados

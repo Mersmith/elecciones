@@ -5,6 +5,7 @@ use App\Http\Controllers\RolController;
 use App\Http\Controllers\UserController;
 use App\Livewire\Administrador\EleccionAsigarCandidato;
 use App\Livewire\Administrador\UsuarioCrear;
+use App\Livewire\Administrador\VotacionResultados;
 use App\Livewire\Administrador\VotacionVotar;
 use Illuminate\Support\Facades\Route;
 
@@ -62,6 +63,7 @@ Route::controller(EleccionController::class)->group(function () {
 Route::get('/administrador/eleccion/{id}/candidato', EleccionAsigarCandidato::class)->name('administrador.eleccion.asignar.candidato');
 
 Route::get('/administrador/eleccion/{id}/votacion/votar', VotacionVotar::class)->name('administrador.eleccion.votacion.votar');
+Route::get('/administrador/eleccion/{id}/votacion/resultados', VotacionResultados::class)->name('administrador.eleccion.votacion.resultados');
 
 Route::middleware([
     'auth:sanctum',
