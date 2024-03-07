@@ -2,8 +2,10 @@
 
 namespace App\Livewire\Administrador;
 
+use App\Models\Candidato;
 use App\Models\Eleccion;
 use App\Models\Socio;
+use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -15,10 +17,16 @@ class EleccionAsigarCandidato extends Component
     public $eleccion;
 
     public $buscarSocio;
+    public $buscarCandidato;
 
-    protected $paginate = 10;
+    protected $paginate = 20;
 
     public function updatingBuscarSocio()
+    {
+        $this->resetPage();
+    }
+
+    public function updatingBuscarCandidato()
     {
         $this->resetPage();
     }
@@ -29,13 +37,61 @@ class EleccionAsigarCandidato extends Component
         $this->eleccion = Eleccion::find($id);
     }
 
+    public function asignarCandidato($socioId)
+    {
+        $candidatoExistente = Candidato::where('eleccion_id', $this->eleccionId)
+            ->where('socio_id', $socioId)
+            ->first();
+
+        if (!$candidatoExistente) {
+            Candidato::create([
+                'eleccion_id' => $this->eleccionId,
+                'socio_id' => $socioId,
+            ]);
+            $this->resetPage();
+        }
+    }
+
+    public function quitarCandidato($socioId)
+    {
+        $candidato = Candidato::where('eleccion_id', $this->eleccionId)
+            ->where('socio_id', $socioId)
+            ->first();
+
+        if ($candidato) {
+            $candidato->delete();
+            $this->resetPage();
+        }
+    }
+
     public function render()
     {
-        $socios = Socio::where('nombres', 'like', '%' . $this->buscarSocio . '%')
-            ->paginate(10);
+        $query = Socio::leftJoin('candidatos', function ($join) {
+            $join->on('socios.id', '=', 'candidatos.socio_id')
+                ->where('candidatos.eleccion_id', '=', $this->eleccionId);
+        })
+            ->whereNull('candidatos.socio_id');
+
+        if (!empty($this->buscarSocio)) {
+            $query->where('socios.nombres', 'like', '%' . $this->buscarSocio . '%');
+        }
+
+        $socios = $query->select('socios.*')->paginate(20);
+
+
+        $queryCandidatos = DB::table('candidatos')
+            ->join('socios', 'candidatos.socio_id', '=', 'socios.id')
+            ->where('candidatos.eleccion_id', $this->eleccionId);
+
+        if (!empty($this->buscarCandidato)) {
+            $queryCandidatos->where('socios.nombres', 'like', '%' . $this->buscarCandidato . '%');
+        }
+
+        $candidatos = $queryCandidatos->get();
 
         return view('livewire.administrador.eleccion-asigar-candidato', [
             'socios' => $socios,
+            'candidatos' => $candidatos,
         ]);
     }
 }
