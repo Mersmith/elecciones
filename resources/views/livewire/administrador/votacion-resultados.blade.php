@@ -1,7 +1,7 @@
 <div>
     <h2>Resultados de la elección</h2>
 
-    <h3>Votantes</h3>
+    <h3>Votantes: {{ $cantidadVotantes }}</h3>
     <ul>
         <p>Total de votantes: {{ $votantes->count() }}</p>
         @foreach ($votantes as $votante)

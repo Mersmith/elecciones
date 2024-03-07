@@ -13,10 +13,15 @@ class VotacionResultados extends Component
     public $votantes;
     public $noVotantes;
     public $resultados;
+    public $cantidadVotantes = 0;
 
     public function mount($id)
     {
-        $this->eleccionId = $id;
+        $eleccionId = $id;
+
+        $this->eleccionId = $eleccionId;
+
+        $this->cantidadVotantes = Socio::count();
 
         $this->votantes = DB::table('socios')
             ->leftJoin('votacions', function ($join) {
@@ -36,16 +41,19 @@ class VotacionResultados extends Component
             ->whereNull('votacions.socio_id')
             ->get();
 
-        $this->resultados = DB::table('votacions')
-            ->join('candidatos', 'votacions.candidato_id', '=', 'candidatos.id')
+        $this->resultados = DB::table('candidatos')
+            ->leftJoin('votacions', function ($join) use ($eleccionId) {
+                $join->on('candidatos.id', '=', 'votacions.candidato_id')
+                    ->where('votacions.eleccion_id', '=', $eleccionId);
+            })
             ->join('socios', 'candidatos.socio_id', '=', 'socios.id')
-            ->where('votacions.eleccion_id', $this->eleccionId)
-            ->groupBy('votacions.candidato_id', 'socios.id', 'socios.nombres')
+            ->where('candidatos.eleccion_id', '=', $eleccionId)
+            ->groupBy('candidatos.id', 'socios.id', 'socios.nombres')
             ->select(
-                'votacions.candidato_id',
+                'candidatos.id as candidato_id',
                 'socios.id as socio_id',
                 'socios.nombres as nombres',
-                DB::raw('count(*) as total_votos')
+                DB::raw('COALESCE(count(votacions.id), 0) as total_votos')
             )
             ->orderBy('total_votos', 'desc')
             ->get();
