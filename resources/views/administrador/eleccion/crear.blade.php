@@ -1,8 +1,8 @@
 <div>
     <h2>CREAR ELECCION</h2>
-    <a href="{{ route('eleccion.vista.todas') }}">Regresar</a>
+    <a href="{{ route('administracion.eleccion.vista.todas') }}">Regresar</a>
 
-    <form action="{{ route('eleccion.crear') }}" method="POST">
+    <form action="{{ route('administracion.eleccion.crear') }}" method="POST">
         @csrf
         <p>Nombre:</p>
         <input type="text" name="nombre">

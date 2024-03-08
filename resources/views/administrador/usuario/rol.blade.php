@@ -1,13 +1,13 @@
 <div>
     <h2>VER USUARIO ROL</h2>
-    <a href="{{ route('usuario.vista.todas') }}">Regresar</a>
-    <a href="{{ route('usuario.vista.crear') }}">Crear</a>
-    <a href="{{ route('usuario.vista.editar', $usuario->id) }}">Editar</a>
+    <a href="{{ route('administracion.usuario.vista.todas') }}">Regresar</a>
+    <a href="{{ route('administracion.usuario.vista.crear') }}">Crear</a>
+    <a href="{{ route('administracion.usuario.vista.editar', $usuario->id) }}">Editar</a>
 
     <br>
     <p>Nombre: {{ $usuario->name }} </p>
 
-    <form action="{{ route('usuario.asignar.rol', $usuario->id) }}" method="POST">
+    <form action="{{ route('administracion.usuario.asignar.rol', $usuario->id) }}" method="POST">
         @csrf
         @method('PUT')
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Administrador;
+namespace App\Livewire\Votacion;
 
 use App\Models\Socio;
 use App\Models\Votacion;
@@ -61,7 +61,7 @@ class VotacionResultados extends Component
 
     public function render()
     {
-        return view('livewire.administrador.votacion-resultados', [
+        return view('livewire.votacion.votacion-resultados', [
             'votantes' => $this->votantes,
             'noVotantes' => $this->noVotantes,
             'resultados' => $this->resultados,

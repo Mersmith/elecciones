@@ -1,10 +1,10 @@
 <div>
     <h2>EDITAR MARCA</h2>
-    <a href="{{ route('eleccion.vista.todas') }}">Regresar</a>
-    <a href="{{ route('eleccion.vista.crear') }}">Crear</a>
-    <a href="{{ route('eleccion.vista.editar', $eleccion->id) }}">Editar</a>
+    <a href="{{ route('administracion.eleccion.vista.todas') }}">Regresar</a>
+    <a href="{{ route('administracion.eleccion.vista.crear') }}">Crear</a>
+    <a href="{{ route('administracion.eleccion.vista.editar', $eleccion->id) }}">Editar</a>
     <br>
-    <form action="{{ route('eleccion.editar', $eleccion->id) }}" method="POST">
+    <form action="{{ route('administracion.eleccion.editar', $eleccion->id) }}" method="POST">
         @csrf
         @method('PUT')
         <p>Nombre:</p>

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Administrador;
+namespace App\Livewire\Votacion;
 
 use App\Models\Candidato;
 use App\Models\Eleccion;
@@ -65,7 +65,7 @@ class VotacionVotar extends Component
 
         $candidatos = $queryCandidatos->get();
 
-        return view('livewire.administrador.votacion-votar', [
+        return view('livewire.votacion.votacion-votar', [
             'candidatos' => $candidatos,
         ]);
     }

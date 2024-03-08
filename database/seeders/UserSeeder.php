@@ -24,7 +24,7 @@ class UserSeeder extends Seeder
             $user = User::create([
                 'name' => $nombre,
                 'email' => $faker->unique()->safeEmail,
-                'password' => Hash::make('password'),
+                'password' => Hash::make('123456'),
             ]);
 
             //$randomRoleIds = Rol::inRandomOrder()->take(2)->pluck('id');

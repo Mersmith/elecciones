@@ -26,7 +26,7 @@ class EleccionController extends Controller
         $eleccion->fecha_fin = $request->fecha_fin;
         $eleccion->save();
 
-        return redirect()->route('eleccion.vista.todas')->with('mensajeCrud', 'Se creo correctamente.');
+        return redirect()->route('administracion.eleccion.vista.todas')->with('mensajeCrud', 'Se creo correctamente.');
     }
 
     public function vistaVer($id)
@@ -47,7 +47,7 @@ class EleccionController extends Controller
         $eleccion->nombre = $request->nombre;
         $eleccion->save();
 
-        return redirect()->route('eleccion.vista.todas')->with('mensajeCrud', 'Se edito correctamente.');
+        return redirect()->route('administracion.eleccion.vista.todas')->with('mensajeCrud', 'Se edito correctamente.');
     }
 
     public function eliminar($id)
@@ -55,6 +55,6 @@ class EleccionController extends Controller
         $eleccion = Eleccion::find($id);
         $eleccion->delete();
 
-        return redirect()->route('eleccion.vista.todas')->with('mensajeCrud', 'Se elimino correctamente.');
+        return redirect()->route('administracion.eleccion.vista.todas')->with('mensajeCrud', 'Se elimino correctamente.');
     }
 }

@@ -24,7 +24,7 @@ class RolController extends Controller
         $rol->nombre = $request->nombre;
         $rol->save();
 
-        return redirect()->route('rol.vista.todas')->with('mensajeCrud', 'Se creo correctamente.');
+        return redirect()->route('administracion.rol.vista.todas')->with('mensajeCrud', 'Se creo correctamente.');
     }
 
     public function vistaVer($id)
@@ -45,7 +45,7 @@ class RolController extends Controller
         $rol->nombre = $request->nombre;
         $rol->save();
 
-        return redirect()->route('rol.vista.todas')->with('mensajeCrud', 'Se edito correctamente.');
+        return redirect()->route('administracion.rol.vista.todas')->with('mensajeCrud', 'Se edito correctamente.');
     }
 
     public function eliminar($id)
@@ -53,6 +53,6 @@ class RolController extends Controller
         $rol = Rol::find($id);
         $rol->delete();
 
-        return redirect()->route('rol.vista.todas')->with('mensajeCrud', 'Se elimino correctamente.');
+        return redirect()->route('administracion.rol.vista.todas')->with('mensajeCrud', 'Se elimino correctamente.');
     }
 }

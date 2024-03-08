@@ -1,8 +1,8 @@
 <div>
     <h2>CREAR USUARIO</h2>
-    <a href="{{ route('usuario.vista.todas') }}">Regresar</a>
+    <a href="{{ route('administracion.usuario.vista.todas') }}">Regresar</a>
 
-    <form action="{{ route('usuario.crear') }}" method="POST">
+    <form action="{{ route('administracion.usuario.crear') }}" method="POST">
         @csrf
         <p>Nombre:</p>
         <input type="text" name="name" placeholder="Nombre" required>

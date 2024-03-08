@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Administrador;
+namespace App\Livewire\Eleccion;
 
 use App\Models\Candidato;
 use App\Models\Eleccion;
@@ -89,7 +89,7 @@ class EleccionAsigarCandidato extends Component
 
         $candidatos = $queryCandidatos->get();
 
-        return view('livewire.administrador.eleccion-asigar-candidato', [
+        return view('livewire.eleccion.eleccion-asigar-candidato', [
             'socios' => $socios,
             'candidatos' => $candidatos,
         ]);

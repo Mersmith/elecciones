@@ -21,6 +21,8 @@ return new class extends Migration
 
             $table->foreign('eleccion_id')->references('id')->on('eleccions')->onDelete('cascade');
             $table->foreign('socio_id')->references('id')->on('socios')->onDelete('cascade');
+
+            $table->unique(['eleccion_id', 'socio_id']);
         });
     }
 

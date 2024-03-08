@@ -35,7 +35,7 @@ class UserController extends Controller
             'password' => bcrypt($request->password),
         ]);
 
-        return redirect()->route('usuario.vista.todas')->with('mensajeCrud', 'Se creo correctamente.');
+        return redirect()->route('administracion.usuario.vista.todas')->with('mensajeCrud', 'Se creo correctamente.');
     }
 
     public function vistaVer($id)
@@ -56,7 +56,7 @@ class UserController extends Controller
         $usuario->nombre = $request->nombre;
         $usuario->save();
 
-        return redirect()->route('usuario.vista.todas')->with('mensajeCrud', 'Se edito correctamente.');
+        return redirect()->route('administracion.usuario.vista.todas')->with('mensajeCrud', 'Se edito correctamente.');
     }
 
     public function eliminar($id)
@@ -64,7 +64,7 @@ class UserController extends Controller
         $usuario = User::find($id);
         $usuario->delete();
 
-        return redirect()->route('usuario.vista.todas')->with('mensajeCrud', 'Se elimino correctamente.');
+        return redirect()->route('administracion.usuario.vista.todas')->with('mensajeCrud', 'Se elimino correctamente.');
     }
 
     public function vistaAsignarRol($id)
@@ -79,6 +79,6 @@ class UserController extends Controller
         $usuario = User::findOrFail($id);
         $usuario->roles()->sync($request->input('roles', []));
 
-        return redirect()->route('usuario.vista.todas')->with('mensajeCrud', 'Se edito correctamente.');
+        return redirect()->route('administracion.usuario.vista.todas')->with('mensajeCrud', 'Se edito correctamente.');
     }
 }

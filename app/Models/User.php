@@ -68,4 +68,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(Socio::class);
     }
+
+    public function hasRole($rolNombre)
+    {
+        return $this->roles()->where('nombre', $rolNombre)->exists();
+    }
 }

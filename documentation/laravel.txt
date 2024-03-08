@@ -44,3 +44,17 @@ php artisan make:livewire Administrador/EleccionAsigarCandidato
 php artisan make:model Votacion -mfsc
 php artisan make:livewire Administrador/VotacionVotar
 php artisan make:livewire Administrador/VotacionResultados
+
+
+*****************************************************************
+
+php artisan make:middleware VerificarSocioRol
+php artisan make:middleware VerificarAdministradorRol
+
+php artisan make:livewire Socio/SocioTodas
+php artisan make:livewire Socio/SocioCrear
+php artisan make:livewire Socio/SocioEditar
+
+php artisan make:livewire Administrador/AdministradorTodas
+php artisan make:livewire Administrador/AdministradorCrear
+php artisan make:livewire Administrador/AdministradorEditar
