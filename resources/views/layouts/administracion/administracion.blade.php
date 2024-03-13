@@ -25,7 +25,8 @@
 
     <!--MAIN PÁGINA-->
     <main class="contenedor_layout_administrador">
-        @yield('content')
+        {{-- @yield('content') --}}
+        {{ $slot }}
     </main>
 
     <!--SCRIPTS-->
