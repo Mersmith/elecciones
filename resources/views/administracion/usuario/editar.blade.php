@@ -1,6 +1,6 @@
 <div>
     <h2>EDITAR USUARIO</h2>
-    <a href="{{ route('administracion.usuario.vista.todas') }}">Regresar</a>
+    <a href="{{ route('administracion.usuario.todas') }}">Regresar</a>
     <a href="{{ route('administracion.usuario.crear') }}">Crear</a>
     <a href="{{ route('administracion.usuario.vista.editar', $usuario->id) }}">Editar</a>
     <br>

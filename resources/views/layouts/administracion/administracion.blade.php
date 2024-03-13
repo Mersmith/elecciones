@@ -25,9 +25,13 @@
 
     <!--MAIN PÁGINA-->
     <main class="contenedor_layout_administrador">
-        {{-- @yield('content') --}}
-        {{ $slot }}
+        @yield('content')
+        @if (isset($slot))
+            {{ $slot }}
+        @endif
     </main>
+
+
 
     <!--SCRIPTS-->
     @include('layouts.administracion.componentes.js')

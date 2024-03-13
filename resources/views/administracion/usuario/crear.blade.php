@@ -1,6 +1,6 @@
 <div>
     <h2>CREAR USUARIO</h2>
-    <a href="{{ route('administracion.usuario.vista.todas') }}">Regresar</a>
+    <a href="{{ route('administracion.usuario.todas') }}">Regresar</a>
 
     <form action="{{ route('administracion.usuario.crear') }}" method="POST">
         @csrf

@@ -7,11 +7,11 @@ use App\Livewire\Administrador\AdministradorTodas;
 use App\Livewire\Eleccion\EleccionAsigarCandidato;
 use App\Livewire\Socio\SocioTodas;
 use App\Livewire\Usuario\UsuarioCrear;
+use App\Livewire\Usuario\UsuarioTodas;
 use App\Livewire\Votacion\VotacionResultados;
 use Illuminate\Support\Facades\Route;
 
 Route::controller(UserController::class)->group(function () {
-    Route::get('usuario', 'vistaTodas')->name('usuario.vista.todas');
     Route::get('usuario/ver/{id}', 'vistaVer')->name('usuario.vista.ver');
     Route::get('usuario/editar/{id}', 'vistaEditar')->name('usuario.vista.editar');
     Route::put('usuario/editar/{id}', 'editar')->name('usuario.editar');
@@ -20,6 +20,7 @@ Route::controller(UserController::class)->group(function () {
     Route::put('usuario/rol/{id}', 'asignarRol')->name('usuario.asignar.rol');
 });
 
+Route::get('/usuario', UsuarioTodas::class)->name('usuario.todas');
 Route::get('/usuario/crear', UsuarioCrear::class)->name('usuario.crear');
 
 Route::controller(RolController::class)->group(function () {
