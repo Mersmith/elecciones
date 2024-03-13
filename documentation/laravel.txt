@@ -62,3 +62,5 @@ php artisan make:livewire Administrador/AdministradorEditar
 *****************************************************************
 
 php artisan make:livewire Menu/MenuPrincipal
+
+php artisan livewire:publish --pagination
