@@ -58,3 +58,7 @@ php artisan make:livewire Socio/SocioEditar
 php artisan make:livewire Administrador/AdministradorTodas
 php artisan make:livewire Administrador/AdministradorCrear
 php artisan make:livewire Administrador/AdministradorEditar
+
+*****************************************************************
+
+php artisan make:livewire Menu/MenuPrincipal

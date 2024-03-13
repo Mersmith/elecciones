@@ -11,14 +11,14 @@ class UserController extends Controller
     public function vistaTodas()
     {
         $usuarios = User::all();
-        return view('administrador.usuario.todas', compact('usuarios'));
+        return view('administracion.usuario.todas', compact('usuarios'));
     }
 
     public function vistaCrear()
     {
         $roles = Rol::all();
 
-        return view('administrador.usuario.crear', compact('roles'));
+        return view('administracion.usuario.crear', compact('roles'));
     }
 
     public function crear(Request $request)
@@ -41,13 +41,13 @@ class UserController extends Controller
     public function vistaVer($id)
     {
         $usuario = User::find($id);
-        return view('administrador.usuario.ver', compact('usuario'));
+        return view('administracion.usuario.ver', compact('usuario'));
     }
 
     public function vistaEditar($id)
     {
         $usuario = User::find($id);
-        return view('administrador.usuario.editar', compact('usuario'));
+        return view('administracion.usuario.editar', compact('usuario'));
     }
 
     public function editar(Request $request, $id)
@@ -71,7 +71,7 @@ class UserController extends Controller
     {
         $usuario = User::with('roles')->find($id);
         $roles = Rol::all();
-        return view('administrador.usuario.rol', compact('usuario', 'roles'));
+        return view('administracion.usuario.rol', compact('usuario', 'roles'));
     }
 
     public function asignarRol(Request $request, $id)

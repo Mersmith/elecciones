@@ -1,0 +1,324 @@
+[
+    {
+        "id": 1,
+        "nombrePrincipal": "Sedes",
+        "nombrePrincipalUrl": "#",
+        "iconoPrincipal": "fa-solid fa-city",
+        "subMenu1": [
+            {
+                "id": 1,
+                "nombreSubMenu1": "Lista",
+                "nombreSubMenu1Url": "administracion.administrador.vista.todas",
+                "iconoSubMenu1": "fa-solid fa-table-list",
+                "subMenu2": []
+            },
+            {
+                "id": 2,
+                "nombreSubMenu1": "Nuevo",
+                "nombreSubMenu1Url": "administracion.administrador.vista.todas",
+                "iconoSubMenu1": "fa-solid fa-square-plus",
+                "subMenu2": []
+            },
+            {
+                "id": 3,
+                "nombreSubMenu1": "Estadística",
+                "nombreSubMenu1Url": "#",
+                "iconoSubMenu1": "fa-solid fa-chart-simple",
+                "subMenu2": [
+                    {
+                        "id": 1,
+                        "nombreSubMenu2": "Odontólogos",
+                        "nombreSubMenu2Url": "administracion.administrador.vista.todas",
+                        "iconoSubMenu2": "fa-solid fa-user-doctor",
+                        "subMenu3": []
+                    },
+                    {
+                        "id": 2,
+                        "nombreSubMenu2": "Clínicas",
+                        "nombreSubMenu2Url": "administracion.administrador.vista.todas",
+                        "iconoSubMenu2": "fa-solid fa-house-medical-flag",
+                        "subMenu3": []
+                    },
+                    {
+                        "id": 3,
+                        "nombreSubMenu2": "Mes",
+                        "nombreSubMenu2Url": "administracion.administrador.vista.todas",
+                        "iconoSubMenu2": "fa-solid fa-calendar",
+                        "subMenu3": []
+                    },
+                    {
+                        "id": 4,
+                        "nombreSubMenu2": "Año",
+                        "nombreSubMenu2Url": "administracion.administrador.vista.todas",
+                        "iconoSubMenu2": "fa-regular fa-calendar-days",
+                        "subMenu3": []
+                    },
+                    {
+                        "id": 5,
+                        "nombreSubMenu2": "Años",
+                        "nombreSubMenu2Url": "administracion.administrador.vista.todas",
+                        "iconoSubMenu2": "fa-solid fa-calendar-days",
+                        "subMenu3": []
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "nombrePrincipal": "Encargados",
+        "nombrePrincipalUrl": "#",
+        "iconoPrincipal": "fa-solid fa-hospital-user",
+        "subMenu1": [
+            {
+                "id": 1,
+                "nombreSubMenu1": "Lista",
+                "nombreSubMenu1Url": "administracion.administrador.vista.todas",
+                "iconoSubMenu1": "fa-solid fa-table-list",
+                "subMenu2": []
+            },
+            {
+                "id": 2,
+                "nombreSubMenu1": "Nuevo",
+                "nombreSubMenu1Url": "administracion.administrador.vista.todas",
+                "iconoSubMenu1": "fa-solid fa-square-plus",
+                "subMenu2": []
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "nombrePrincipal": "Especialidades",
+        "nombrePrincipalUrl": "#",
+        "iconoPrincipal": "fa-solid fa-stethoscope",
+        "subMenu1": [
+            {
+                "id": 1,
+                "nombreSubMenu1": "Lista",
+                "nombreSubMenu1Url": "administracion.administrador.vista.todas",
+                "iconoSubMenu1": "fa-solid fa-table-list",
+                "subMenu2": []
+            },
+            {
+                "id": 2,
+                "nombreSubMenu1": "Nuevo",
+                "nombreSubMenu1Url": "administracion.administrador.vista.todas",
+                "iconoSubMenu1": "fa-solid fa-square-plus",
+                "subMenu2": []
+            },
+            {
+                "id": 3,
+                "nombreSubMenu1": "Estadística",
+                "nombreSubMenu1Url": "#",
+                "iconoSubMenu1": "fa-solid fa-chart-simple",
+                "subMenu2": [
+                    {
+                        "id": 1,
+                        "nombreSubMenu2": "Odontólogos",
+                        "nombreSubMenu2Url": "administracion.administrador.vista.todas",
+                        "iconoSubMenu2": "fa-solid fa-user-doctor",
+                        "subMenu3": []
+                    },
+                    {
+                        "id": 2,
+                        "nombreSubMenu2": "Clínicas",
+                        "nombreSubMenu2Url": "administracion.administrador.vista.todas",
+                        "iconoSubMenu2": "fa-solid fa-house-medical-flag",
+                        "subMenu3": []
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 4,
+        "nombrePrincipal": "Odontólogos",
+        "nombrePrincipalUrl": "#",
+        "iconoPrincipal": "fa-solid fa-user-doctor",
+        "subMenu1": [
+            {
+                "id": 1,
+                "nombreSubMenu1": "Lista",
+                "nombreSubMenu1Url": "administracion.administrador.vista.todas",
+                "iconoSubMenu1": "fa-solid fa-table-list",
+                "subMenu2": []
+            },
+            {
+                "id": 2,
+                "nombreSubMenu1": "Nuevo",
+                "nombreSubMenu1Url": "administracion.administrador.vista.todas",
+                "iconoSubMenu1": "fa-solid fa-square-plus",
+                "subMenu2": []
+            },
+            {
+                "id": 3,
+                "nombreSubMenu1": "Estadística",
+                "nombreSubMenu1Url": "#",
+                "iconoSubMenu1": "fa-solid fa-chart-simple",
+                "subMenu2": [
+                    {
+                        "id": 1,
+                        "nombreSubMenu2": "Departamentos",
+                        "nombreSubMenu2Url": "administracion.administrador.vista.todas",
+                        "iconoSubMenu2": "fa-solid fa-mountain-sun",
+                        "subMenu3": []
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 5,
+        "nombrePrincipal": "Clínicas",
+        "nombrePrincipalUrl": "#",
+        "iconoPrincipal": "fa-solid fa-house-medical-flag",
+        "subMenu1": [
+            {
+                "id": 1,
+                "nombreSubMenu1": "Lista",
+                "nombreSubMenu1Url": "administracion.administrador.vista.todas",
+                "iconoSubMenu1": "fa-solid fa-table-list",
+                "subMenu2": []
+            },
+            {
+                "id": 2,
+                "nombreSubMenu1": "Nuevo",
+                "nombreSubMenu1Url": "administracion.administrador.vista.todas",
+                "iconoSubMenu1": "fa-solid fa-square-plus",
+                "subMenu2": []
+            },
+            {
+                "id": 3,
+                "nombreSubMenu1": "Estadística",
+                "nombreSubMenu1Url": "#",
+                "iconoSubMenu1": "fa-solid fa-chart-simple",
+                "subMenu2": [
+                    {
+                        "id": 1,
+                        "nombreSubMenu2": "Departamentos",
+                        "nombreSubMenu2Url": "administracion.administrador.vista.todas",
+                        "iconoSubMenu2": "fa-solid fa-mountain-sun",
+                        "subMenu3": []
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 6,
+        "nombrePrincipal": "Servicios",
+        "nombrePrincipalUrl": "#",
+        "iconoPrincipal": "fa-solid fa-briefcase-medical",
+        "subMenu1": [
+            {
+                "id": 1,
+                "nombreSubMenu1": "Lista",
+                "nombreSubMenu1Url": "administracion.administrador.vista.todas",
+                "iconoSubMenu1": "fa-solid fa-table-list",
+                "subMenu2": []
+            },
+            {
+                "id": 2,
+                "nombreSubMenu1": "Nuevo",
+                "nombreSubMenu1Url": "administracion.administrador.vista.todas",
+                "iconoSubMenu1": "fa-solid fa-square-plus",
+                "subMenu2": []
+            }
+        ]
+    },
+    {
+        "id": 7,
+        "nombrePrincipal": "Pacientes",
+        "nombrePrincipalUrl": "#",
+        "iconoPrincipal": "fa-solid fa-user-injured",
+        "subMenu1": [
+            {
+                "id": 1,
+                "nombreSubMenu1": "Lista",
+                "nombreSubMenu1Url": "administracion.administrador.vista.todas",
+                "iconoSubMenu1": "fa-solid fa-table-list",
+                "subMenu2": []
+            },
+            {
+                "id": 2,
+                "nombreSubMenu1": "Nuevo",
+                "nombreSubMenu1Url": "administracion.administrador.vista.todas",
+                "iconoSubMenu1": "fa-solid fa-square-plus",
+                "subMenu2": []
+            }
+        ]
+    },
+    {
+        "id": 8,
+        "nombrePrincipal": "Ventas",
+        "nombrePrincipalUrl": "#",
+        "iconoPrincipal": "fa-solid fa-file-invoice-dollar",
+        "subMenu1": [
+            {
+                "id": 1,
+                "nombreSubMenu1": "Lista",
+                "nombreSubMenu1Url": "administracion.administrador.vista.todas",
+                "iconoSubMenu1": "fa-solid fa-table-list",
+                "subMenu2": []
+            },
+            {
+                "id": 2,
+                "nombreSubMenu1": "Nueva",
+                "nombreSubMenu1Url": "administracion.administrador.vista.todas",
+                "iconoSubMenu1": "fa-solid fa-square-plus",
+                "subMenu2": []
+            },
+            {
+                "id": 3,
+                "nombreSubMenu1": "Estadística",
+                "nombreSubMenu1Url": "#",
+                "iconoSubMenu1": "fa-solid fa-chart-simple",
+                "subMenu2": [
+                    {
+                        "id": 3,
+                        "nombreSubMenu2": "Mes",
+                        "nombreSubMenu2Url": "administracion.administrador.vista.todas",
+                        "iconoSubMenu2": "fa-solid fa-calendar",
+                        "subMenu3": []
+                    },
+                    {
+                        "id": 4,
+                        "nombreSubMenu2": "Año",
+                        "nombreSubMenu2Url": "administracion.administrador.vista.todas",
+                        "iconoSubMenu2": "fa-regular fa-calendar-days",
+                        "subMenu3": []
+                    },
+                    {
+                        "id": 5,
+                        "nombreSubMenu2": "Años",
+                        "nombreSubMenu2Url": "administracion.administrador.vista.todas",
+                        "iconoSubMenu2": "fa-solid fa-calendar-days",
+                        "subMenu3": []
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 8,
+        "nombrePrincipal": "Canjeos",
+        "nombrePrincipalUrl": "#",
+        "iconoPrincipal": "fa-solid fa-file-invoice-dollar",
+        "subMenu1": [
+            {
+                "id": 1,
+                "nombreSubMenu1": "Lista",
+                "nombreSubMenu1Url": "administracion.administrador.vista.todas",
+                "iconoSubMenu1": "fa-solid fa-table-list",
+                "subMenu2": []
+            },
+            {
+                "id": 2,
+                "nombreSubMenu1": "Nueva",
+                "nombreSubMenu1Url": "administracion.administrador.vista.todas",
+                "iconoSubMenu1": "fa-solid fa-square-plus",
+                "subMenu2": []
+            }
+        ]
+    }
+]
