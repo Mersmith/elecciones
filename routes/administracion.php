@@ -11,6 +11,7 @@ use App\Livewire\Usuario\UsuarioTodas;
 use App\Livewire\Votacion\VotacionResultados;
 use Illuminate\Support\Facades\Route;
 
+Route::get('/usuario', UsuarioTodas::class)->name('usuario.todas');
 Route::controller(UserController::class)->group(function () {
     Route::get('usuario/ver/{id}', 'vistaVer')->name('usuario.vista.ver');
     Route::get('usuario/editar/{id}', 'vistaEditar')->name('usuario.vista.editar');
@@ -19,8 +20,6 @@ Route::controller(UserController::class)->group(function () {
     Route::get('usuario/rol/{id}', 'vistaAsignarRol')->name('usuario.vista.asignar.rol');
     Route::put('usuario/rol/{id}', 'asignarRol')->name('usuario.asignar.rol');
 });
-
-Route::get('/usuario', UsuarioTodas::class)->name('usuario.todas');
 Route::get('/usuario/crear', UsuarioCrear::class)->name('usuario.crear');
 
 Route::controller(RolController::class)->group(function () {
@@ -46,7 +45,5 @@ Route::controller(EleccionController::class)->group(function () {
     Route::put('eleccion/editar/{id}', 'editar')->name('eleccion.editar');
     Route::delete('eleccion/eliminar/{id}', 'eliminar')->name('eleccion.eliminar');
 });
-
 Route::get('/eleccion/{id}/candidato', EleccionAsigarCandidato::class)->name('eleccion.asignar.candidato');
-
 Route::get('/eleccion/{id}/votacion/resultados', VotacionResultados::class)->name('eleccion.votacion.resultados');

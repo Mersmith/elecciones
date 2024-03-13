@@ -10,12 +10,12 @@ class RolController extends Controller
     public function vistaTodas()
     {
         $roles = Rol::all();
-        return view('administrador.rol.todas', compact('roles'));
+        return view('administracion.rol.todas', compact('roles'));
     }
 
     public function vistaCrear()
     {
-        return view('administrador.rol.crear');
+        return view('administracion.rol.crear');
     }
 
     public function crear(Request $request)
@@ -30,13 +30,13 @@ class RolController extends Controller
     public function vistaVer($id)
     {
         $rol = Rol::find($id);
-        return view('administrador.rol.ver', compact('rol'));
+        return view('administracion.rol.ver', compact('rol'));
     }
 
     public function vistaEditar($id)
     {
         $rol = Rol::find($id);
-        return view('administrador.rol.editar', compact('rol'));
+        return view('administracion.rol.editar', compact('rol'));
     }
 
     public function editar(Request $request, $id)
