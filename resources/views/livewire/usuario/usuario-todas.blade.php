@@ -79,8 +79,8 @@
                                                 <span><i class="fa-solid fa-pencil"></i></span>
                                             </a>
 
-                                            <a style="color: green;" href="{{ route('administracion.usuario.vista.asignar.rol', $usuario->id) }}">
-                                                <span><i class="fa-solid fa-pencil"></i></span>
+                                            <a style="color: brown;" href="{{ route('administracion.usuario.vista.asignar.rol', $usuario->id) }}">
+                                                <span><i class="fa-solid fa-user-gear"></i></span>
                                             </a>
                                         </td>
                                     </tr>

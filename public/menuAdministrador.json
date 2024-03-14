@@ -3,7 +3,7 @@
         "id": 0,
         "nombrePrincipal": "Roles",
         "nombrePrincipalUrl": "#",
-        "iconoPrincipal": "fa-solid fa-city",
+        "iconoPrincipal": "fa-solid fa-user-gear",
         "subMenu1": [
             {
                 "id": 1,
@@ -25,7 +25,7 @@
         "id": 1,
         "nombrePrincipal": "Usuarios",
         "nombrePrincipalUrl": "#",
-        "iconoPrincipal": "fa-solid fa-city",
+        "iconoPrincipal": "fa-solid fa-users",
         "subMenu1": [
             {
                 "id": 1,
@@ -47,7 +47,7 @@
         "id": 2,
         "nombrePrincipal": "Administradores",
         "nombrePrincipalUrl": "#",
-        "iconoPrincipal": "fa-solid fa-hospital-user",
+        "iconoPrincipal": "fa-solid fa-user-lock",
         "subMenu1": [
             {
                 "id": 1,
@@ -69,7 +69,7 @@
         "id": 3,
         "nombrePrincipal": "Socios",
         "nombrePrincipalUrl": "#",
-        "iconoPrincipal": "fa-solid fa-stethoscope",
+        "iconoPrincipal": "fa-solid fa-building-user",
         "subMenu1": [
             {
                 "id": 1,
@@ -91,7 +91,7 @@
         "id": 4,
         "nombrePrincipal": "Elecciones",
         "nombrePrincipalUrl": "#",
-        "iconoPrincipal": "fa-solid fa-user-doctor",
+        "iconoPrincipal": "fa-solid fa-elevator",
         "subMenu1": [
             {
                 "id": 1,
@@ -117,7 +117,7 @@
                         "id": 1,
                         "nombreSubMenu2": "Resultados",
                         "nombreSubMenu2Url": "administracion.administrador.vista.todas",
-                        "iconoSubMenu2": "fa-solid fa-mountain-sun",
+                        "iconoSubMenu2": "fa-solid fa-square-poll-vertical",
                         "subMenu3": []
                     }
                 ]

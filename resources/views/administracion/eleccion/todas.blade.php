@@ -67,24 +67,24 @@
                                                     <i class="fa-solid fa-eye"></i>
                                                 </a>
 
-                                                <a style="color: green;"
+                                                <a style="color: teal;"
                                                     href="{{ route('administracion.eleccion.vista.editar', $eleccion->id) }}">
                                                     <span><i class="fa-solid fa-pencil"></i></span>
                                                 </a>
 
-                                                <a style="color: green;"
+                                                <a style="color: purple;"
                                                     href="{{ route('administracion.eleccion.asignar.candidato', $eleccion->id) }}">
-                                                    <span><i class="fa-solid fa-pencil"></i></span>
+                                                    <span><i class="fa-solid fa-user-tie"></i></span>
                                                 </a>
 
-                                                <a style="color: green;"
+                                                <a style="color: navy;"
                                                     href="{{ route('eleccion.votacion.votar', $eleccion->id) }}">
-                                                    <span><i class="fa-solid fa-pencil"></i></span>
+                                                    <span><i class="fa-solid fa-hand-pointer"></i></span>
                                                 </a>
 
-                                                <a style="color: green;"
+                                                <a style="color: rgb(228, 137, 53);"
                                                     href="{{ route('administracion.eleccion.votacion.resultados', $eleccion->id) }}">
-                                                    <span><i class="fa-solid fa-pencil"></i></span>
+                                                    <span><i class="fa-solid fa-magnifying-glass-chart"></i></span>
                                                 </a>
                                             </td>
                                         </tr>
@@ -92,7 +92,7 @@
                                 </tbody>
                             </table>
                         </div>
-                    </div>                    
+                    </div>
                 @else
                     <div class="contenedor_no_existe_elementos">
                         <p>No hay elecciones.</p>
