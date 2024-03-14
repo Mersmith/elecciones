@@ -18,7 +18,7 @@
                 <a href="{{ route('administracion.rol.vista.crear') }}">
                     Crear <i class="fa-solid fa-square-plus"></i></a>
 
-                <a href="{{ route('administracion.rol.vista.crear') }}">
+                <a href="{{ route('administracion.rol.vista.editar', $rol->id) }}">
                     Editar <i class="fa-solid fa-pencil"></i></a>
 
                 <form action="{{ route('administracion.rol.eliminar', $rol->id) }}" method="POST">

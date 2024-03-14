@@ -4,6 +4,7 @@
 .formulario input[type="password"],
 .formulario input[type="number"],
 .formulario input[type="date"],
+.formulario input[type="datetime-local"],
 .formulario input[type="tel"],
 .formulario input[type="color"],
 .formulario textarea,

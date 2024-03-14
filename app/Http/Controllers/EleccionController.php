@@ -10,12 +10,12 @@ class EleccionController extends Controller
     public function vistaTodas()
     {
         $elecciones = Eleccion::all();
-        return view('administrador.eleccion.todas', compact('elecciones'));
+        return view('administracion.eleccion.todas', compact('elecciones'));
     }
 
     public function vistaCrear()
     {
-        return view('administrador.eleccion.crear');
+        return view('administracion.eleccion.crear');
     }
 
     public function crear(Request $request)
@@ -32,13 +32,13 @@ class EleccionController extends Controller
     public function vistaVer($id)
     {
         $eleccion = Eleccion::find($id);
-        return view('administrador.eleccion.ver', compact('eleccion'));
+        return view('administracion.eleccion.ver', compact('eleccion'));
     }
 
     public function vistaEditar($id)
     {
         $eleccion = Eleccion::find($id);
-        return view('administrador.eleccion.editar', compact('eleccion'));
+        return view('administracion.eleccion.editar', compact('eleccion'));
     }
 
     public function editar(Request $request, $id)
