@@ -51,3 +51,8 @@
 .contenedor_botones_admin button:hover {
     color: #189bb6;
 }
+
+.contenedor_botones_admin form {
+    display: flex;
+    cursor: pointer;
+}

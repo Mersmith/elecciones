@@ -8,7 +8,10 @@ use App\Models\Socio;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Livewire\WithPagination;
+use Livewire\Attributes\Layout;
+use Livewire\Attributes\On;
 
+#[Layout('layouts.administracion.administracion')]
 class EleccionAsigarCandidato extends Component
 {
     use WithPagination;
@@ -48,10 +51,12 @@ class EleccionAsigarCandidato extends Component
                 'eleccion_id' => $this->eleccionId,
                 'socio_id' => $socioId,
             ]);
+            $this->dispatch('mensajeCreadoLivewire', "Asignado.");
             $this->resetPage();
         }
     }
 
+    #[On('quitarCandidato')]
     public function quitarCandidato($socioId)
     {
         $candidato = Candidato::where('eleccion_id', $this->eleccionId)
@@ -60,6 +65,7 @@ class EleccionAsigarCandidato extends Component
 
         if ($candidato) {
             $candidato->delete();
+            $this->dispatch('mensajeEliminadoLivewire', "Quitado.");
             $this->resetPage();
         }
     }

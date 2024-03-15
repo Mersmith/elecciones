@@ -24,7 +24,10 @@
                 <form action="{{ route('administracion.rol.eliminar', $rol->id) }}" method="POST">
                     @csrf
                     @method('DELETE')
-                    <button type="submit">Eliminar</button>
+                    <a onclick="return funcionEliminar({{ $rol->id }});">
+                        <i class="fa-solid fa-trash" style="color: red;"></i>
+                        Eliminar</a>
+                    <button type="submit" id="boton-eliminar-{{ $rol->id }}" style="display: none;">Eliminar</button>
                 </form>
             </div>
         </div>
@@ -44,4 +47,29 @@
             </div>
         </div>
     </div>
+
+    <script>
+        function funcionEliminar(id) {
+            event.preventDefault();
+            Swal.fire({
+                title: '¿Quieres eliminar?',
+                text: "No podrás recupar este permiso.",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: '¡Sí, eliminar!',
+                cancelButtonText: 'Cancelar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById("boton-eliminar-" + id).click();
+                    Swal.fire(
+                        '¡Eliminado!',
+                        'Eliminaste correctamente.',
+                        'success'
+                    );
+                }
+            })
+        }
+    </script>
 @endsection

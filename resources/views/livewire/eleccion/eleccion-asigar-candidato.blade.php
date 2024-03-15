@@ -14,7 +14,9 @@
             <ul>
                 @foreach ($candidatos as $candidato)
                     <li>{{ $candidato->nombres }}</li>
-                    <button wire:click="quitarCandidato({{ $candidato->socio_id }})">Quitar como candidato</button>
+                    <button
+                        wire:click="$dispatch('quitarCandidatoAlerta', { socioId: {{ $candidato->socio_id }} })">Quitar
+                        como candidato</button>
                 @endforeach
             </ul>
         </div>
@@ -34,5 +36,26 @@
             {{ $socios->links() }}
         </div>
     </div>
-
 </div>
+@script
+    <script>
+        Livewire.on('quitarCandidatoAlerta', (socioId) => {
+            Swal.fire({
+                title: '¿Quieres quitar?',
+                text: "No podrás recuparlo.",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: '¡Sí, eliminar!',
+                cancelButtonText: 'Cancelar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Livewire.dispatch('quitarCandidato', {
+                        socioId: socioId
+                    });
+                }
+            })
+        })
+    </script>
+@endscript
