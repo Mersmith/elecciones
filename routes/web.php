@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Web\InicioController;
 use App\Livewire\Votacion\VotacionVotar;
 use Illuminate\Support\Facades\Route;
 
@@ -13,7 +14,8 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
+Route::get('/', InicioController::class)->name('inicio');
+/*
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
@@ -29,3 +31,4 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+*/

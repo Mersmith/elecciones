@@ -67,3 +67,7 @@ php artisan livewire:publish --pagination
 php artisan make:livewire Administrador/AdministradorTodas
 
 php artisan make:livewire Usuario/UsuarioTodas
+
+*****************************************************************
+
+php artisan make:controller Web/InicioController
