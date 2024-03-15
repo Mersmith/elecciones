@@ -6,7 +6,9 @@ use App\Models\Rol;
 use App\Models\Socio;
 use App\Models\User;
 use Livewire\Component;
+use Livewire\Attributes\Layout;
 
+#[Layout('layouts.administracion.administracion')]
 class UsuarioCrear extends Component
 {
     const ROL_SOCIO = 1;

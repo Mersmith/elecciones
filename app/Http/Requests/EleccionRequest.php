@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class RolRequest extends FormRequest
+class EleccionRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,11 +25,15 @@ class RolRequest extends FormRequest
 
         if ($id) {
             return [
-                'nombre' => 'required|min:3|max:255|unique:rols,nombre,' . $id,
+                'nombre' => 'required|min:3|max:255|unique:eleccions,nombre,' . $id,
+                'fecha_inicio' => 'required|date',
+                'fecha_fin' => 'required|date|after:fecha_inicio',
             ];
         } else {
             return [
-                'nombre' => 'required|min:3|max:255|unique:rols',
+                'nombre' => 'required|min:3|max:255|unique:eleccions',
+                'fecha_inicio' => 'required|date',
+                'fecha_fin' => 'required|date|after:fecha_inicio',
             ];
         }
     }
@@ -38,6 +42,8 @@ class RolRequest extends FormRequest
     {
         return [
             'nombre' => 'nombre',
+            'fecha_inicio' => 'fecha inicio',
+            'fecha_fin' => 'fecha inicio',
         ];
     }
 
@@ -48,6 +54,13 @@ class RolRequest extends FormRequest
             'nombre.min' => 'Más de :min dígitos.',
             'nombre.max' => 'Menos de :max dígitos',
             'nombre.unique' => 'Este :attribute ya existe',
+
+            'fecha_inicio.required' => 'No debe ser vacio.',
+            'fecha_inicio.date' => 'Debe ser una fecha válida.',
+
+            'fecha_fin.required' => 'No debe ser vacio.',
+            'fecha_fin.date' => 'Debe ser una fecha válida.',
+            'fecha_fin.after' => 'Debe ser mayor a la fecha de inicio.',
         ];
     }
 }

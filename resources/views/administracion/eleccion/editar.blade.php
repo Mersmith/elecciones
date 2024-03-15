@@ -36,8 +36,33 @@
                         <!--NOMBRE-->
                         <div class="contenedor_elemento_item">
                             <p class="estilo_nombre_input">Nombre: <span class="campo_obligatorio">(Obligatorio)</span></p>
-                            <input type="text" name="nombre" value="{{ $eleccion->nombre }}" required>
+                            <input type="text" name="nombre" value="{{ old('nombre', $eleccion->nombre) }}" required>
                             @error('nombre')
+                                <span class="campo_obligatorio">{{ $message }}</span>
+                            @enderror
+                        </div>
+                    </div>
+
+                    <!--FECHA INICIO Y FECHA FIN-->
+                    <div class="contenedor_2_elementos">
+                        <!--FECHA INICIO-->
+                        <div class="contenedor_elemento_item">
+                            <p class="estilo_nombre_input">Fecha inicio: <span
+                                    class="campo_obligatorio">(Obligatorio)</span>
+                            </p>
+                            <input type="datetime-local" name="fecha_inicio"
+                                value="{{ old('fecha_inicio', $eleccion->fecha_inicio) }}" required>
+                            @error('fecha_inicio')
+                                <span class="campo_obligatorio">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <!--FECHA FIN-->
+                        <div class="contenedor_elemento_item">
+                            <p class="estilo_nombre_input">Fecha fin: <span class="campo_obligatorio">(Obligatorio)</span>
+                            </p>
+                            <input type="datetime-local" name="fecha_fin"
+                                value="{{ old('fecha_fin', $eleccion->fecha_fin) }}" required>
+                            @error('fecha_fin')
                                 <span class="campo_obligatorio">{{ $message }}</span>
                             @enderror
                         </div>

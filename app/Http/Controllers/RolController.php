@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\RolRequest;
 use App\Models\Rol;
 use Illuminate\Http\Request;
 
@@ -18,7 +19,7 @@ class RolController extends Controller
         return view('administracion.rol.crear');
     }
 
-    public function crear(Request $request)
+    public function crear(RolRequest $request)
     {
         $rol = new Rol();
         $rol->nombre = $request->nombre;
@@ -39,7 +40,7 @@ class RolController extends Controller
         return view('administracion.rol.editar', compact('rol'));
     }
 
-    public function editar(Request $request, $id)
+    public function editar(RolRequest $request, $id)
     {
         $rol = Rol::findOrFail($id);
         $rol->nombre = $request->nombre;

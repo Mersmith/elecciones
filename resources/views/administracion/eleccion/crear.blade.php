@@ -31,7 +31,7 @@
                         <!--NOMBRE-->
                         <div class="contenedor_elemento_item">
                             <p class="estilo_nombre_input">Nombre: <span class="campo_obligatorio">(Obligatorio)</span></p>
-                            <input type="text" name="nombre" required>
+                            <input type="text" name="nombre" value="{{ old('nombre') }}" required>
                             @error('nombre')
                                 <span class="campo_obligatorio">{{ $message }}</span>
                             @enderror
@@ -45,7 +45,7 @@
                             <p class="estilo_nombre_input">Fecha inicio: <span
                                     class="campo_obligatorio">(Obligatorio)</span>
                             </p>
-                            <input type="datetime-local" name="fecha_inicio" required>
+                            <input type="datetime-local" name="fecha_inicio" value="{{ old('fecha_inicio') }}" required>
                             @error('fecha_inicio')
                                 <span class="campo_obligatorio">{{ $message }}</span>
                             @enderror
@@ -54,7 +54,7 @@
                         <div class="contenedor_elemento_item">
                             <p class="estilo_nombre_input">Fecha fin: <span class="campo_obligatorio">(Obligatorio)</span>
                             </p>
-                            <input type="datetime-local" name="fecha_fin" required>
+                            <input type="datetime-local" name="fecha_fin" value="{{ old('fecha_fin') }}" required>
                             @error('fecha_fin')
                                 <span class="campo_obligatorio">{{ $message }}</span>
                             @enderror

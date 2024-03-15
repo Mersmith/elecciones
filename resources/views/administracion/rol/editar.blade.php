@@ -36,7 +36,7 @@
                         <!--NOMBRE-->
                         <div class="contenedor_elemento_item">
                             <p class="estilo_nombre_input">Nombre: <span class="campo_obligatorio">(Obligatorio)</span></p>
-                            <input type="text" name="nombre" value="{{ $rol->nombre }}" required>
+                            <input type="text" name="nombre" value="{{ old('nombre', $rol->nombre) }}" required>
                             @error('nombre')
                                 <span class="campo_obligatorio">{{ $message }}</span>
                             @enderror

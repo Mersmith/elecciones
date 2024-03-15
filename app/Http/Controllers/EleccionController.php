@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\EleccionRequest;
 use App\Models\Eleccion;
 use Illuminate\Http\Request;
 
@@ -18,7 +19,7 @@ class EleccionController extends Controller
         return view('administracion.eleccion.crear');
     }
 
-    public function crear(Request $request)
+    public function crear(EleccionRequest $request)
     {
         $eleccion = new Eleccion();
         $eleccion->nombre = $request->nombre;
@@ -41,7 +42,7 @@ class EleccionController extends Controller
         return view('administracion.eleccion.editar', compact('eleccion'));
     }
 
-    public function editar(Request $request, $id)
+    public function editar(EleccionRequest $request, $id)
     {
         $eleccion = Eleccion::findOrFail($id);
         $eleccion->nombre = $request->nombre;
