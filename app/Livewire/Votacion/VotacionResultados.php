@@ -6,7 +6,9 @@ use App\Models\Socio;
 use App\Models\Votacion;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
+use Livewire\Attributes\Layout;
 
+#[Layout('layouts.administracion.administracion')]
 class VotacionResultados extends Component
 {
     public $eleccionId;

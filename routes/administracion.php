@@ -4,7 +4,7 @@ use App\Http\Controllers\EleccionController;
 use App\Http\Controllers\RolController;
 use App\Http\Controllers\UserController;
 use App\Livewire\Administrador\AdministradorTodas;
-use App\Livewire\Eleccion\EleccionAsigarCandidato;
+use App\Livewire\Eleccion\EleccionAsignarCandidato;
 use App\Livewire\Socio\SocioTodas;
 use App\Livewire\Usuario\UsuarioCrear;
 use App\Livewire\Usuario\UsuarioTodas;
@@ -45,5 +45,5 @@ Route::controller(EleccionController::class)->group(function () {
     Route::put('eleccion/editar/{id}', 'editar')->name('eleccion.editar');//ok
     Route::delete('eleccion/eliminar/{id}', 'eliminar')->name('eleccion.eliminar');//ok
 });
-Route::get('/eleccion/{id}/candidato', EleccionAsigarCandidato::class)->name('eleccion.asignar.candidato');
+Route::get('/eleccion/{id}/candidato', EleccionAsignarCandidato::class)->name('eleccion.asignar.candidato');
 Route::get('/eleccion/{id}/votacion/resultados', VotacionResultados::class)->name('eleccion.votacion.resultados');

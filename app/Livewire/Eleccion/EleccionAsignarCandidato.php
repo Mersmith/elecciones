@@ -12,7 +12,7 @@ use Livewire\Attributes\Layout;
 use Livewire\Attributes\On;
 
 #[Layout('layouts.administracion.administracion')]
-class EleccionAsigarCandidato extends Component
+class EleccionAsignarCandidato extends Component
 {
     use WithPagination;
 
@@ -95,7 +95,7 @@ class EleccionAsigarCandidato extends Component
 
         $candidatos = $queryCandidatos->get();
 
-        return view('livewire.eleccion.eleccion-asigar-candidato', [
+        return view('livewire.eleccion.eleccion-asignar-candidato', [
             'socios' => $socios,
             'candidatos' => $candidatos,
         ]);
