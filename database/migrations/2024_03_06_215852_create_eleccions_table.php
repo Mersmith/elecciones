@@ -14,9 +14,13 @@ return new class extends Migration
         Schema::create('eleccions', function (Blueprint $table) {
             $table->id();
 
-            $table->string('nombre');
-            $table->dateTime('fecha_inicio');
-            $table->dateTime('fecha_fin');
+            $table->string('nombre')->unique();
+            $table->string('slug')->unique();
+            $table->dateTime('fecha_inicio_convocatoria');
+            $table->dateTime('fecha_fin_convocatoria');
+            $table->dateTime('fecha_inicio_elecciones');
+            $table->dateTime('fecha_fin_elecciones');
+            $table->string('imagen_ruta')->nullable();
 
             $table->timestamps();
         });

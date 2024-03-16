@@ -40,7 +40,7 @@ Route::controller(EleccionController::class)->group(function () {
     Route::get('eleccion', 'vistaTodas')->name('eleccion.vista.todas');//ok
     Route::get('eleccion/crear', 'vistaCrear')->name('eleccion.vista.crear');//ok
     Route::post('eleccion/crear', 'crear')->name('eleccion.crear');//ok
-    Route::get('eleccion/ver/{id}', 'vistaVer')->name('eleccion.vista.ver');//ok
+    Route::get('eleccion/ver/{eleccion}', 'vistaVer')->name('eleccion.vista.ver');//ok
     Route::get('eleccion/editar/{id}', 'vistaEditar')->name('eleccion.vista.editar');//ok
     Route::put('eleccion/editar/{id}', 'editar')->name('eleccion.editar');//ok
     Route::delete('eleccion/eliminar/{id}', 'eliminar')->name('eleccion.eliminar');//ok

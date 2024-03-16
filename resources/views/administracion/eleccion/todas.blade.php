@@ -49,6 +49,14 @@
                                         <th>
                                             Nombres</th>
                                         <th>
+                                            Convocatoria inicio</th>
+                                        <th>
+                                            Convocatoria fin</th>
+                                        <th>
+                                            Inicio votación</th>
+                                        <th>
+                                            Fin votación</th>
+                                        <th>
                                             Acción</th>
                                     </tr>
                                 </thead>
@@ -62,8 +70,20 @@
                                                 {{ $eleccion->nombre }}
                                             </td>
                                             <td>
+                                                {{ $eleccion->fecha_inicio_convocatoria }}
+                                            </td>
+                                            <td>
+                                                {{ $eleccion->fecha_fin_convocatoria }}
+                                            </td>
+                                            <td>
+                                                {{ $eleccion->fecha_inicio_elecciones }}
+                                            </td>
+                                            <td>
+                                                {{ $eleccion->fecha_fin_elecciones }}
+                                            </td>
+                                            <td>
                                                 <a style="color: #009eff;"
-                                                    href="{{ route('administracion.eleccion.vista.ver', $eleccion->id) }}">
+                                                    href="{{ route('administracion.eleccion.vista.ver', $eleccion) }}">
                                                     <i class="fa-solid fa-eye"></i>
                                                 </a>
 

@@ -14,4 +14,10 @@ class Eleccion extends Model
     {
         return $this->hasMany(Candidato::class);
     }
+
+    //URl amigables    
+    public function getRouteKeyName(): string
+    {
+        return 'slug';
+    }
 }

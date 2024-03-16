@@ -30,9 +30,9 @@ class EleccionController extends Controller
         return redirect()->route('administracion.eleccion.vista.todas')->with('mensajeCrud', 'Se creo correctamente.');
     }
 
-    public function vistaVer($id)
+    public function vistaVer(Eleccion $eleccion)
     {
-        $eleccion = Eleccion::find($id);
+        //$eleccion = Eleccion::find($id);
         return view('administracion.eleccion.ver', compact('eleccion'));
     }
 
