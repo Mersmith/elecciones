@@ -19,7 +19,19 @@ class UserSeeder extends Seeder
     {
         $faker = Faker::create();
 
-        for ($i = 0; $i < 150; $i++) {
+        // Crear un usuario administrador
+        $admin = User::create([
+            'name' => $faker->name,
+            'email' => 'mersmith14@gmail.com',
+            'password' => Hash::make('123456'),
+        ]);
+
+        $admin->roles()->attach(Rol::where('nombre', 'administrador')->first()->id);
+
+        // Crear usuarios socios
+        $socioRoleId = Rol::where('nombre', 'socio')->value('id');
+
+        for ($i = 0; $i < 10; $i++) {
             $nombre = $faker->name;
             $user = User::create([
                 'name' => $nombre,
@@ -27,10 +39,7 @@ class UserSeeder extends Seeder
                 'password' => Hash::make('123456'),
             ]);
 
-            //$randomRoleIds = Rol::inRandomOrder()->take(2)->pluck('id');
-            //$user->roles()->syncWithoutDetaching($randomRoleIds);
-
-            $user->roles()->attach(Rol::all()->random()->id);
+            $user->roles()->attach($socioRoleId);
 
             if ($user->roles()->where('nombre', 'socio')->exists()) {
                 Socio::create([
@@ -48,6 +57,18 @@ class UserSeeder extends Seeder
                     'direccion' => $faker->address,
                 ]);
             }
+        }
+
+        // Crear usuarios veedor
+        $veedorRoleId = Rol::where('nombre', 'veedor')->value('id');
+
+        $sociosIds = User::whereHas('roles', function ($query) {
+            $query->where('nombre', 'socio');
+        })->take(4)->pluck('id');
+
+        foreach ($sociosIds as $userId) {
+            $user = User::find($userId);
+            $user->roles()->attach($veedorRoleId);
         }
     }
 }
