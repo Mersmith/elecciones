@@ -74,7 +74,7 @@
             {
                 "id": 1,
                 "nombreSubMenu1": "Lista",
-                "nombreSubMenu1Url": "administracion.administrador.vista.todas",
+                "nombreSubMenu1Url": "administracion.socio.vista.todas",
                 "iconoSubMenu1": "fa-solid fa-table-list",
                 "subMenu2": []
             },

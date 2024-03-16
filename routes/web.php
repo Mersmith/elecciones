@@ -22,12 +22,13 @@ Route::get('/admin', AdministradorIngresar::class)->name('ingresar.administrador
 
 Route::get('/ingresar', SocioIngresar::class)->name('ingresar.socio');
 
+Route::get('/eleccion/{id}/votacion/votar', VotacionVotar::class)->name('eleccion.votacion.votar')->middleware(['verificar.socio']);
 /*
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
-Route::get('/eleccion/{id}/votacion/votar', VotacionVotar::class)->name('eleccion.votacion.votar')->middleware(['verificar.socio']);
+
 
 Route::middleware([
     'auth:sanctum',
