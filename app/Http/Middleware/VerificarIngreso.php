@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Auth;
 
-class VerificarAdministradorRol
+class VerificarIngreso
 {
     /**
      * Handle an incoming request.
@@ -17,11 +17,14 @@ class VerificarAdministradorRol
     public function handle(Request $request, Closure $next): Response
     {
         if (Auth::check()) {
-            if (Auth::user()->hasRole('administrador')) {
-                return $next($request);
-            }
+            /*if (Auth::user()->hasRole('administrador')) {
+                return redirect()->route('administracion.usuario.todas');
+            }*/
+            return redirect()->route('inicio');
+        } else {
+            return redirect()->route('ingresar.administrador');
         }
 
-        return redirect()->route('inicio');
+        return $next($request);
     }
 }

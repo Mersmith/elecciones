@@ -71,3 +71,7 @@ php artisan make:livewire Usuario/UsuarioTodas
 *****************************************************************
 
 php artisan make:controller Web/InicioController
+
+php artisan make:livewire Sesion/Administrador/AdministradorIngresar
+
+php artisan make:middleware VerificarIngreso
