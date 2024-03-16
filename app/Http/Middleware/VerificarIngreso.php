@@ -17,14 +17,15 @@ class VerificarIngreso
     public function handle(Request $request, Closure $next): Response
     {
         if (Auth::check()) {
-            /*if (Auth::user()->hasRole('administrador')) {
+            if (Auth::user()->hasRole('administrador')) {
                 return redirect()->route('administracion.usuario.todas');
-            }*/
-            return redirect()->route('inicio');
+            } elseif (Auth::user()->roles->isEmpty()) {
+                return redirect()->route('ingresar.socio');
+            } else {
+                return redirect()->route('administracion.socio.vista.todas');
+            }
         } else {
-            return redirect()->route('ingresar.administrador');
+            return $next($request);
         }
-
-        return $next($request);
     }
 }
