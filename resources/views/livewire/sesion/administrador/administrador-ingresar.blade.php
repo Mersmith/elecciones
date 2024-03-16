@@ -7,9 +7,9 @@
             <img src="{{ asset('imagenes/sesion/1.jpg') }}" alt="" />
             <!--TEXTO-->
             <div>
-                <h2>"Canjea tus puntos por radiografías."</h2>
-                <h3>Nickol Sinchi </h3>
-                <p>Odontóloga</p>
+                <h2>“Alguien luchó por tu derecho al voto. Úsalo”.</h2>
+                <h3>Susan B. Anthony</h3>
+                <p>Activista</p>
             </div>
         </div>
 
@@ -26,12 +26,10 @@
                 </div>
 
                 <!--TITULO-->
-                <h1 class="titulo_formulario">¡HOLA! BIENVENIDO DE NUEVO </h1>
+                <h1 class="titulo_formulario">¡HOLA! BIENVENIDO DE NUEVO</h1>
 
                 <!--PÁRRAFO-->
-                <p class="descripcion_formulario">Inicie sesión con los datos que ingresó durante su registro en CRD
-                    CLOUD.
-                </p>
+                <p class="descripcion_formulario">Inicie sesión con sus datos de administrador.</p>
 
                 <!--FORMULARIO-->
                 <form wire:submit.prevent="ingresar" class="formulario" style="width: 100%; margin-top: 30px;">

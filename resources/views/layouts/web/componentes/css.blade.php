@@ -25,3 +25,7 @@
 
 <!--LAYOUT TABLA ADMINISTRADOR-->
 <link rel="stylesheet" href="{{ asset('administracion/layout/tabla.css') }}">
+
+<!----------------------WEB---------------------->
+<!--PÁGINA WEB INICIO-->
+<link rel="stylesheet" href="{{ asset('web/inicio/inicio.css') }}">

@@ -10,7 +10,7 @@
     display: flex;
     font-size: 19px;
     font-weight: 700;
-    color: #189bb6;
+    color: #009b54;
     padding: 5px 0px;
 }
 
@@ -25,7 +25,7 @@
 .contenedor_subtitulo_admin span {
     display: flex;
     font-size: 14px;
-    color: #189bb6;
+    color: #009b54;
 }
 
 /*CONTENEDOR BOTONES ADMIN*/
@@ -49,7 +49,7 @@
 
 .contenedor_botones_admin a:hover,
 .contenedor_botones_admin button:hover {
-    color: #189bb6;
+    color: #009b54;
 }
 
 .contenedor_botones_admin form {

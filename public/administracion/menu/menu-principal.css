@@ -66,7 +66,7 @@ nav {
 }
 
 .contenedor_administrador_sidebar a:hover {
-    background-color: #5ad7f7;
+    background-color: #02b563;
     color: white;
 }
 
@@ -107,7 +107,7 @@ nav {
     display: block;
     max-width: 200px;
     width: 100%;
-    background: #189bb6;
+    background: #009b54;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
     transition: all 0.5s ease;
     z-index: 1000;
@@ -115,7 +115,7 @@ nav {
 }
 
 .navbar hr {
-    border-color: #51b5cf;
+    border-color: #02b563;
 }
 
 .contenedor_menu_link::-webkit-scrollbar {
@@ -171,7 +171,7 @@ nav {
 
 @media (max-width: 500px) {
     .navbar {
-        grid-template-columns: 120px 1fr 40px;
+        grid-template-columns: 150px 1fr 40px;
     }
 
     .contenedor_iconos i {
@@ -179,6 +179,6 @@ nav {
     }
 
     .contenedor_logo img {
-        width: 100px;
+        width: 120px;
     }
 }

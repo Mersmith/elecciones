@@ -96,11 +96,11 @@
 }
 
 .tabla_switch input:checked+.slider {
-    background-color: #2196f3;
+    background-color: #009b54;
 }
 
 .tabla_switch input:focus+.slider {
-    box-shadow: 0 0 1px #2196f3;
+    box-shadow: 0 0 1px #009b54;
 }
 
 .tabla_switch input:checked+.slider:before {

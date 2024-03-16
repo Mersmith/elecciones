@@ -1,0 +1,77 @@
+/*GRID CONTENEDOR LOGIN*/
+.contenedor_login {
+    height: 100vh;
+    display: flex;
+    justify-content: center
+}
+
+/*GRID LOGIN IMAGEN*/
+.contenedor_login .contenedor_login_imagen {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #009b54;
+}
+
+/*IMAGEN*/
+.contenedor_login .contenedor_login_imagen .imagen_fondo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.2;
+}
+
+.contenedor_login .contenedor_login_imagen .centrar_contenido {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    align-items: center;
+}
+
+/*LOGO*/
+.centrar_contenido .contenedor_logo_inicio a img {
+    width: 450px;
+}
+
+/*CONTENEDOR BOTONES*/
+.contenedor_botones {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.contenedor_botones a {
+    border-radius: 20px;
+    padding: 10px;
+    width: 250px;
+    text-align: center;
+    font-weight: bold;
+    box-shadow: 2px 2px 7px 1px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.boton_votar {
+    background-color: #02d375
+}
+
+.boton_votar:hover {
+    transform: scale(1.1);
+}
+
+.boton_resultados {
+    background-color: #fff212;
+}
+
+.boton_resultados:hover {
+    transform: scale(1.1);
+}
+
+@media screen and (max-width: 900px) {
+    .centrar_contenido .contenedor_logo_inicio a img {
+        width: 250px;
+    }
+}

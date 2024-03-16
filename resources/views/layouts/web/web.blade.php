@@ -21,7 +21,7 @@
 
 <body>
     <!--MAIN PÁGINA-->
-    <main class="contenedor_layout_administrador">
+    <main>
 
         <!--ALERTAS-->
         @if (session('crear'))
