@@ -46,4 +46,3 @@ Route::controller(EleccionController::class)->group(function () {
     Route::delete('eleccion/eliminar/{id}', 'eliminar')->name('eleccion.eliminar');//ok
 });
 Route::get('/eleccion/{id}/candidato', EleccionAsignarCandidato::class)->name('eleccion.asignar.candidato');
-Route::get('/eleccion/{id}/votacion/resultados', VotacionResultados::class)->name('eleccion.votacion.resultados');

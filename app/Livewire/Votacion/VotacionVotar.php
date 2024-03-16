@@ -20,12 +20,12 @@ class VotacionVotar extends Component
     public $candidatoId;
     public $candidatoSeleccionado;
 
-    public function mount($id)
+    public function mount(Eleccion $eleccion)
     {
         $this->usuario = auth()->user();
 
-        $this->eleccionId = $id;
-        $this->eleccion = Eleccion::find($id);
+        $this->eleccionId = $eleccion->id;
+        $this->eleccion = $eleccion;
     }
 
     public function updatingCandidatoId($candidatoId)

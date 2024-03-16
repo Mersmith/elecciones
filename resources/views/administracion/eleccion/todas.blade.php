@@ -98,12 +98,12 @@
                                                 </a>
 
                                                 <a style="color: navy;"
-                                                    href="{{ route('eleccion.votacion.votar', $eleccion->id) }}">
+                                                    href="{{ route('eleccion.votacion.votar', $eleccion) }}">
                                                     <span><i class="fa-solid fa-hand-pointer"></i></span>
                                                 </a>
 
                                                 <a style="color: rgb(228, 137, 53);"
-                                                    href="{{ route('administracion.eleccion.votacion.resultados', $eleccion->id) }}">
+                                                    href="{{ route('eleccion.votacion.resultados', $eleccion->id) }}">
                                                     <span><i class="fa-solid fa-magnifying-glass-chart"></i></span>
                                                 </a>
                                             </td>
