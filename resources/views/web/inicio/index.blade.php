@@ -33,7 +33,9 @@
                                         </div>
                                     </div>
                                 @endif
-
+                                @if (!Auth::check())
+                                    <a href="{{ route('ingresar.socio') }}">Ingresa para votar.</a>
+                                @endif
                                 <a href="{{ route('eleccion.votacion.votar', $eleccion) }}" class="boton_votar">VOTAR</a>
                                 <a href="{{ route('eleccion.votacion.resultados', $eleccion->id) }}"
                                     class="boton_resultados">RESULTADOS</a>

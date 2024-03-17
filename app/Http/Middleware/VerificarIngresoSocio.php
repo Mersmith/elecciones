@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Auth;
 
-class VerificarIngreso
+class VerificarIngresoSocio
 {
     /**
      * Handle an incoming request.
@@ -17,12 +17,11 @@ class VerificarIngreso
     public function handle(Request $request, Closure $next): Response
     {
         if (Auth::check()) {
-            if (Auth::user()->hasRole('administrador')) {
-                return redirect()->route('administracion.usuario.todas');
-            } elseif (Auth::user()->roles->isEmpty()) {
-                return redirect()->route('ingresar.socio');
+            if (Auth::user()->hasRole('socio')) {
+                return redirect()->route('socio.perfil');
             } else {
-                return redirect()->route('administracion.socio.vista.todas');
+                Auth::logout();
+                return redirect()->route('ingresar.socio');
             }
         } else {
             return $next($request);

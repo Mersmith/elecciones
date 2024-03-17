@@ -1,0 +1,23 @@
+[
+    {
+        "id": 0,
+        "nombrePrincipal": "Mi perfil",
+        "nombrePrincipalUrl": "socio.perfil",
+        "iconoPrincipal": "fa-solid fa-clipboard-user",
+        "subMenu1": []
+    },
+    {
+        "id": 1,
+        "nombrePrincipal": "Elecciones",
+        "nombrePrincipalUrl": "socio.perfil",
+        "iconoPrincipal": "fa-solid fa-user-gear",
+        "subMenu1": []
+    },
+    {
+        "id": 2,
+        "nombrePrincipal": "Mis Votos",
+        "nombrePrincipalUrl": "socio.perfil",
+        "iconoPrincipal": "fa-solid fa-hand-pointer",
+        "subMenu1": []
+    }
+]

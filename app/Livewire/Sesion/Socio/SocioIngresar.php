@@ -46,7 +46,7 @@ class SocioIngresar extends Component
             $usuario = Auth::user();
 
             if ($usuario->hasRole('socio')) {
-                return redirect()->route('administracion.socio.vista.todas');
+                return redirect()->route('socio.perfil');
             } else {
                 Auth::logout();
                 return redirect()->route('ingresar.socio');

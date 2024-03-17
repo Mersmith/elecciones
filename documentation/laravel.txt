@@ -75,3 +75,9 @@ php artisan make:controller Web/InicioController
 php artisan make:livewire Sesion/Administrador/AdministradorIngresar
 
 php artisan make:middleware VerificarIngreso
+
+*****************************************************************
+
+php artisan make:controller Socio/SocioPerfilController
+
+php artisan make:livewire Socio/Menu/MenuPrincipal

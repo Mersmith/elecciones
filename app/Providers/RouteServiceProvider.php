@@ -42,6 +42,12 @@ class RouteServiceProvider extends ServiceProvider
                 ->prefix('administracion')
                 ->namespace($this->namespace)
                 ->group(base_path('routes/administracion.php'));
+
+            Route::middleware(['web', 'verificar.socio'])
+                ->name('socio.')
+                ->prefix('socio')
+                ->namespace($this->namespace)
+                ->group(base_path('routes/socio.php'));
         });
     }
 }

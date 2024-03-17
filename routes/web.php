@@ -19,9 +19,9 @@ use Illuminate\Support\Facades\Route;
 */
 Route::get('/', InicioController::class)->name('inicio');
 
-Route::get('/admin', AdministradorIngresar::class)->name('ingresar.administrador')->middleware(['verificar.ingreso']);
+Route::get('/admin', AdministradorIngresar::class)->name('ingresar.administrador')->middleware(['verificar.ingreso.administrador']);
 
-Route::get('/ingresar', SocioIngresar::class)->name('ingresar.socio')->middleware(['verificar.ingreso']);
+Route::get('/ingresar', SocioIngresar::class)->name('ingresar.socio')->middleware(['verificar.ingreso.socio']);
 
 Route::get('/eleccion/{eleccion}/votacion/votar', VotacionVotar::class)->name('eleccion.votacion.votar')->middleware(['auth']);
 
