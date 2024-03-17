@@ -21,7 +21,7 @@
 
 <body>
     <!--MENU PRINCIPAL ADMINISTRADOR-->
-    @livewire('menu.menu-principal')
+    @livewire('administracion.menu.menu-principal')
 
     <!--MAIN PÁGINA-->
     <main class="contenedor_layout_administrador">

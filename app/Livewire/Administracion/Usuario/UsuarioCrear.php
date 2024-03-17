@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Usuario;
+namespace App\Livewire\Administracion\Usuario;
 
 use App\Models\Rol;
 use App\Models\Socio;
@@ -70,6 +70,6 @@ class UsuarioCrear extends Component
 
     public function render()
     {
-        return view('livewire.usuario.usuario-crear');
+        return view('livewire.administracion.usuario.usuario-crear');
     }
 }

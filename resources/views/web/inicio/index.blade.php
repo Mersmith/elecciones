@@ -18,29 +18,18 @@
                             <img src="{{ asset('imagenes/empresa/logo-2.png') }}" alt="" />
                         </a>
 
-                        @if ($eleccion)
-                            <div class="contenedor_botones">
-                                @if ($socio)
-                                    <div>
-                                        <p>Hola, socio ya puedes votar {{ $socio->nombres }} </p>
-                                        <div>
-                                            <form method="POST" action="{{ route('logout') }}" x-data>
-                                                @csrf
-                                                <a href="{{ route('logout') }}" @click.prevent="$root.submit();">
-                                                    {{ __('Cerrar') }}
-                                                </a>
-                                            </form>
-                                        </div>
-                                    </div>
-                                @endif
-                                @if (!Auth::check())
-                                    <a href="{{ route('ingresar.socio') }}">Ingresa para votar.</a>
-                                @endif
-                                <a href="{{ route('eleccion.votacion.votar', $eleccion) }}" class="boton_votar">VOTAR</a>
-                                <a href="{{ route('eleccion.votacion.resultados', $eleccion->id) }}"
-                                    class="boton_resultados">RESULTADOS</a>
-                            </div>
-                        @endif
+                        <div class="contenedor_botones">
+                            @if (!Auth::check())
+                                <a href="{{ route('ingresar.socio') }}">Ingresa para votar.</a>
+                            @else
+                                <form method="POST" action="{{ route('logout') }}" x-data>
+                                    @csrf
+                                    <a href="{{ route('logout') }}" @click.prevent="$root.submit();">
+                                        {{ __('Cerrar') }}
+                                    </a>
+                                </form>
+                            @endif
+                        </div>
                     </div>
                 </div>
             </div>

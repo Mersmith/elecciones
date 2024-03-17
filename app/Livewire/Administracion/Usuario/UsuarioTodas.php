@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Usuario;
+namespace App\Livewire\Administracion\Usuario;
 
 use App\Models\User;
 use Livewire\Component;
@@ -36,7 +36,7 @@ class UsuarioTodas extends Component
             ->select('*')
             ->paginate($this->paginate);
 
-        return view('livewire.usuario.usuario-todas', [
+        return view('livewire.administracion.usuario.usuario-todas', [
             'usuarios' => $usuarios,
         ]);
     }

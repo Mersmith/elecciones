@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Auth;
 
-class VerificarIngresoAdminitrador
+class VerificarIngresoAdministrador
 {
     /**
      * Handle an incoming request.
@@ -19,6 +19,8 @@ class VerificarIngresoAdminitrador
         if (Auth::check()) {
             if (Auth::user()->hasRole('administrador')) {
                 return redirect()->route('administracion.usuario.todas');
+            } elseif (!Auth::user()->hasRole('administrador')) {
+                return redirect()->route('inicio');
             } else {
                 Auth::logout();
                 return redirect()->route('ingresar.administrador');

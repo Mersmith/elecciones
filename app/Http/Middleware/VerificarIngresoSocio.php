@@ -19,6 +19,8 @@ class VerificarIngresoSocio
         if (Auth::check()) {
             if (Auth::user()->hasRole('socio')) {
                 return redirect()->route('socio.perfil');
+            } elseif (!Auth::user()->hasRole('socio')) {
+                return redirect()->route('inicio');
             } else {
                 Auth::logout();
                 return redirect()->route('ingresar.socio');

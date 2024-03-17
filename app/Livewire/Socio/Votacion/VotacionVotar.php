@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Votacion;
+namespace App\Livewire\Socio\Votacion;
 
 use App\Models\Candidato;
 use App\Models\Eleccion;
@@ -9,7 +9,9 @@ use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
+use Livewire\Attributes\Layout;
 
+#[Layout('layouts.socio.socio')]
 class VotacionVotar extends Component
 {
     public $usuario;
@@ -23,8 +25,6 @@ class VotacionVotar extends Component
 
     public $mensaje = "";
 
-    public $rol;
-
     public function mount(Eleccion $eleccion)
     {
         $this->eleccionId = $eleccion->id;
@@ -32,20 +32,15 @@ class VotacionVotar extends Component
 
         $this->usuario = auth()->user();
 
-        if (Auth::user()->hasRole('administrador')) {
-            $this->rol = "administrador";
-            $this->mensaje = "Eres administrador y no puedes votar";
-        } elseif (Auth::user()->hasRole('socio')) {
-            $this->rol = "socio";
-            $idSocio = $this->usuario->socio->id;
-            $existeVotacion = Votacion::where('socio_id', $idSocio)
-                ->where('eleccion_id', $eleccion->id)
-                ->exists();
-            if ($existeVotacion) {
-                $this->mensaje = "Eres socio y puedes votar. Pero tu ya votaste";
-            } else {
-                $this->mensaje = "Eres socio y puedes votar. Tienes que votar";
-            }
+        $idSocio = $this->usuario->socio->id;
+        $existeVotacion = Votacion::where('socio_id', $idSocio)
+            ->where('eleccion_id', $eleccion->id)
+            ->exists();
+        if ($existeVotacion) {
+            $this->mensaje = "Ya votaste";
+            return redirect()->route('socio.voto');
+        } else {
+            $this->mensaje = "Falta votar";
         }
     }
 
@@ -57,15 +52,15 @@ class VotacionVotar extends Component
     public function votarCandidato($candidatoId)
     {
         try {
-            if ($this->rol != "administrador") {
-                $votacion = new Votacion();
-                $votacion->candidato_id = $candidatoId;
-                $votacion->socio_id = $this->usuario->socio->id;
-                $votacion->eleccion_id = $this->eleccionId;
-                $votacion->save();
+            $votacion = new Votacion();
+            $votacion->candidato_id = $candidatoId;
+            $votacion->socio_id = $this->usuario->socio->id;
+            $votacion->eleccion_id = $this->eleccionId;
+            $votacion->save();
 
-                session()->flash('message', '¡Tu voto ha sido registrado con éxito!');
-            }
+            session()->flash('message', '¡Tu voto ha sido registrado con éxito!');
+            $this->mensaje = "Ya votaste";
+            return redirect()->route('socio.voto');
         } catch (QueryException $e) {
             if ($e->errorInfo[1] == 1062) {
                 session()->flash('error', 'Usted ya ha votado en esta elección y no puede votar otra vez.');
@@ -73,7 +68,6 @@ class VotacionVotar extends Component
                 session()->flash('error', 'Error al votar: ' . $e->getMessage());
             }
         }
-
     }
 
     public function render()
@@ -89,7 +83,7 @@ class VotacionVotar extends Component
 
         $candidatos = $queryCandidatos->get();
 
-        return view('livewire.votacion.votacion-votar', [
+        return view('livewire.socio.votacion.votacion-votar', [
             'candidatos' => $candidatos,
         ]);
     }

@@ -1,13 +1,13 @@
 <?php
 
-use App\Http\Controllers\EleccionController;
-use App\Http\Controllers\RolController;
-use App\Http\Controllers\UserController;
-use App\Livewire\Administrador\AdministradorTodas;
-use App\Livewire\Eleccion\EleccionAsignarCandidato;
-use App\Livewire\Socio\SocioTodas;
-use App\Livewire\Usuario\UsuarioCrear;
-use App\Livewire\Usuario\UsuarioTodas;
+use App\Http\Controllers\Administracion\EleccionController;
+use App\Http\Controllers\Administracion\RolController;
+use App\Http\Controllers\Administracion\UserController;
+use App\Livewire\Administracion\Administrador\AdministradorTodas;
+use App\Livewire\Administracion\Eleccion\EleccionAsignarCandidato;
+use App\Livewire\Administracion\Socio\SocioTodas;
+use App\Livewire\Administracion\Usuario\UsuarioCrear;
+use App\Livewire\Administracion\Usuario\UsuarioTodas;
 use App\Livewire\Votacion\VotacionResultados;
 use Illuminate\Support\Facades\Route;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Socio;
+namespace App\Livewire\Administracion\Socio;
 
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
@@ -46,7 +46,7 @@ class SocioTodas extends Component
             ->select('socios.*')
             ->paginate($this->paginate);
 
-        return view('livewire.socio.socio-todas', [
+        return view('livewire.administracion.socio.socio-todas', [
             'socios' => $socios,
         ]);
     }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Eleccion;
+namespace App\Livewire\Administracion\Eleccion;
 
 use App\Models\Candidato;
 use App\Models\Eleccion;
@@ -95,7 +95,7 @@ class EleccionAsignarCandidato extends Component
 
         $candidatos = $queryCandidatos->get();
 
-        return view('livewire.eleccion.eleccion-asignar-candidato', [
+        return view('livewire.administracion.eleccion.eleccion-asignar-candidato', [
             'socios' => $socios,
             'candidatos' => $candidatos,
         ]);

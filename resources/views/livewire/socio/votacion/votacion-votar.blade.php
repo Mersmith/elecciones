@@ -21,7 +21,6 @@
         <div>
             <h2>Hola, {{ $usuario->name }}</h2>
             <p>{{ $mensaje }}</p>
-            <p>Tu rol es: {{ $rol }}</p>
         </div>
     @endif
 

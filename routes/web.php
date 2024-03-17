@@ -4,7 +4,6 @@ use App\Http\Controllers\Web\InicioController;
 use App\Livewire\Sesion\Administrador\AdministradorIngresar;
 use App\Livewire\Sesion\Socio\SocioIngresar;
 use App\Livewire\Votacion\VotacionResultados;
-use App\Livewire\Votacion\VotacionVotar;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,7 +22,7 @@ Route::get('/admin', AdministradorIngresar::class)->name('ingresar.administrador
 
 Route::get('/ingresar', SocioIngresar::class)->name('ingresar.socio')->middleware(['verificar.ingreso.socio']);
 
-Route::get('/eleccion/{eleccion}/votacion/votar', VotacionVotar::class)->name('eleccion.votacion.votar')->middleware(['auth']);
+//Route::get('/eleccion/{eleccion}/votacion/votar', VotacionVotar::class)->name('eleccion.votacion.votar')->middleware(['auth']);
 
 Route::get('/eleccion/{id}/votacion/resultados', VotacionResultados::class)->name('eleccion.votacion.resultados');
 

@@ -95,12 +95,7 @@
                                                 <a style="color: purple;"
                                                     href="{{ route('administracion.eleccion.asignar.candidato', $eleccion->id) }}">
                                                     <span><i class="fa-solid fa-user-tie"></i></span>
-                                                </a>
-
-                                                <a style="color: navy;"
-                                                    href="{{ route('eleccion.votacion.votar', $eleccion) }}">
-                                                    <span><i class="fa-solid fa-hand-pointer"></i></span>
-                                                </a>
+                                                </a>                                              
 
                                                 <a style="color: rgb(228, 137, 53);"
                                                     href="{{ route('eleccion.votacion.resultados', $eleccion->id) }}">

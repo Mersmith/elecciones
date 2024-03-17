@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Administracion;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\RolRequest;
 use App\Models\Rol;
 use Illuminate\Http\Request;

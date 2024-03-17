@@ -9,14 +9,14 @@
     {
         "id": 1,
         "nombrePrincipal": "Elecciones",
-        "nombrePrincipalUrl": "socio.perfil",
+        "nombrePrincipalUrl": "socio.eleccion",
         "iconoPrincipal": "fa-solid fa-user-gear",
         "subMenu1": []
     },
     {
         "id": 2,
         "nombrePrincipal": "Mis Votos",
-        "nombrePrincipalUrl": "socio.perfil",
+        "nombrePrincipalUrl": "socio.voto",
         "iconoPrincipal": "fa-solid fa-hand-pointer",
         "subMenu1": []
     }

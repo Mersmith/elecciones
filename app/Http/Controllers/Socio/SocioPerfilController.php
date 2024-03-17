@@ -8,7 +8,9 @@ use Illuminate\Http\Request;
 class SocioPerfilController extends Controller
 {
     public function __invoke()
-    {      
-        return view('socio.perfil.index');
+    {
+        $usuario = auth()->user();
+
+        return view('socio.perfil.index', compact('usuario'));
     }
 }

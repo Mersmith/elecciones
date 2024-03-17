@@ -1,9 +1,10 @@
 @extends('layouts.socio.socio')
 
-@section('tituloPagina', 'Perfil')
+@section('tituloPagina', 'Mi perfil')
 
 @section('content')
     <div>
-       <h2>GA</h2>
+       <h2>perfil</h2>
+       <p>{{$usuario->socio->nombres}}</p>
     </div>
 @endsection

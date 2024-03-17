@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Menu;
+namespace App\Livewire\Administracion\Menu;
 
 use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
@@ -17,6 +17,6 @@ class MenuPrincipal extends Component
 
     public function render()
     {
-        return view('livewire.menu.menu-principal');
+        return view('livewire.administracion.menu.menu-principal');
     }
 }

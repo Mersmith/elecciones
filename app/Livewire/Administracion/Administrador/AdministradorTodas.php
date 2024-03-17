@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Administrador;
+namespace App\Livewire\Administracion\Administrador;
 
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
@@ -45,7 +45,7 @@ class AdministradorTodas extends Component
             ->select('users.*')
             ->paginate($this->paginate);
 
-        return view('livewire.administrador.administrador-todas', [
+        return view('livewire.administracion.administrador.administrador-todas', [
             'administradores' => $administradores,
         ]);
     }
