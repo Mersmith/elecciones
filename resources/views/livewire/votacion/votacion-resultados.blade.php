@@ -48,37 +48,37 @@
                 }
             @endphp
             <canvas id="chart_votacion_resultados"></canvas>
+
+            @script
+                <script>
+                    const ctx_chart_votacion_resultados = document.getElementById('chart_votacion_resultados');
+                    new Chart(ctx_chart_votacion_resultados, {
+                        type: 'bar',
+                        data: {
+                            labels: {{ Js::from($label_chart_candidato_nombre) }},
+                            datasets: [{
+                                label: 'RESULSTADOS DE LOS 5 PRIMEROS EN LAS ELECCIONES',
+                                data: {{ Js::from($data_chart_candidato_votos) }},
+                                borderWidth: 1,
+                                backgroundColor: ['rgba(255, 99, 132, 0.8)', 'rgba(54, 162, 235, 0.8)',
+                                    'rgba(255, 206, 86, 0.8)', 'rgba(75, 192, 192, 0.8)',
+                                    'rgba(153, 102, 255, 0.8)', 'rgba(255, 159, 64, 0.8)', 'rgba(255, 0, 0, 0.8)',
+                                    'rgba(0, 255, 0, 0.8)', 'rgba(0, 0, 255, 0.8)', 'rgba(255, 255, 0, 0.8)',
+                                    'rgba(255, 0, 255, 0.8)', 'rgba(0, 255, 255, 0.8)', 'rgba(128, 0, 0, 0.8)',
+                                    'rgba(0, 128, 0, 0.8)', 'rgba(0, 0, 128, 0.8)'
+                                ]
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                y: {
+                                    beginAtZero: true
+                                }
+                            }
+                        }
+                    });
+                </script>
+            @endscript
         @endif
     </div>
 </div>
-
-@script
-    <script>
-        const ctx_chart_votacion_resultados = document.getElementById('chart_votacion_resultados');
-        new Chart(ctx_chart_votacion_resultados, {
-            type: 'bar',
-            data: {
-                labels: {{ Js::from($label_chart_candidato_nombre) }},
-                datasets: [{
-                    label: 'RESULSTADOS DE LOS 5 PRIMEROS EN LAS ELECCIONES',
-                    data: {{ Js::from($data_chart_candidato_votos) }},
-                    borderWidth: 1,
-                    backgroundColor: ['rgba(255, 99, 132, 0.8)', 'rgba(54, 162, 235, 0.8)',
-                        'rgba(255, 206, 86, 0.8)', 'rgba(75, 192, 192, 0.8)',
-                        'rgba(153, 102, 255, 0.8)', 'rgba(255, 159, 64, 0.8)', 'rgba(255, 0, 0, 0.8)',
-                        'rgba(0, 255, 0, 0.8)', 'rgba(0, 0, 255, 0.8)', 'rgba(255, 255, 0, 0.8)',
-                        'rgba(255, 0, 255, 0.8)', 'rgba(0, 255, 255, 0.8)', 'rgba(128, 0, 0, 0.8)',
-                        'rgba(0, 128, 0, 0.8)', 'rgba(0, 0, 128, 0.8)'
-                    ]
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-    </script>
-@endscript

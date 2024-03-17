@@ -45,12 +45,11 @@ class SocioIngresar extends Component
         if (Auth::attempt($credentials, $this->recordarme)) {
             $usuario = Auth::user();
 
-            if ($usuario->hasRole('administrador')) {
-                return redirect()->route('administracion.usuario.todas');
-            } elseif ($usuario->roles->isEmpty()) {
-                return redirect()->route('ingresar.socio');
-            } else {
+            if ($usuario->hasRole('socio')) {
                 return redirect()->route('administracion.socio.vista.todas');
+            } else {
+                Auth::logout();
+                return redirect()->route('ingresar.socio');
             }
         } else {
             $errors = ['email' => 'Email o usuario incorrecto.'];

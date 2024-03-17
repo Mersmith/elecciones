@@ -45,9 +45,10 @@ class AdministradorIngresar extends Component
         if (Auth::attempt($credentials, $this->recordarme)) {
             $usuario = Auth::user();
 
-            if (Auth::user()->hasRole('administrador')) {
+            if ($usuario->hasRole('administrador')) {
                 return redirect()->route('administracion.usuario.todas');
             } else {
+                Auth::logout();
                 return redirect()->route('ingresar.administrador');
             }
         } else {

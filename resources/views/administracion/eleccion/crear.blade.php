@@ -26,7 +26,7 @@
                 </div>
                 <form action="{{ route('administracion.eleccion.crear') }}" method="POST" class="formulario">
                     @csrf
-                    <!--NOMBRE-->
+                    <!--NOMBRE Y SLUG-->
                     <div class="contenedor_2_elementos">
                         <!--NOMBRE-->
                         <div class="contenedor_elemento_item">
@@ -36,26 +36,64 @@
                                 <span class="campo_obligatorio">{{ $message }}</span>
                             @enderror
                         </div>
+
+                        <!--SLUG-->
+                        <div class="contenedor_elemento_item">
+                            <p class="estilo_nombre_input">URL: <span class="campo_obligatorio">(Obligatorio)</span></p>
+                            <input type="text" name="slug" value="{{ old('slug') }}" required>
+                            @error('slug')
+                                <span class="campo_obligatorio">{{ $message }}</span>
+                            @enderror
+                        </div>
                     </div>
 
                     <!--FECHA INICIO Y FECHA FIN-->
                     <div class="contenedor_2_elementos">
                         <!--FECHA INICIO-->
                         <div class="contenedor_elemento_item">
-                            <p class="estilo_nombre_input">Fecha inicio: <span
+                            <p class="estilo_nombre_input">Fecha inicio convocatoria: <span
                                     class="campo_obligatorio">(Obligatorio)</span>
                             </p>
-                            <input type="datetime-local" name="fecha_inicio" value="{{ old('fecha_inicio') }}" required>
-                            @error('fecha_inicio')
+                            <input type="datetime-local" name="fecha_inicio_convocatoria"
+                                value="{{ old('fecha_inicio_convocatoria') }}" required>
+                            @error('fecha_inicio_convocatoria')
                                 <span class="campo_obligatorio">{{ $message }}</span>
                             @enderror
                         </div>
                         <!--FECHA FIN-->
                         <div class="contenedor_elemento_item">
-                            <p class="estilo_nombre_input">Fecha fin: <span class="campo_obligatorio">(Obligatorio)</span>
+                            <p class="estilo_nombre_input">Fecha fin convocatoria: <span
+                                    class="campo_obligatorio">(Obligatorio)</span>
                             </p>
-                            <input type="datetime-local" name="fecha_fin" value="{{ old('fecha_fin') }}" required>
-                            @error('fecha_fin')
+                            <input type="datetime-local" name="fecha_fin_convocatoria"
+                                value="{{ old('fecha_fin_convocatoria') }}" required>
+                            @error('fecha_fin_convocatoria')
+                                <span class="campo_obligatorio">{{ $message }}</span>
+                            @enderror
+                        </div>
+                    </div>
+
+                    <!--FECHA INICIO Y FECHA FIN-->
+                    <div class="contenedor_2_elementos">
+                        <!--FECHA INICIO-->
+                        <div class="contenedor_elemento_item">
+                            <p class="estilo_nombre_input">Fecha inicio votaciones: <span
+                                    class="campo_obligatorio">(Obligatorio)</span>
+                            </p>
+                            <input type="datetime-local" name="fecha_inicio_elecciones"
+                                value="{{ old('fecha_inicio_elecciones') }}" required>
+                            @error('fecha_inicio_elecciones')
+                                <span class="campo_obligatorio">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <!--FECHA FIN-->
+                        <div class="contenedor_elemento_item">
+                            <p class="estilo_nombre_input">Fecha fin votaciones: <span
+                                    class="campo_obligatorio">(Obligatorio)</span>
+                            </p>
+                            <input type="datetime-local" name="fecha_fin_elecciones"
+                                value="{{ old('fecha_fin_elecciones') }}" required>
+                            @error('fecha_fin_elecciones')
                                 <span class="campo_obligatorio">{{ $message }}</span>
                             @enderror
                         </div>

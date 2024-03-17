@@ -21,7 +21,7 @@ class UserSeeder extends Seeder
 
         // Crear un usuario administrador
         $admin = User::create([
-            'name' => $faker->name,
+            'name' => 'Emerson Smith',
             'email' => 'mersmith14@gmail.com',
             'password' => Hash::make('123456'),
         ]);
@@ -29,7 +29,7 @@ class UserSeeder extends Seeder
         $admin->roles()->attach(Rol::where('nombre', 'administrador')->first()->id);
 
         // Crear usuarios socios
-        $socioRoleId = Rol::where('nombre', 'socio')->value('id');
+        /*$socioRoleId = Rol::where('nombre', 'socio')->value('id');
 
         for ($i = 0; $i < 10; $i++) {
             $nombre = $faker->name;
@@ -69,6 +69,6 @@ class UserSeeder extends Seeder
         foreach ($sociosIds as $userId) {
             $user = User::find($userId);
             $user->roles()->attach($veedorRoleId);
-        }
+        }*/
     }
 }

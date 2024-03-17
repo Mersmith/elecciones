@@ -154,11 +154,11 @@
                             </p>
                             <div>
                                 <label>
-                                    <input type="radio" wire:model="sexo" value="H">
+                                    <input type="radio" wire:model="sexo" value="M">
                                     Hombre
                                 </label>
                                 <label>
-                                    <input type="radio" wire:model="sexo" value="M">
+                                    <input type="radio" wire:model="sexo" value="F">
                                     Mujer
                                 </label>
                             </div>

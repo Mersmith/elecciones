@@ -6,6 +6,7 @@ use App\Models\Rol;
 use App\Models\Socio;
 use App\Models\User;
 use Livewire\Component;
+use Illuminate\Support\Facades\Hash;
 use Livewire\Attributes\Layout;
 
 #[Layout('layouts.administracion.administracion')]
@@ -38,16 +39,16 @@ class UsuarioCrear extends Component
     public function enviar()
     {
         $usuario_nuevo = new User();
-        $usuario_nuevo->name  = $this->nombre;
-        $usuario_nuevo->email  = $this->email;
-        $usuario_nuevo->password  = $this->password;
+        $usuario_nuevo->name = $this->nombre;
+        $usuario_nuevo->email = $this->email;
+        $usuario_nuevo->password = Hash::make($this->password);
         $usuario_nuevo->save();
 
         $usuario_nuevo->roles()->sync($this->roles_elegidos);
 
         if (in_array(2, $this->roles_elegidos)) {
             $socio_nuevo = new Socio();
-            $socio_nuevo->user_id   = $usuario_nuevo->id;
+            $socio_nuevo->user_id = $usuario_nuevo->id;
             $socio_nuevo->apellido_paterno = $this->apellido_paterno;
             $socio_nuevo->apellido_materno = $this->apellido_materno;
             $socio_nuevo->nombres = $this->nombre;
@@ -61,6 +62,10 @@ class UsuarioCrear extends Component
             $socio_nuevo->direccion = $this->direccion;
             $socio_nuevo->save();
         }
+
+        $this->dispatch('mensajeCreadoLivewire', "Creado.");
+
+        return redirect()->route('administracion.usuario.todas');
     }
 
     public function render()

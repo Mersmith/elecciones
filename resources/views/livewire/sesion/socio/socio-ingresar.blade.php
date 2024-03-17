@@ -1,3 +1,4 @@
+@section('tituloPagina', 'Ingresar')
 <div>
     <!--GRID CONTENEDOR LOGIN-->
     <div class="contenedor_login">

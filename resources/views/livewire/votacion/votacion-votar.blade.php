@@ -17,9 +17,11 @@
         <p>Fecha de Fin: {{ $eleccion->fecha_fin }}</p>
     </div>
 
-    @if ($usuario->socio)
+    @if ($usuario)
         <div>
-            <h2>Hola, {{ $usuario->socio->nombres }}</h2>
+            <h2>Hola, {{ $usuario->name }}</h2>
+            <p>{{ $mensaje }}</p>
+            <p>Tu rol es: {{ $rol }}</p>
         </div>
     @endif
 

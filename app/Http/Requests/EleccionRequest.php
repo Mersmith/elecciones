@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Str;
 
 class EleccionRequest extends FormRequest
 {
@@ -26,14 +27,20 @@ class EleccionRequest extends FormRequest
         if ($id) {
             return [
                 'nombre' => 'required|min:3|max:255|unique:eleccions,nombre,' . $id,
-                'fecha_inicio' => 'required|date',
-                'fecha_fin' => 'required|date|after:fecha_inicio',
+                'slug' => 'required|min:3|max:255|unique:eleccions,slug,' . $id,
+                'fecha_inicio_convocatoria' => 'required|date',
+                'fecha_fin_convocatoria' => 'required|date|after:fecha_inicio_convocatoria',
+                'fecha_inicio_elecciones' => 'required|date',
+                'fecha_fin_elecciones' => 'required|date|after:fecha_inicio_elecciones',
             ];
         } else {
             return [
                 'nombre' => 'required|min:3|max:255|unique:eleccions',
-                'fecha_inicio' => 'required|date',
-                'fecha_fin' => 'required|date|after:fecha_inicio',
+                'slug' => 'required|min:3|max:255|unique:eleccions',
+                'fecha_inicio_convocatoria' => 'required|date',
+                'fecha_fin_convocatoria' => 'required|date|after:fecha_inicio_convocatoria',
+                'fecha_inicio_elecciones' => 'required|date',
+                'fecha_fin_elecciones' => 'required|date|after:fecha_inicio_elecciones',
             ];
         }
     }
@@ -42,8 +49,11 @@ class EleccionRequest extends FormRequest
     {
         return [
             'nombre' => 'nombre',
-            'fecha_inicio' => 'fecha inicio',
-            'fecha_fin' => 'fecha inicio',
+            'slug' => 'url',
+            'fecha_inicio_convocatoria' => 'fecha inicio convocatoria',
+            'fecha_fin_convocatoria' => 'fecha fin convocatoria',
+            'fecha_inicio_elecciones' => 'fecha inicio elecciones',
+            'fecha_fin_elecciones' => 'fecha fin elecciones',
         ];
     }
 
@@ -55,12 +65,31 @@ class EleccionRequest extends FormRequest
             'nombre.max' => 'Menos de :max dígitos',
             'nombre.unique' => 'Este :attribute ya existe',
 
-            'fecha_inicio.required' => 'No debe ser vacio.',
-            'fecha_inicio.date' => 'Debe ser una fecha válida.',
+            'slug.required' => 'No debe ser vacio.',
+            'slug.min' => 'Más de :min dígitos.',
+            'slug.max' => 'Menos de :max dígitos',
+            'slug.unique' => 'Este :attribute ya existe',
 
-            'fecha_fin.required' => 'No debe ser vacio.',
-            'fecha_fin.date' => 'Debe ser una fecha válida.',
-            'fecha_fin.after' => 'Debe ser mayor a la fecha de inicio.',
+            'fecha_inicio_convocatoria.required' => 'No debe ser vacio.',
+            'fecha_inicio_convocatoria.date' => 'Debe ser una fecha válida.',
+
+            'fecha_fin_convocatoria.required' => 'No debe ser vacio.',
+            'fecha_fin_convocatoria.date' => 'Debe ser una fecha válida.',
+            'fecha_fin_convocatoria.after' => 'Debe ser mayor a la fecha de inicio.',
+
+            'fecha_inicio_elecciones.required' => 'No debe ser vacio.',
+            'fecha_inicio_elecciones.date' => 'Debe ser una fecha válida.',
+
+            'fecha_fin_elecciones.required' => 'No debe ser vacio.',
+            'fecha_fin_elecciones.date' => 'Debe ser una fecha válida.',
+            'fecha_fin_elecciones.after' => 'Debe ser mayor a la fecha de inicio elecciones.',
         ];
+    }
+
+    protected function prepareForValidation(): void
+    {
+        $this->merge([
+            'slug' => Str::slug($this->slug),
+        ]);
     }
 }

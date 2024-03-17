@@ -8,6 +8,7 @@ use App\Models\Votacion;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
+use Illuminate\Support\Facades\Auth;
 
 class VotacionVotar extends Component
 {
@@ -20,12 +21,32 @@ class VotacionVotar extends Component
     public $candidatoId;
     public $candidatoSeleccionado;
 
+    public $mensaje = "";
+
+    public $rol;
+
     public function mount(Eleccion $eleccion)
     {
-        $this->usuario = auth()->user();
-
         $this->eleccionId = $eleccion->id;
         $this->eleccion = $eleccion;
+
+        $this->usuario = auth()->user();
+
+        if (Auth::user()->hasRole('administrador')) {
+            $this->rol = "administrador";
+            $this->mensaje = "Eres administrador y no puedes votar";
+        } elseif (Auth::user()->hasRole('socio')) {
+            $this->rol = "socio";
+            $idSocio = $this->usuario->socio->id;
+            $existeVotacion = Votacion::where('socio_id', $idSocio)
+                ->where('eleccion_id', $eleccion->id)
+                ->exists();
+            if ($existeVotacion) {
+                $this->mensaje = "Eres socio y puedes votar. Pero tu ya votaste";
+            } else {
+                $this->mensaje = "Eres socio y puedes votar. Tienes que votar";
+            }
+        }
     }
 
     public function updatingCandidatoId($candidatoId)
@@ -36,13 +57,15 @@ class VotacionVotar extends Component
     public function votarCandidato($candidatoId)
     {
         try {
-            $votacion = new Votacion();
-            $votacion->candidato_id = $candidatoId;
-            $votacion->socio_id = $this->usuario->socio->id;
-            $votacion->eleccion_id = $this->eleccionId;
-            $votacion->save();
+            if ($this->rol != "administrador") {
+                $votacion = new Votacion();
+                $votacion->candidato_id = $candidatoId;
+                $votacion->socio_id = $this->usuario->socio->id;
+                $votacion->eleccion_id = $this->eleccionId;
+                $votacion->save();
 
-            session()->flash('message', '¡Tu voto ha sido registrado con éxito!');
+                session()->flash('message', '¡Tu voto ha sido registrado con éxito!');
+            }
         } catch (QueryException $e) {
             if ($e->errorInfo[1] == 1062) {
                 session()->flash('error', 'Usted ya ha votado en esta elección y no puede votar otra vez.');
@@ -50,6 +73,7 @@ class VotacionVotar extends Component
                 session()->flash('error', 'Error al votar: ' . $e->getMessage());
             }
         }
+
     }
 
     public function render()
@@ -59,7 +83,7 @@ class VotacionVotar extends Component
             ->select('candidatos.id as candidato_id', 'socios.*')
             ->where('candidatos.eleccion_id', $this->eleccionId);
 
-        if (!empty($this->buscarCandidato)) {
+        if (!empty ($this->buscarCandidato)) {
             $queryCandidatos->where('socios.nombres', 'like', '%' . $this->buscarCandidato . '%');
         }
 

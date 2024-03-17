@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\EleccionRequest;
 use App\Models\Eleccion;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class EleccionController extends Controller
 {
@@ -23,8 +24,11 @@ class EleccionController extends Controller
     {
         $eleccion = new Eleccion();
         $eleccion->nombre = $request->nombre;
-        $eleccion->fecha_inicio = $request->fecha_inicio;
-        $eleccion->fecha_fin = $request->fecha_fin;
+        $eleccion->slug = Str::slug($request->slug, '-');
+        $eleccion->fecha_inicio_convocatoria = $request->fecha_inicio_convocatoria;
+        $eleccion->fecha_fin_convocatoria = $request->fecha_fin_convocatoria;
+        $eleccion->fecha_inicio_elecciones = $request->fecha_inicio_elecciones;
+        $eleccion->fecha_fin_elecciones = $request->fecha_fin_elecciones;
         $eleccion->save();
 
         return redirect()->route('administracion.eleccion.vista.todas')->with('mensajeCrud', 'Se creo correctamente.');
