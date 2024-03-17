@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Layout;
+use Illuminate\Support\Carbon;
 
 #[Layout('layouts.socio.socio')]
 class VotacionVotar extends Component
@@ -32,15 +33,19 @@ class VotacionVotar extends Component
 
         $this->usuario = auth()->user();
 
-        $idSocio = $this->usuario->socio->id;
-        $existeVotacion = Votacion::where('socio_id', $idSocio)
-            ->where('eleccion_id', $eleccion->id)
-            ->exists();
-        if ($existeVotacion) {
-            $this->mensaje = "Ya votaste";
-            return redirect()->route('socio.voto');
+        if ($eleccion->fecha_fin_elecciones > Carbon::now()) {
+            $idSocio = $this->usuario->socio->id;
+            $existeVotacion = Votacion::where('socio_id', $idSocio)
+                ->where('eleccion_id', $eleccion->id)
+                ->exists();
+            if ($existeVotacion) {
+                $this->mensaje = "Ya votaste";
+                return redirect()->route('socio.voto');
+            } else {
+                $this->mensaje = "Falta votar";
+            }
         } else {
-            $this->mensaje = "Falta votar";
+            return redirect()->route('socio.perfil');
         }
     }
 
