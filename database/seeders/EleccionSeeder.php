@@ -13,6 +13,6 @@ class EleccionSeeder extends Seeder
      */
     public function run(): void
     {
-        Eleccion::factory(10)->create();
+        Eleccion::factory(2)->create();
     }
 }

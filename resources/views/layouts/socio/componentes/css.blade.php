@@ -25,3 +25,7 @@
 
 <!--LAYOUT TABLA ADMINISTRADOR-->
 <link rel="stylesheet" href="{{ asset('administracion/layout/tabla.css') }}">
+
+<!----------------------SOCIO---------------------->
+<!--PÁGINA VOTAR-->
+<link rel="stylesheet" href="{{ asset('socio/votar.css') }}">

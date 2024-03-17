@@ -1,52 +1,100 @@
+@section('tituloPagina', 'Votar')
+
 <div>
-    @if (session()->has('message'))
-        <div>
-            {{ session('message') }}
+    <!--CONTENEDOR CABECERA-->
+    <div class="contenedor_administrador_cabecera">
+        <!--CONTENEDOR TITULO-->
+        <div class="contenedor_titulo_admin">
+            <h2>Votar</h2>
         </div>
-    @endif
-
-    @if (session()->has('error'))
-        <div>
-            {{ session('error') }}
+        <!--CONTENEDOR BOTONES-->
+        <div class="contenedor_botones_admin">
+            <a href="{{ route('socio.eleccion') }}">
+                <i class="fa-solid fa-arrow-left-long"></i> Regresar</a>
         </div>
-    @endif
-
-    <div>
-        <h2>Elección: {{ $eleccion->nombre }}</h2>
-        <p>Fecha de Inicio: {{ $eleccion->fecha_inicio }}</p>
-        <p>Fecha de Fin: {{ $eleccion->fecha_fin }}</p>
     </div>
 
-    @if ($usuario)
-        <div>
-            <h2>Hola, {{ $usuario->name }}</h2>
-            <p>{{ $mensaje }}</p>
-        </div>
-    @endif
+    <!--CONTENEDOR PÁGINA ADMINISTRADOR-->
+    <div class="contenedor_administrador_contenido">
+        <div class="contenedor_panel_producto_admin">
+            <!--CONTENEDOR VOTAR-->
+            <div class="contenedor_votar">
+                <div class="contenedor_votar_titulo">
+                    <h3>{{ $eleccion->nombre }}</h3>
+                    <p> <span> Fecha:
+                            {{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $eleccion->fecha_inicio_elecciones)->toDateString() }}
+                        </span></p>
+                    <p>
+                        <span>
+                            Empezó
+                            {{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $eleccion->fecha_inicio_elecciones)->format('h:i A') }}
+                        </span>
+                        -
+                        <span>Termina
+                            {{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $eleccion->fecha_fin_elecciones)->format('h:i A') }}
+                        </span>
+                    </p>
+                </div>
 
-    <div>
-        @if ($candidatoId)
-            <p>{{ $candidatoSeleccionado->socio->nombres }}</p>
-            <button wire:click="votarCandidato({{ $candidatoSeleccionado->id }})">Votar por
-                {{ $candidatoSeleccionado->id }}</button>
-        @endif
+                <div class="contenedor_votar_cuerpo">
+                    <!--CONTENEDOR VOTAR CANDIDATOS-->
+                    <div class="contenedor_votar_candidatos">
+                        <!--BUSCADOR-->
+                        <div class="formulario">
+                            <div class="contenedor_elemento_item">
+                                <p class="estilo_nombre_input">Buscar candidato: <span
+                                        class="campo_opcional">(Opcional)</span> </p>
+                                <input type="text" wire:model.live="buscarCandidato" placeholder="Buscar...">
+                            </div>
+                        </div>
 
-        <div>
-            <h2>Candidatos:</h2>
-            <p>Buscar candidato:</p>
-            <input type="text" wire:model.live="buscarCandidato">
-            <br>
-            <ul>
-                @foreach ($candidatos as $candidato)
-                    <li>
-                        <label>
-                            <input type="radio" wire:model.live="candidatoId" value="{{ $candidato->candidato_id }}">
-                            {{ $candidato->candidato_id }} - {{ $candidato->nombres }} -
-                            {{ $candidato->apellido_paterno }} - {{ $candidato->apellido_materno }}
-                        </label>
-                    </li>
-                @endforeach
-            </ul>
+                        <!--CONTENEDOR SUBTITULO-->
+                        <div class="contenedor_subtitulo_admin">
+                            <h3>Lista de candidatos <span> Cantidad: {{ $candidatos->count() }}</span></h3>
+                        </div>
+
+                        <div class="contenedor_lista_candidatos">
+                            @foreach ($candidatos as $candidato)
+                                <label>
+                                    <div class="candidato_nombre">
+                                        <input type="radio" wire:model.live="candidatoId"
+                                            value="{{ $candidato->candidato_id }}">
+                                        <p>{{ $candidato->nombres }} - {{ $candidato->apellido_paterno }} -
+                                            {{ $candidato->apellido_materno }}</p>
+                                    </div>
+                                    <div class="contenedor_numero_imagen">
+                                        <div class="candidato_numero">
+                                            <p>{{ $candidato->candidato_id }}</p>
+                                        </div>
+                                        <div class="candidato_imagen">
+                                            <img src="{{ asset('imagenes/perfil/sin_foto_perfil.png') }}">
+                                        </div>
+                                    </div>
+
+                                </label>
+                            @endforeach
+                        </div>
+                    </div>
+
+                    <!--CONTENEDOR VOTAR CANDIDATO SELECCIONADO FIJO-->
+                    <div class="contenedor_votar_candidato_seleccionado_fijo">
+                        @if ($candidatoId)
+                            <div class="candidato_imagen_seleccionado">
+                                <img src="{{ asset('imagenes/perfil/sin_foto_perfil.png') }}">
+                            </div>
+                            <span style="color: #009b54;">Seleccionaste este candidato</span>
+                            <p>{{ $candidatoSeleccionado->socio->nombres }}</p>
+                            <button wire:click="votarCandidato({{ $candidatoSeleccionado->id }})">Votar por el 
+                                {{ $candidatoSeleccionado->id }}</button>
+                        @else
+                            <div class="candidato_imagen_seleccionado">
+                                <img src="{{ asset('imagenes/perfil/sin_foto_perfil.png') }}">
+                            </div>
+                            <span style="color: red;">Te falta seleccionar al candidato</span>
+                        @endif
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

@@ -61,8 +61,8 @@
                                                 {{ $voto->created_at }}
                                             </td>
                                             <td>
-                                                <a style="color: navy; font-weight: 700;" href="">
-                                                    <span><i class="fa-solid fa-hand-pointer"></i></span> VER VOTO
+                                                <a style="color: #009eff; font-weight: 700;" href="">
+                                                    <span><i class="fa-solid fa-eye"></i></span> VER VOTO
                                                 </a>
                                             </td>
                                         </tr>

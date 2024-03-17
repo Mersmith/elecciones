@@ -1,0 +1,179 @@
+/*CONTENEDOR VOTAR*/
+.contenedor_votar_titulo {
+    text-align: center;
+}
+
+.contenedor_votar_titulo h3 {
+    font-weight: 700;
+    font-size: 25px;
+}
+
+.contenedor_votar_titulo p {
+    font-size: 17px;
+    font-weight: 500;
+}
+
+.contenedor_votar_cuerpo {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/*CONTENEDOR VOTAR CANDIDATOS*/
+.contenedor_votar_candidatos {
+    width: calc(50% - 10px);
+}
+
+.contenedor_lista_candidatos {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.contenedor_lista_candidatos label {
+    background-color: rgb(245, 245, 245);
+    border: 1px solid #ccc;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    width: 100%;
+}
+
+.contenedor_lista_candidatos_asignar {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.contenedor_lista_candidatos_asignar label {
+    background-color: rgb(245, 245, 245);
+    border: 1px solid #ccc;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    width: 100%;
+}
+
+.contenedor_lista_candidatos_asignar .candidato_nombre {
+    width: 100%;
+}
+
+.contenedor_lista_candidatos_asignar button {
+    border-radius: 5px;
+    border: none;
+    color: white;
+    padding: 2px 10px;
+    font-weight: 500;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.contenedor_lista_candidatos_asignar .asignar {
+    background-color: #009b54;
+}
+
+.contenedor_lista_candidatos_asignar .asignar:hover {
+    background-color: #02d375;
+}
+
+.contenedor_lista_candidatos_asignar .quitar {
+    background-color: red;
+}
+
+.contenedor_lista_candidatos_asignar .quitar:hover {
+    background-color: rgb(255, 69, 69);
+}
+
+.candidato_nombre {
+    gap: 5px;
+    padding-left: 10px;
+    display: flex;
+    align-items: center;
+    width: 50%;
+}
+
+.contenedor_numero_imagen {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5px;
+}
+
+.candidato_numero {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    background-color: white;
+}
+
+.contenedor_lista_candidatos label img {
+    width: 80px;
+    height: 80px;
+}
+
+/*CONTENEDOR VOTAR CANDIDATO SELECCIONADO FIJO*/
+.contenedor_votar_candidato_seleccionado_fijo {
+    padding: 20px 0px;
+    width: calc(50% - 10px);
+    position: sticky;
+    top: 0;
+    align-self: flex-start;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contenedor_votar_candidato_seleccionado_fijo p {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.contenedor_votar_candidato_seleccionado_fijo span {
+    margin-top: 10px;
+    font-size: 12px;
+}
+
+.candidato_imagen_seleccionado {
+    width: 250px;
+    height: 250px;
+}
+
+.contenedor_votar_candidato_seleccionado_fijo button {
+    margin-top: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #009b54;
+    color: white;
+    padding: 10px 10px;
+    font-weight: 500;
+    cursor: pointer;
+    font-size: 17px;
+}
+
+.contenedor_votar_candidato_seleccionado_fijo button:hover {
+    background-color: #02d375;
+}
+
+@media screen and (max-width: 700px) {
+    .contenedor_votar_cuerpo {
+        flex-direction: column;
+    }
+
+    .contenedor_votar_candidato_seleccionado_fijo {
+        order: -1;
+        width: 100%;
+        position: relative;
+
+    }
+
+    .contenedor_votar_candidatos {
+        width: 100%;
+    }
+}
