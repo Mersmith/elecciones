@@ -87,3 +87,7 @@ php artisan make:controller Socio/MisVotosController
 *****************************************************************
 
 php artisan make:livewire Web/Menu/MenuPrincipal
+
+php artisan make:model ImagenPerfil -mfsc
+
+php artisan storage:link

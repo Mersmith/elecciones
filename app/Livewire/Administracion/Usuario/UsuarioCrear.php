@@ -8,10 +8,14 @@ use App\Models\User;
 use Livewire\Component;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Attributes\Layout;
+use Livewire\WithFileUploads;
+use Illuminate\Support\Facades\Storage;
 
 #[Layout('layouts.administracion.administracion')]
 class UsuarioCrear extends Component
 {
+    use WithFileUploads;
+
     const ROL_SOCIO = 1;
 
     public $roles = [];
@@ -30,6 +34,8 @@ class UsuarioCrear extends Component
     public $condicion = "";
     public $grado = "";
     public $direccion = null;
+
+    public $editarImagen = null;
 
     public function mount()
     {
@@ -61,6 +67,22 @@ class UsuarioCrear extends Component
             $socio_nuevo->grado = $this->grado;
             $socio_nuevo->direccion = $this->direccion;
             $socio_nuevo->save();
+        }
+
+        if ($this->editarImagen) {
+            $rules['editarImagen'] = 'required|image|max:1024';
+            $imagenSubir = $this->editarImagen->store('perfiles');
+
+            if ($socio_nuevo->imagenPerfil) {
+                $imagenAntigua = $socio_nuevo->imagenPerfil;
+                Storage::delete([$socio_nuevo->imagenPerfil->imagen_perfil_ruta]);
+
+                $imagenAntigua->delete();
+            }
+
+            $socio_nuevo->imagenPerfil()->create([
+                'imagen_perfil_ruta' => $imagenSubir
+            ]);
         }
 
         $this->dispatch('mensajeCreadoLivewire', "Creado.");

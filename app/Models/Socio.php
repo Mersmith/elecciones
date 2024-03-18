@@ -19,4 +19,9 @@ class Socio extends Model
     {
         return $this->hasMany(Candidato::class);
     }
+
+    public function imagenPerfil()
+    {
+        return $this->morphOne(ImagenPerfil::class, "imagen_perfilable");
+    }
 }

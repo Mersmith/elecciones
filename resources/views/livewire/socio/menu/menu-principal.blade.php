@@ -25,10 +25,14 @@
             <hr>
             <div class="contenedor_administrador_sidebar">
 
-                <img src="{{ asset('imagenes/perfil/sin_foto_perfil.png') }}">
+                @if ($usuario->socio->imagenPerfil)
+                    <img src="{{ Storage::url($usuario->socio->imagenPerfil->imagen_perfil_ruta) }}" />
+                @else
+                    <img src="{{ asset('imagenes/perfil/sin_foto_perfil.png') }}">
+                @endif
 
                 <p>{{ $usuario->name }}</p>
-             
+
                 <form method="POST" action="{{ route('logout') }}" x-data>
                     @csrf
                     <a href="{{ route('logout') }}" @click.prevent="$root.submit();">
