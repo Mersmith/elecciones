@@ -9,7 +9,7 @@
 
         <!--CONTENEDOR BOTONES-->
         <div class="contenedor_botones_admin">
-            <a href="">
+            <a href="{{ route('administracion.usuario.crear') }}">
                 Nuevo usuario <i class="fa-solid fa-square-plus"></i></a>
         </div>
     </div>

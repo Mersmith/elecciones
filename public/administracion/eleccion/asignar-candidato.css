@@ -1,0 +1,126 @@
+.grid_asignar_candidato {
+    display: grid;
+    grid-template-columns: 30% 70%;
+    grid-template-areas: "grid_item_candidato_formulario grid_item_lista_candidato";
+    gap: 10px;
+}
+
+/*CONTENEDOR VOTAR*/
+.contenedor_votar_titulo {
+    text-align: center;
+}
+
+.contenedor_votar_titulo h3 {
+    font-weight: 700;
+    font-size: 25px;
+}
+
+.contenedor_votar_titulo p {
+    font-size: 17px;
+    font-weight: 500;
+}
+
+/*CONTENEDOR VOTAR CANDIDATOS*/
+
+.contenedor_lista_candidatos {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.contenedor_lista_candidatos label {
+    background-color: rgb(245, 245, 245);
+    border: 1px solid #ccc;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    width: 100%;
+}
+
+.contenedor_lista_candidatos_asignar {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.contenedor_lista_candidatos_asignar label {
+    background-color: rgb(245, 245, 245);
+    border: 1px solid #ccc;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    width: 100%;
+}
+
+.contenedor_lista_candidatos_asignar .candidato_nombre {
+    width: 100%;
+}
+
+.contenedor_lista_candidatos_asignar button {
+    border-radius: 5px;
+    border: none;
+    color: white;
+    padding: 2px 10px;
+    font-weight: 500;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.contenedor_lista_candidatos_asignar .asignar {
+    background-color: #009b54;
+}
+
+.contenedor_lista_candidatos_asignar .asignar:hover {
+    background-color: #02d375;
+}
+
+.contenedor_lista_candidatos_asignar .quitar {
+    background-color: red;
+}
+
+.contenedor_lista_candidatos_asignar .quitar:hover {
+    background-color: rgb(255, 69, 69);
+}
+
+.candidato_nombre {
+    gap: 5px;
+    padding-left: 10px;
+    display: flex;
+    align-items: center;
+    width: 50%;
+}
+
+.contenedor_numero_imagen {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5px;
+}
+
+.candidato_numero {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    background-color: white;
+}
+
+.contenedor_lista_candidatos label img {
+    width: 80px;
+    height: 80px;
+}
+
+@media screen and (max-width: 1100px) {
+    .grid_asignar_candidato {
+        grid-template-rows: 1fr 1fr;
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "grid_item_candidato_formulario"
+            "grid_item_lista_candidato";
+    }
+}

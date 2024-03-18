@@ -24,6 +24,10 @@ class EleccionAsignarCandidato extends Component
 
     protected $paginate = 20;
 
+    public $socioIdSeleccionado;
+
+    public $numero = "";
+
     public function mount($id)
     {
         $this->eleccionId = $id;
@@ -40,19 +44,26 @@ class EleccionAsignarCandidato extends Component
         $this->resetPage();
     }
 
-    public function asignarCandidato($socioId)
+    public function asignarCandidato()
     {
-        $candidatoExistente = Candidato::where('eleccion_id', $this->eleccionId)
-            ->where('socio_id', $socioId)
-            ->first();
+        if ($this->numero) {
+            $candidatoExistente = Candidato::where('eleccion_id', $this->eleccionId)
+                ->where('socio_id', $this->socioIdSeleccionado)
+                ->first();
 
-        if (!$candidatoExistente) {
-            Candidato::create([
-                'eleccion_id' => $this->eleccionId,
-                'socio_id' => $socioId,
-            ]);
-            $this->dispatch('mensajeCreadoLivewire', "Asignado.");
-            $this->resetPage();
+            if (!$candidatoExistente) {
+                Candidato::create([
+                    'eleccion_id' => $this->eleccionId,
+                    'socio_id' => $this->socioIdSeleccionado,
+                    'numero_candidato' => $this->numero,
+                ]);
+                $this->dispatch('mensajeCreadoLivewire', "Asignado.");
+                $this->reset(['numero', 'socioIdSeleccionado']);
+
+                $this->resetPage();
+            }
+        } else {
+            $this->dispatch('mensajeErrorLivewire', "Falta el número del candidato.");
         }
     }
 

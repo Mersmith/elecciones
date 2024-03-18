@@ -8,7 +8,7 @@
     .cargando_formulario>div {
         width: 18px;
         height: 18px;
-        background-color: #189bb6;
+        background-color: #009b54;
 
         border-radius: 100%;
         display: inline-block;

@@ -215,37 +215,37 @@
                             @enderror
                         </div>
                     </div>
-                @endif
 
-                <!--IMAGEN-->
-                <div class="contenedor_1_elementos_100">
-                    <div class="contenedor_elemento_item">
-                        <p class="estilo_nombre_input">Imagen: <span class="campo_opcional">(Opcional)</span>
-                        </p>
-                        <div class="contenedor_subir_imagen_sola contenedor_subir_imagen_sola_estilo_2">
-                            @if ($editarImagen)
-                                <img src="{{ $editarImagen->temporaryUrl() }}">
-                                <span class="boton_imagen_eliminar" wire:click="$set('editarImagen', null)">
-                                    <i class="fa-solid fa-xmark"></i>
-                                </span>
-                            @else
-                                <img src="{{ asset('imagenes/perfil/sin_foto_perfil.png') }}">
-                            @endif
+                    <!--IMAGEN-->
+                    <div class="contenedor_1_elementos_100">
+                        <div class="contenedor_elemento_item">
+                            <p class="estilo_nombre_input">Imagen: <span class="campo_opcional">(Opcional)</span>
+                            </p>
+                            <div class="contenedor_subir_imagen_sola contenedor_subir_imagen_sola_estilo_2">
+                                @if ($editarImagen)
+                                    <img src="{{ $editarImagen->temporaryUrl() }}">
+                                    <span class="boton_imagen_eliminar" wire:click="$set('editarImagen', null)">
+                                        <i class="fa-solid fa-xmark"></i>
+                                    </span>
+                                @else
+                                    <img src="{{ asset('imagenes/perfil/sin_foto_perfil.png') }}">
+                                @endif
 
-                            <div class="opcion_cambiar_imagen">
-                                <label for="imagen">
-                                    <div style="cursor: pointer;">
-                                        Editar <i class="fa-solid fa-camera"></i>
-                                    </div>
-                                </label>
+                                <div class="opcion_cambiar_imagen">
+                                    <label for="imagen">
+                                        <div style="cursor: pointer;">
+                                            Editar <i class="fa-solid fa-camera"></i>
+                                        </div>
+                                    </label>
+                                </div>
                             </div>
+                            <input type="file" wire:model="editarImagen" style="display: none" id="imagen">
+                            @error('editarImagen')
+                                <span class="campo_obligatorio">{{ $message }}</span>
+                            @enderror
                         </div>
-                        <input type="file" wire:model="editarImagen" style="display: none" id="imagen">
-                        @error('editarImagen')
-                            <span class="campo_obligatorio">{{ $message }}</span>
-                        @enderror
                     </div>
-                </div>
+                @endif
 
                 <!--ENVIAR-->
                 <div class="contenedor_1_elementos">

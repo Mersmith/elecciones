@@ -26,6 +26,9 @@
 <!--LAYOUT TABLA ADMINISTRADOR-->
 <link rel="stylesheet" href="{{ asset('administracion/layout/tabla.css') }}">
 
+<!--PÁGINA ASINGAR CANDIDATO-->
+<link rel="stylesheet" href="{{ asset('administracion/eleccion/asignar-candidato.css') }}">
+
 <!----------------------SOCIO---------------------->
 <!--PÁGINA VOTAR-->
-<link rel="stylesheet" href="{{ asset('socio/votar.css') }}">
+{{--<link rel="stylesheet" href="{{ asset('socio/votar.css') }}">--}}

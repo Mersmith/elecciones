@@ -111,7 +111,7 @@
             })
         })
 
-        Livewire.on('mensajeError', mensaje => {
+        Livewire.on('mensajeErrorLivewire', mensaje => {
             Swal.fire({
                 icon: 'error',
                 title: '¡Alto!',
