@@ -37,7 +37,7 @@
                     <!--EMAIL-->
                     <div class="contenedor_1_elementos_100">
                         <div class="contenedor_elemento_item">
-                            <p class="estilo_nombre_input">Email o Usuario:</p>
+                            <p class="estilo_nombre_input">Dni:</p>
                             <input type="text" id="email" wire:model="email" autofocus>
                             @error('email')
                                 <span class="campo_obligatorio">{{ $message }}</span>
@@ -48,7 +48,7 @@
                     <!--CONTRASEÑA-->
                     <div class="contenedor_1_elementos_100">
                         <div class="contenedor_elemento_item">
-                            <p class="estilo_nombre_input">Contraseña:</p>
+                            <p class="estilo_nombre_input">Código:</p>
                             <input type="password" id="password" wire:model="password">
                             @error('password')
                                 <span class="campo_obligatorio">{{ $message }}</span>

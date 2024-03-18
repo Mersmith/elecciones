@@ -47,6 +47,7 @@ class UsuarioCrear extends Component
         $usuario_nuevo = new User();
         $usuario_nuevo->name = $this->nombre;
         $usuario_nuevo->email = $this->email;
+        $usuario_nuevo->dni = $this->dni;
         $usuario_nuevo->password = Hash::make($this->password);
         $usuario_nuevo->save();
 

@@ -40,7 +40,7 @@ class SocioIngresar extends Component
         if (filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
             $credentials['email'] = $this->email;
         } else {
-            $credentials['username'] = $this->email;
+            $credentials['dni'] = $this->email;
         }
         if (Auth::attempt($credentials, $this->recordarme)) {
             $usuario = Auth::user();

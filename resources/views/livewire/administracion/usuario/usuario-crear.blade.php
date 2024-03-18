@@ -22,7 +22,7 @@
             </div>
 
             <div class="formulario">
-                <!--NOMBRE-->
+                <!--NOMBRE Y EMAIL-->
                 <div class="contenedor_2_elementos">
                     <!--NOMBRE-->
                     <div class="contenedor_elemento_item">
@@ -32,10 +32,7 @@
                             <span class="campo_obligatorio">{{ $message }}</span>
                         @enderror
                     </div>
-                </div>
 
-                <!--EMAIL-->
-                <div class="contenedor_2_elementos">
                     <!--EMAIL-->
                     <div class="contenedor_elemento_item">
                         <p class="estilo_nombre_input">Email: <span class="campo_obligatorio">(Obligatorio)</span></p>
@@ -46,8 +43,18 @@
                     </div>
                 </div>
 
-                <!--CONTRASEÑA-->
+                <!--DNI Y CONTRASEÑA-->
                 <div class="contenedor_2_elementos">
+                    <!--DNI-->
+                    <div class="contenedor_elemento_item">
+                        <p class="estilo_nombre_input">DNI: <span class="campo_obligatorio">(Obligatorio)</span>
+                        </p>
+                        <input type="text" wire:model="dni" required>
+                        @error('codigo')
+                            <span class="campo_obligatorio">{{ $message }}</span>
+                        @enderror
+                    </div>
+
                     <!--CONTRASEÑA-->
                     <div class="contenedor_elemento_item">
                         <p class="estilo_nombre_input">Contraseña: <span class="campo_obligatorio">(Obligatorio)</span>
@@ -123,18 +130,8 @@
                         </div>
                     </div>
 
-                    <!--DNI Y FECHA NACIMIENTO-->
+                    <!--FECHA NACIMIENTO Y SEXO-->
                     <div class="contenedor_2_elementos">
-                        <!--DNI-->
-                        <div class="contenedor_elemento_item">
-                            <p class="estilo_nombre_input">DNI: <span class="campo_obligatorio">(Obligatorio)</span>
-                            </p>
-                            <input type="text" wire:model="dni" required>
-                            @error('codigo')
-                                <span class="campo_obligatorio">{{ $message }}</span>
-                            @enderror
-                        </div>
-
                         <!--FECHA NACIMIENTO-->
                         <div class="contenedor_elemento_item">
                             <p class="estilo_nombre_input">Fecha nacimiento: <span
@@ -145,10 +142,8 @@
                                 <span class="campo_obligatorio">{{ $message }}</span>
                             @enderror
                         </div>
-                    </div>
 
-                    <!--SEXO-->
-                    <div class="contenedor_1_elementos_100">
+                        <!--SEXO-->
                         <div class="contenedor_elemento_item">
                             <p class="estilo_nombre_input">Sexo: <span class="campo_obligatorio">(Obligatorio)</span>
                             </p>
