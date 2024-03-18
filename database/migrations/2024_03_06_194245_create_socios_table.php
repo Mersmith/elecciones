@@ -26,7 +26,7 @@ return new class extends Migration
             $table->date('fecha_nacimiento')->nullable();
             $table->integer('edad')->nullable();
             $table->enum('condicion', ['INHABILITADO', 'HABILITADO'])->default('INHABILITADO');
-            $table->enum('grado', ['SUPERIOR', 'SECUNDARIO', 'PRIMARIA'])->default('PRIMARIA');
+            $table->enum('grado', ['SUPERIOR', 'SECUNDARIA', 'PRIMARIA', 'ILETRADO', 'TECNICA'])->default('PRIMARIA');
             $table->string('direccion')->nullable();
 
             $table->timestamps();

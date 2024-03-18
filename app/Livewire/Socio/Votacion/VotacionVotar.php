@@ -79,7 +79,7 @@ class VotacionVotar extends Component
     {
         $queryCandidatos = DB::table('candidatos')
             ->join('socios', 'candidatos.socio_id', '=', 'socios.id')
-            ->select('candidatos.id as candidato_id', 'socios.*')
+            ->select('candidatos.id as candidato_id', 'candidatos.numero_candidato', 'socios.*')
             ->where('candidatos.eleccion_id', $this->eleccionId);
 
         if (!empty ($this->buscarCandidato)) {

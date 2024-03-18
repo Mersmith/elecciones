@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -16,6 +15,9 @@ return new class extends Migration
 
             $table->unsignedBigInteger('eleccion_id');
             $table->unsignedBigInteger('socio_id');
+
+            $table->string('numero_candidato')->nullable();
+            $table->integer('cantidad_votos')->default(0);
 
             $table->timestamps();
 

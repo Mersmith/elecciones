@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Votacion;
+namespace App\Livewire\Administracion\Votacion;
 
 use App\Models\Socio;
 use App\Models\Votacion;
@@ -50,11 +50,14 @@ class VotacionResultados extends Component
             })
             ->join('socios', 'candidatos.socio_id', '=', 'socios.id')
             ->where('candidatos.eleccion_id', '=', $eleccionId)
-            ->groupBy('candidatos.id', 'socios.id', 'socios.nombres')
+            ->groupBy('candidatos.id', 'candidatos.numero_candidato', 'socios.id', 'socios.nombres', 'socios.apellido_paterno', 'socios.apellido_materno')
             ->select(
                 'candidatos.id as candidato_id',
+                'candidatos.numero_candidato',
                 'socios.id as socio_id',
-                'socios.nombres as nombres',
+                'socios.nombres',
+                'socios.apellido_paterno',
+                'socios.apellido_materno',
                 DB::raw('COALESCE(count(votacions.id), 0) as total_votos')
             )
             ->orderBy('total_votos', 'desc')
@@ -63,7 +66,7 @@ class VotacionResultados extends Component
 
     public function render()
     {
-        return view('livewire.votacion.votacion-resultados', [
+        return view('livewire.administracion.votacion.votacion-resultados', [
             'votantes' => $this->votantes,
             'noVotantes' => $this->noVotantes,
             'resultados' => $this->resultados,

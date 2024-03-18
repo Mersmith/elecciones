@@ -8,7 +8,7 @@ use App\Livewire\Administracion\Eleccion\EleccionAsignarCandidato;
 use App\Livewire\Administracion\Socio\SocioTodas;
 use App\Livewire\Administracion\Usuario\UsuarioCrear;
 use App\Livewire\Administracion\Usuario\UsuarioTodas;
-use App\Livewire\Votacion\VotacionResultados;
+use App\Livewire\Administracion\Votacion\VotacionResultados;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/usuario', UsuarioTodas::class)->name('usuario.todas');//ok
@@ -46,3 +46,5 @@ Route::controller(EleccionController::class)->group(function () {
     Route::delete('eleccion/eliminar/{id}', 'eliminar')->name('eleccion.eliminar');//ok
 });
 Route::get('/eleccion/{id}/candidato', EleccionAsignarCandidato::class)->name('eleccion.asignar.candidato');
+
+Route::get('/eleccion/{id}/votacion/resultados', VotacionResultados::class)->name('eleccion.votacion.resultados');

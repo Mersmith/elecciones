@@ -64,7 +64,7 @@
                                     </div>
                                     <div class="contenedor_numero_imagen">
                                         <div class="candidato_numero">
-                                            <p>{{ $candidato->candidato_id }}</p>
+                                            <p>{{ $candidato->numero_candidato }}</p>
                                         </div>
                                         <div class="candidato_imagen">
                                             <img src="{{ asset('imagenes/perfil/sin_foto_perfil.png') }}">
@@ -85,7 +85,7 @@
                             <span style="color: #009b54;">Seleccionaste este candidato</span>
                             <p>{{ $candidatoSeleccionado->socio->nombres }}</p>
                             <button wire:click="votarCandidato({{ $candidatoSeleccionado->id }})">Votar por el 
-                                {{ $candidatoSeleccionado->id }}</button>
+                                {{ $candidatoSeleccionado->numero_candidato }}</button>
                         @else
                             <div class="candidato_imagen_seleccionado">
                                 <img src="{{ asset('imagenes/perfil/sin_foto_perfil.png') }}">

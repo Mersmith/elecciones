@@ -98,7 +98,7 @@
                                                 </a>                                              
 
                                                 <a style="color: rgb(228, 137, 53);"
-                                                    href="{{ route('eleccion.votacion.resultados', $eleccion->id) }}">
+                                                    href="{{ route('administracion.eleccion.votacion.resultados', $eleccion->id) }}">
                                                     <span><i class="fa-solid fa-magnifying-glass-chart"></i></span>
                                                 </a>
                                             </td>

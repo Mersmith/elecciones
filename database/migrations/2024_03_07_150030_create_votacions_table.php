@@ -18,6 +18,8 @@ return new class extends Migration
             $table->unsignedBigInteger('socio_id');
             $table->unsignedBigInteger('eleccion_id');
 
+            $table->string('ip_voto')->nullable();
+
             $table->timestamps();
 
             $table->foreign('candidato_id')->references('id')->on('candidatos')->onDelete('cascade');
