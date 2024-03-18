@@ -19,16 +19,7 @@
                         </a>
 
                         <div class="contenedor_botones">
-                            @if (!Auth::check())
-                                <a href="{{ route('ingresar.socio') }}">Ingresa para votar.</a>
-                            @else
-                                <form method="POST" action="{{ route('logout') }}" x-data>
-                                    @csrf
-                                    <a href="{{ route('logout') }}" @click.prevent="$root.submit();">
-                                        {{ __('Cerrar') }}
-                                    </a>
-                                </form>
-                            @endif
+                            <a href="{{ route('ingresar.socio') }}" class="boton_votar">Ingresa para votar.</a>
                         </div>
                     </div>
                 </div>

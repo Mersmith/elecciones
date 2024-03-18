@@ -20,55 +20,11 @@
 </head>
 
 <body>
+    <!--MENU PRINCIPAL WEB-->
+    @livewire('web.menu.menu-principal')
+
     <!--MAIN PÁGINA-->
     <main>
-
-        <!--ALERTAS-->
-        @if (session('crear'))
-            <div id="mensaje_alerta_crear" class="mensaje_alerta">
-                <p>{{ session('crear') }}</p>
-                <i class="fa-solid fa-circle-check"></i>
-                <script>
-                    window.onload = function() {
-                        mensajeCreado();
-                    };
-                </script>
-            </div>
-        @endif
-        @if (session('editar'))
-            <div id="mensaje_alerta_editar" class="mensaje_alerta">
-                <p>{{ session('editar') }}</p>
-                <i class="fa-solid fa-circle-check"></i>
-                <script>
-                    window.onload = function() {
-                        mensajeActualizado();
-                    };
-                </script>
-            </div>
-        @endif
-        @if (session('eliminar'))
-            <div class="mensaje_alerta">
-                <p>{{ session('eliminar') }}</p>
-                <i class="fa-solid fa-circle-check"></i>
-                <script>
-                    window.onload = function() {
-                        mensajeEliminado();
-                    };
-                </script>
-            </div>
-        @endif
-        @if (session('error'))
-            <div class="mensaje_alerta">
-                <p>{{ session('error') }}</p>
-                <i class="fa-solid fa-circle-check"></i>
-                <script>
-                    window.onload = function() {
-                        mensajeError();
-                    };
-                </script>
-            </div>
-        @endif
-
         @yield('content')
         @if (isset($slot))
             {{ $slot }}
@@ -80,85 +36,6 @@
     @stack('modals')
     @livewireScripts
     @stack('script')
-    <script>
-        Livewire.on('mensajeCreadoLivewire', mensaje => {
-            Swal.fire({
-                icon: 'success',
-                title: mensaje,
-                showConfirmButton: false,
-                timer: 2500
-            })
-        })
-
-        Livewire.on('mensajeActualizado', mensaje => {
-            Swal.fire({
-                icon: 'success',
-                title: mensaje,
-                showConfirmButton: false,
-                timer: 2500
-            })
-        })
-
-        Livewire.on('mensajeEliminadoLivewire', mensaje => {
-            Swal.fire({
-                icon: 'error',
-                title: mensaje,
-                showConfirmButton: false,
-                timer: 2500
-            })
-        })
-
-        Livewire.on('mensajeError', mensaje => {
-            Swal.fire({
-                icon: 'error',
-                title: '¡Alto!',
-                text: mensaje,
-                showConfirmButton: false,
-                timer: 2500
-            })
-        })
-
-        function mensajeActualizado() {
-            event.preventDefault();
-            Swal.fire({
-                icon: 'success',
-                title: "Actualizado",
-                showConfirmButton: false,
-                timer: 2500
-            })
-        }
-
-        function mensajeCreado() {
-            event.preventDefault();
-            Swal.fire({
-                icon: 'success',
-                title: "Creado correctamente",
-                showConfirmButton: false,
-                timer: 2500
-            })
-        }
-
-        function mensajeEliminado() {
-            event.preventDefault();
-            Swal.fire({
-                icon: 'error',
-                title: "Eliminado correctamente",
-                showConfirmButton: false,
-                timer: 2500
-            })
-        }
-
-        function mensajeError() {
-            event.preventDefault();
-            Swal.fire({
-                icon: 'error',
-                title: '¡Alto!',
-                text: "Rebice bien.",
-                showConfirmButton: false,
-                timer: 2500
-            })
-        }
-    </script>
 </body>
 
 </html>

@@ -12,20 +12,10 @@
 <!--VARIABLES-->
 <link rel="stylesheet" href="{{ asset('generales/variables.css') }}">
 
-<!----------------------ADMINISTRADOR---------------------->
-<!--LAYOUT ADMINISTRADOR-->
-<link rel="stylesheet" href="{{ asset('administracion/layout/layout.css') }}">
-
-<!--MENU PRINCIPAL ADMINISTRADOR-->
-<link rel="stylesheet" href="{{ asset('administracion/menu/menu-principal.css') }}">
-<link rel="stylesheet" href="{{ asset('administracion/menu/menu-principal-contenedor.css') }}">
-
-<!--LAYOUT CABECERA ADMINISTRADOR-->
-<link rel="stylesheet" href="{{ asset('administracion/layout/cabecera.css') }}">
-
-<!--LAYOUT TABLA ADMINISTRADOR-->
-<link rel="stylesheet" href="{{ asset('administracion/layout/tabla.css') }}">
-
 <!----------------------WEB---------------------->
 <!--PÁGINA WEB INICIO-->
 <link rel="stylesheet" href="{{ asset('web/inicio/inicio.css') }}">
+
+<!--MENU PRINCIPAL WEB-->
+<link rel="stylesheet" href="{{ asset('web/menu/css/menu-principal.css') }}">
+<link rel="stylesheet" href="{{ asset('web/menu/css/menu-pie.css') }}">

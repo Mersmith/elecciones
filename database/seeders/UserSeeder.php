@@ -29,7 +29,7 @@ class UserSeeder extends Seeder
         $admin->roles()->attach(Rol::where('nombre', 'administrador')->first()->id);
 
         // Crear usuarios socios
-        $socioRoleId = Rol::where('nombre', 'socio')->value('id');
+        /*$socioRoleId = Rol::where('nombre', 'socio')->value('id');
 
         for ($i = 0; $i < 150; $i++) {
             $nombre = $faker->name;
@@ -57,7 +57,7 @@ class UserSeeder extends Seeder
                     'direccion' => $faker->address,
                 ]);
             }
-        }
+        }*/
 
         // Crear usuarios veedor
         /*$veedorRoleId = Rol::where('nombre', 'veedor')->value('id');

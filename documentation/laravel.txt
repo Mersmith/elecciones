@@ -83,3 +83,7 @@ php artisan make:controller Socio/SocioPerfilController
 php artisan make:livewire Socio/Menu/MenuPrincipal
 php artisan make:controller Socio/MisEleccionesController
 php artisan make:controller Socio/MisVotosController
+
+*****************************************************************
+
+php artisan make:livewire Web/Menu/MenuPrincipal
