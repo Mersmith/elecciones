@@ -11,6 +11,7 @@ use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Layout;
 use Illuminate\Support\Carbon;
+use Illuminate\Http\Request;
 
 #[Layout('layouts.socio.socio')]
 class VotacionVotar extends Component
@@ -54,14 +55,17 @@ class VotacionVotar extends Component
         $this->candidatoSeleccionado = Candidato::with('socio')->find($candidatoId);
     }
 
-    public function votarCandidato($candidatoId)
+    public function votarCandidato($candidatoId, Request $request)
     {
         try {
             $votacion = new Votacion();
             $votacion->candidato_id = $candidatoId;
             $votacion->socio_id = $this->usuario->socio->id;
             $votacion->eleccion_id = $this->eleccionId;
+            $votacion->ip_voto = $request->ip();
             $votacion->save();
+
+            $this->candidatoSeleccionado->increment('cantidad_votos');
 
             session()->flash('message', '¡Tu voto ha sido registrado con éxito!');
             $this->mensaje = "Ya votaste";
@@ -82,7 +86,7 @@ class VotacionVotar extends Component
             ->select('candidatos.id as candidato_id', 'candidatos.numero_candidato', 'socios.*')
             ->where('candidatos.eleccion_id', $this->eleccionId);
 
-        if (!empty ($this->buscarCandidato)) {
+        if (!empty($this->buscarCandidato)) {
             $queryCandidatos->where('socios.nombres', 'like', '%' . $this->buscarCandidato . '%');
         }
 
