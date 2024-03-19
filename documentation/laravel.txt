@@ -91,3 +91,17 @@ php artisan make:livewire Web/Menu/MenuPrincipal
 php artisan make:model ImagenPerfil -mfsc
 
 php artisan storage:link
+
+*****************************************************************
+UPDATE users SET `password` = RIGHT(password, 4);
+
+$users = User::all();
+
+        foreach ($users as $user) {
+            if (Hash::needsRehash($user->password)) {
+                $user->password = Hash::make($user->password);
+                $user->save();
+            }
+        }
+
+*****************************************************************

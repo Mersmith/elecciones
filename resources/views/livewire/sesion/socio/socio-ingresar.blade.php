@@ -48,7 +48,7 @@
                     <!--CONTRASEÑA-->
                     <div class="contenedor_1_elementos_100">
                         <div class="contenedor_elemento_item">
-                            <p class="estilo_nombre_input">Código:</p>
+                            <p class="estilo_nombre_input">Año de nacimiento:</p>
                             <input type="password" id="password" wire:model="password">
                             @error('password')
                                 <span class="campo_obligatorio">{{ $message }}</span>
