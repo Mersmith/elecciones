@@ -143,6 +143,13 @@
 .candidato_imagen_seleccionado {
     width: 250px;
     height: 250px;
+    display: flex;
+    justify-content: center;
+}
+
+.candidato_imagen_seleccionado img {
+    object-fit: cover;
+    height: 250px;
 }
 
 .contenedor_votar_candidato_seleccionado_fijo button {

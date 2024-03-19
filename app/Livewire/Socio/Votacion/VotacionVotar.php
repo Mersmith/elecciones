@@ -16,6 +16,8 @@ use Illuminate\Http\Request;
 #[Layout('layouts.socio.socio')]
 class VotacionVotar extends Component
 {
+    public $sorteado;
+
     public $usuario;
 
     public $eleccionId;
@@ -48,6 +50,14 @@ class VotacionVotar extends Component
         } else {
             return redirect()->route('socio.perfil');
         }
+
+        $queryCandidatos = DB::table('candidatos')
+            ->join('socios', 'candidatos.socio_id', '=', 'socios.id')
+            ->leftJoin('imagen_perfils', 'socios.id', '=', 'imagen_perfils.imagen_perfilable_id')
+            ->select('candidatos.id as candidato_id', 'candidatos.numero_candidato', 'socios.*', 'imagen_perfils.imagen_perfil_ruta')
+            ->where('candidatos.eleccion_id', $this->eleccionId);
+
+        $this->sorteado = $queryCandidatos->inRandomOrder()->get();
     }
 
     public function updatingCandidatoId($candidatoId)
@@ -81,23 +91,17 @@ class VotacionVotar extends Component
 
     public function render()
     {
-        $queryCandidatos = DB::table('candidatos')
-            ->join('socios', 'candidatos.socio_id', '=', 'socios.id')
-            ->leftJoin('imagen_perfils', 'socios.id', '=', 'imagen_perfils.imagen_perfilable_id')
-            ->select('candidatos.id as candidato_id', 'candidatos.numero_candidato', 'socios.*', 'imagen_perfils.imagen_perfil_ruta')
-            ->where('candidatos.eleccion_id', $this->eleccionId);
+        $queryCandidatos = $this->sorteado;
 
         if (!empty($this->buscarCandidato)) {
-            $queryCandidatos->where(function ($query) {
-                $query->where('socios.nombres', 'like', '%' . $this->buscarCandidato . '%')
-                    ->orWhere('candidatos.numero_candidato', 'like', '%' . $this->buscarCandidato . '%');
+            $queryCandidatos = $queryCandidatos->filter(function ($candidato) {
+                return stripos($candidato->nombres, $this->buscarCandidato) !== false
+                    || stripos($candidato->numero_candidato, $this->buscarCandidato) !== false;
             });
         }
 
-        $candidatos = $queryCandidatos->inRandomOrder()->get();
-
         return view('livewire.socio.votacion.votacion-votar', [
-            'candidatos' => $candidatos,
+            'candidatos' => $queryCandidatos,
         ]);
     }
 }
