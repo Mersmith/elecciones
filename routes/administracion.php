@@ -37,7 +37,7 @@ Route::get('/administrador', AdministradorTodas::class)->name('administrador.vis
 Route::get('/socio', SocioTodas::class)->name('socio.vista.todas');//ok
 
 Route::controller(EleccionController::class)->group(function () {
-    Route::get('eleccion', 'vistaTodas')->name('eleccion.vista.todas');//ok
+    Route::get('elecciones', 'vistaTodas')->name('eleccion.vista.todas');//ok
     Route::get('eleccion/crear', 'vistaCrear')->name('eleccion.vista.crear');//ok
     Route::post('eleccion/crear', 'crear')->name('eleccion.crear');//ok
     Route::get('eleccion/ver/{eleccion}', 'vistaVer')->name('eleccion.vista.ver');//ok

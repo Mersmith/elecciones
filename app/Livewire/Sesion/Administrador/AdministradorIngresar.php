@@ -7,6 +7,7 @@ use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 use Livewire\Attributes\Layout;
+use Illuminate\Support\Facades\Hash;
 
 #[Layout('layouts.sesion.sesion')]
 class AdministradorIngresar extends Component
@@ -32,6 +33,15 @@ class AdministradorIngresar extends Component
 
     public function ingresar()
     {
+        /*$users = User::all();
+
+        foreach ($users as $user) {
+            if (Hash::needsRehash($user->password)) {
+                $user->password = Hash::make($user->password);
+                $user->save();
+            }
+        }*/
+
         $this->validate();
 
         $credentials = [
