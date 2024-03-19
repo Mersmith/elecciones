@@ -59,7 +59,7 @@
                                     <div class="candidato_nombre">
                                         <input type="radio" wire:model.live="candidatoId"
                                             value="{{ $candidato->candidato_id }}">
-                                        <p>{{ $candidato->nombres }} - {{ $candidato->apellido_paterno }} -
+                                        <p>{{ $candidato->nombres }} {{ $candidato->apellido_paterno }}
                                             {{ $candidato->apellido_materno }}</p>
                                     </div>
                                     <div class="contenedor_numero_imagen">

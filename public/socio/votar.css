@@ -112,8 +112,16 @@
     background-color: white;
 }
 
-.contenedor_lista_candidatos label img {
+.contenedor_lista_candidatos .candidato_imagen {
     width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+}
+
+
+.contenedor_lista_candidatos .candidato_imagen img{
+    object-fit: cover;
     height: 80px;
 }
 

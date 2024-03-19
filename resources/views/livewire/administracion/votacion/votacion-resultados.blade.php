@@ -101,6 +101,9 @@
                 </div>
                 @foreach ($votantes as $votante)
                     <li>{{ $votante->nombres }} {{ $votante->apellido_paterno }} {{ $votante->apellido_materno }}
+                        @if ($votante->edad > 70)
+                            - <span class="exonerado">EXONERADO</span>
+                        @endif
                     </li>
                 @endforeach
             </div>
@@ -115,7 +118,11 @@
                             {{ number_format(($noVotantes->count() / $cantidadVotantes) * 100, 2) }}%</span></h3>
                 </div>
                 @foreach ($noVotantes as $noVotante)
-                    <li>{{ $noVotante->nombres }} {{ $noVotante->apellido_paterno }} {{ $noVotante->apellido_materno }}
+                    <li>{{ $noVotante->nombres }} {{ $noVotante->apellido_paterno }}
+                        {{ $noVotante->apellido_materno }}
+                        @if ($noVotante->edad > 70)
+                            - <span class="exonerado">EXONERADO</span>
+                        @endif
                     </li>
                 @endforeach
             </div>
