@@ -83,14 +83,18 @@ class VotacionVotar extends Component
     {
         $queryCandidatos = DB::table('candidatos')
             ->join('socios', 'candidatos.socio_id', '=', 'socios.id')
-            ->select('candidatos.id as candidato_id', 'candidatos.numero_candidato', 'socios.*')
+            ->leftJoin('imagen_perfils', 'socios.id', '=', 'imagen_perfils.imagen_perfilable_id')
+            ->select('candidatos.id as candidato_id', 'candidatos.numero_candidato', 'socios.*', 'imagen_perfils.imagen_perfil_ruta')
             ->where('candidatos.eleccion_id', $this->eleccionId);
 
         if (!empty($this->buscarCandidato)) {
-            $queryCandidatos->where('socios.nombres', 'like', '%' . $this->buscarCandidato . '%');
+            $queryCandidatos->where(function ($query) {
+                $query->where('socios.nombres', 'like', '%' . $this->buscarCandidato . '%')
+                    ->orWhere('candidatos.numero_candidato', 'like', '%' . $this->buscarCandidato . '%');
+            });
         }
 
-        $candidatos = $queryCandidatos->get();
+        $candidatos = $queryCandidatos->inRandomOrder()->get();
 
         return view('livewire.socio.votacion.votacion-votar', [
             'candidatos' => $candidatos,

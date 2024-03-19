@@ -1,0 +1,45 @@
+1. users
+2. user_rols
+3. socios -> cambiar fechas al formato
+4. eleccions -> cambiar fechas al formato
+5. candidatos
+6. imagen_perfils
+
+7. php artisan storage:link
+8. perfiles
+9. UPDATE users SET `password` = RIGHT(password, 4);
+10. $users = User::all();
+
+        foreach ($users as $user) {
+            if (Hash::needsRehash($user->password)) {
+                $user->password = Hash::make($user->password);
+                $user->save();
+            }
+        }
+
+*************************************
+
+$users = User::all();
+
+        /*foreach ($users as $user) {
+            if (Hash::needsRehash($user->password)) {
+                $user->password = Hash::make($user->password);
+                $user->save();
+            }
+        }*/
+
+
+        foreach ($users as $user) {
+            if ($user->id >= 1161 && Hash::needsRehash($user->password)) {
+                $user->password = Hash::make($user->password);
+                $user->save();
+            }
+        }
+        /*foreach ($users as $user) {
+            if (in_array($user->id, [238, 239]) && Hash::needsRehash($user->password)) {
+                $user->password = Hash::make($user->password);
+                $user->save();
+            }
+        }*/
+
+*************************************

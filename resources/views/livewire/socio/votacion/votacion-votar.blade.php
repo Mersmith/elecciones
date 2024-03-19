@@ -67,7 +67,12 @@
                                             <p>{{ $candidato->numero_candidato }}</p>
                                         </div>
                                         <div class="candidato_imagen">
-                                            <img src="{{ asset('imagenes/perfil/sin_foto_perfil.png') }}">
+                                            @if ($candidato->imagen_perfil_ruta)
+                                                <img src="{{ Storage::url($candidato->imagen_perfil_ruta) }}"
+                                                    alt="" />
+                                            @else
+                                                <img src="{{ asset('imagenes/perfil/sin_foto_perfil.png') }}">
+                                            @endif
                                         </div>
                                     </div>
 
@@ -80,11 +85,16 @@
                     <div class="contenedor_votar_candidato_seleccionado_fijo">
                         @if ($candidatoId)
                             <div class="candidato_imagen_seleccionado">
-                                <img src="{{ asset('imagenes/perfil/sin_foto_perfil.png') }}">
+                                @if ($candidatoSeleccionado->socio->imagenPerfil)
+                                    <img
+                                        src="{{ Storage::url($candidatoSeleccionado->socio->imagenPerfil->imagen_perfil_ruta) }}" />
+                                @else
+                                    <img src="{{ asset('imagenes/perfil/sin_foto_perfil.png') }}">
+                                @endif
                             </div>
                             <span style="color: #009b54;">Seleccionaste este candidato</span>
                             <p>{{ $candidatoSeleccionado->socio->nombres }}</p>
-                            <button wire:click="votarCandidato({{ $candidatoSeleccionado->id }})">Votar por el 
+                            <button wire:click="votarCandidato({{ $candidatoSeleccionado->id }})">Votar por el
                                 {{ $candidatoSeleccionado->numero_candidato }}</button>
                         @else
                             <div class="candidato_imagen_seleccionado">

@@ -32,16 +32,7 @@ class AdministradorIngresar extends Component
     ];
 
     public function ingresar()
-    {
-        /*$users = User::all();
-
-        foreach ($users as $user) {
-            if (Hash::needsRehash($user->password)) {
-                $user->password = Hash::make($user->password);
-                $user->save();
-            }
-        }*/
-
+    {       
         $this->validate();
 
         $credentials = [
