@@ -70,6 +70,25 @@
     transform: scale(1.1);
 }
 
+.ayuda_whatsapp_grupo {
+    background-color: white;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999;
+    box-shadow: 0 8px 6px rgba(0, 0, 0, 0.1);
+}
+
+.ayuda_whatsapp_grupo img {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
 @media screen and (max-width: 900px) {
     .centrar_contenido .contenedor_logo_inicio a img {
         width: 250px;

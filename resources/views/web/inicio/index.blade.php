@@ -25,5 +25,11 @@
                 </div>
             </div>
         </div>
+
+        <div class="ayuda_whatsapp_grupo">
+            <a href="https://chat.whatsapp.com/GhDozN5vTax5QUGw2t9pmm" target="_blank">
+                <img src="{{ asset('imagenes/empresa/logo-consejo-eleccion.png') }}" alt="" />
+            </a>
+        </div>
     </div>
 @endsection
