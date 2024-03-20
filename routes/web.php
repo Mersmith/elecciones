@@ -27,9 +27,6 @@ Route::get('/generar-constancia-votacion/{votoId}', [PDFController::class, 'gene
 
 Route::get('/generar-excel', [ExcelController::class, 'export'])->name('generar.excel');
 
-//Route::get('/eleccion/{eleccion}/votacion/votar', VotacionVotar::class)->name('eleccion.votacion.votar')->middleware(['auth']);
-
-
 /*
 Route::get('/', function () {
     return view('welcome');

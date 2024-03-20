@@ -19,15 +19,14 @@ class PDFController extends Controller
         $titulo = "Constancia de votación";
 
         $data = [
-            'title' => $titulo,
+            'votacion' => $votacion,
             'candidato' => $candidato,
             'socio' => $socio,
             'eleccion' => $eleccion,
+            'titulo' => $titulo,
         ];
 
-        /*$pdf = PDF::loadView('pdf.constancia-votacion', $data);
-        return $pdf->download('constancia-de-votacion.pdf');*/
-        return view('pdf.constancia-votacion', compact('votacion', 'candidato', 'socio', 'eleccion', 'titulo'));
-
+        $pdf = PDF::loadView('pdf.constancia-votacion', $data);
+        return $pdf->download('constancia-de-votacion.pdf');
     }
 }

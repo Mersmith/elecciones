@@ -24,4 +24,15 @@ class MisVotosController extends Controller
 
         return view('socio.voto.index', compact('votos'));
     }
+
+    public function miVoto($votoId)
+    {
+        $votacion = Votacion::findOrFail($votoId);
+
+        $candidato = $votacion->candidato;
+        $socio = $votacion->socio;
+        $eleccion = $votacion->eleccion;
+
+        return view('socio.voto.mi-voto', compact('votacion', 'candidato', 'socio', 'eleccion'));
+    }
 }

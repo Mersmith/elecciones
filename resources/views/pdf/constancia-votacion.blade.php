@@ -10,33 +10,45 @@
 
     <!--TITULO-->
     <title>{{ $titulo }}</title>
+
+    <!--CSS-->
+    <link rel="stylesheet" href="{{ public_path('socio/estilos-constancia-votacion.css') }}">
 </head>
 
 <body>
-    <h1>Elección: {{ $eleccion->nombre }}</h1>
-    <p>Inicio elección: {{ $eleccion->fecha_inicio_elecciones }}</p>
-    <p>Fin elección: {{ $eleccion->fecha_fin_elecciones }}</p>
+    <div class="contenedor_constancia_votacion">
+        <h3>{{ $eleccion->nombre }}</h3>
+        <p><span>Inicio elección:</span> {{ $eleccion->fecha_inicio_elecciones }}</p>
+        <p><span>Fin elección:</span> {{ $eleccion->fecha_fin_elecciones }}</p>
 
-    <p>Votante: {{ $socio->nombres }} {{ $socio->apellido_paterno }} {{ $socio->apellido_materno }}</p>
-    <p>DNI: {{ $socio->dni }}</p>
-    <p>Edad: {{ $socio->edad }}
-        @if ($socio->edad > 70)
-            <span class="exonerado">EXONERADO</span>
+        <br>
+
+        <p><span>Tus datos:</p>
+        <p><span>Nombres: </span>{{ $socio->nombres }} {{ $socio->apellido_paterno }}
+            {{ $socio->apellido_materno }}</p>
+        <p><span>DNI: </span>{{ $socio->dni }}</p>
+        <p><span>Edad:</span> {{ $socio->edad }}
+            @if ($socio->edad > 70)
+                <span class="exonerado">EXONERADO</span>
+            @endif
+        </p>
+
+        <br>
+
+        <p><span>Votaste por:</p>
+        @if ($candidato->socio->imagenPerfil)
+            <img src="{{ public_path('/storage/' . $candidato->socio->imagenPerfil->imagen_perfil_ruta) }}"
+                alt="">
+        @else
+            <img src="{{ public_path('imagenes/perfil/sin_foto_perfil.png') }}" alt="">
         @endif
-    </p>
-
-    @if ($candidato->socio->imagenPerfil)
-        <img src="{{ Storage::url($candidato->socio->imagenPerfil->imagen_perfil_ruta) }}" />
-    @else
-        <img src="{{ asset('imagenes/perfil/sin_foto_perfil.png') }}">
-    @endif
-    <p>Candidato: {{ $candidato->socio->nombres }} {{ $candidato->socio->apellido_paterno }}
-        {{ $candidato->socio->apellido_materno }}</p>
-    <p>N° Candidato: {{ $candidato->numero_candidato }} </p>
-
-    <p>Hora que votaste: {{ $votacion->created_at }}</p>
-    <p>IP voto: {{ $votacion->ip_voto }}</p>
-
+        <p><span>Candidato:</span> {{ $candidato->socio->nombres }}
+            {{ $candidato->socio->apellido_paterno }}
+            {{ $candidato->socio->apellido_materno }}</p>
+        <p><span>N° Candidato:</span> {{ $candidato->numero_candidato }} </p>
+        <p><span>Hora que votaste:</span> {{ $votacion->created_at }}</p>
+        <p><span>IP voto:</span> {{ $votacion->ip_voto }}</p>
+    </div>
 
 </body>
 

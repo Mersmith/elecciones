@@ -62,7 +62,7 @@
                                             </td>
                                             <td>
                                                 <a style="color: #009eff; font-weight: 700;"
-                                                    href="{{ route('pdf.constancia.votacion', $voto->id) }}">
+                                                    href="{{ route('socio.eleccion.votacion.mi.voto', $voto->id) }}">
                                                     <span><i class="fa-solid fa-eye"></i></span> VER VOTO
                                                 </a>
                                             </td>

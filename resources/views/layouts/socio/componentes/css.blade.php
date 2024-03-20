@@ -29,3 +29,6 @@
 <!----------------------SOCIO---------------------->
 <!--PÁGINA VOTAR-->
 <link rel="stylesheet" href="{{ asset('socio/votar.css') }}">
+
+<!--PÁGINA CONSTANCIA VOTACION-->
+<link rel="stylesheet" href="{{ asset('socio/estilos-constancia-votacion.css') }}">

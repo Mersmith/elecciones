@@ -1,0 +1,45 @@
+.contenedor_constancia_votacion_centrar{
+    width: fit-content;
+    margin: auto;
+}
+
+.contenedor_constancia_votacion {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 100%;
+    text-align: center;
+}
+
+.contenedor_constancia_votacion h3 {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.contenedor_constancia_votacion span {
+    font-size: 17px;
+    font-weight: 500;
+}
+
+.contenedor_constancia_votacion .exonerado {
+    color: red;
+    font-weight: 700;
+}
+
+.contenedor_constancia_votacion img {
+    width: 150px;
+}
+
+.contenedor_constancia_votacion a {
+    padding: 5px 10px;
+    color: white;
+    background-color: #009b54;
+    border-radius: 30px;
+    font-weight: 700;
+}
+
+.contenedor_constancia_votacion a:hover {
+    background-color: #02d375;
+}
