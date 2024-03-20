@@ -174,7 +174,13 @@
                                         <th>
                                             Edad</th>
                                         <th>
-                                            Exonerado</th>
+                                            Exonerado mayor de 70 años</th>
+                                        <th>
+                                            Voto por</th>
+                                        <th>
+                                            IP voto</th>
+                                        <th>
+                                            Fecha voto</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -194,6 +200,15 @@
                                                 @if ($votante->edad > 70)
                                                     <span class="exonerado">EXONERADO</span>
                                                 @endif
+                                            </td>
+                                            <td>
+                                                {{ $votante->numero_candidato }}
+                                            </td>
+                                            <td>
+                                                {{ $votante->ip_voto }}
+                                            </td>
+                                            <td>
+                                                {{ $votante->created_at }}
                                             </td>
                                         </tr>
                                     @endforeach
@@ -246,7 +261,7 @@
                                         <th>
                                             Edad</th>
                                         <th>
-                                            Exonerado</th>
+                                            Exonerado mayor de 70 años</th>
                                     </tr>
                                 </thead>
                                 <tbody>

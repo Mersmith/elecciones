@@ -26,20 +26,12 @@ class VotacionResultados extends Component
         $this->cantidadVotantes = Socio::count();
 
         $this->votantes = DB::table('socios')
-            ->leftJoin('votacions', function ($join) {
-                $join->on('socios.id', '=', 'votacions.socio_id')
-                    ->where('votacions.eleccion_id', '=', $this->eleccionId);
-            })
-            ->select('socios.*', 'votacions.candidato_id')
-            ->whereNotNull('votacions.socio_id')
-            ->get();
-
-        $this->votantes = DB::table('socios')
             ->leftJoin('votacions', function ($join) use ($eleccionId) {
                 $join->on('socios.id', '=', 'votacions.socio_id')
                     ->where('votacions.eleccion_id', '=', $eleccionId);
             })
-            ->select('socios.*', 'votacions.candidato_id') // También seleccionamos el ID del candidato para saber por quién votó el socio
+            ->leftJoin('candidatos', 'votacions.candidato_id', '=', 'candidatos.id')
+            ->select('socios.*', 'votacions.ip_voto', 'votacions.created_at', 'candidatos.numero_candidato')
             ->whereNotNull('votacions.socio_id')
             ->get();
 
@@ -77,7 +69,6 @@ class VotacionResultados extends Component
                 DB::raw('COALESCE(count(votacions.id), 0) as total_votos')
             )
             ->orderBy('total_votos', 'desc')
-            ->take(5)
             ->get();
     }
 
