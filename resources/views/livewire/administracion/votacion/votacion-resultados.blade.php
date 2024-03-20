@@ -98,6 +98,7 @@
                 <div class="contenedor_subtitulo_admin">
                     <h3>Votaron ({{ $votantes->count() }}) <span> Porcentaje:
                             {{ number_format(($votantes->count() / $cantidadVotantes) * 100, 2) }}%</span></h3>
+                    <a href="{{ route('generar.excel') }}">EXCEL</a>
                 </div>
                 @foreach ($votantes as $votante)
                     <li>{{ $votante->nombres }} {{ $votante->apellido_paterno }} {{ $votante->apellido_materno }}

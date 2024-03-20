@@ -108,5 +108,17 @@ $users = User::all();
 *****************************************************************
 
 composer require barryvdh/laravel-dompdf
+php artisan vendor:publish --provider="Barryvdh\DomPDF\ServiceProvider"
 
 php artisan make:controller PDFController
+
+*****************************************************************
+
+composer require maatwebsite/excel
+
+Maatwebsite\Excel\ExcelServiceProvider::class,
+'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+
+php artisan vendor:publish --provider="Maatwebsite\Excel\ExcelServiceProvider" --tag=config
+
+*****************************************************************

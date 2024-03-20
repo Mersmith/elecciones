@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ExcelController;
 use App\Http\Controllers\PDFController;
 use App\Http\Controllers\Web\InicioController;
 use App\Livewire\Sesion\Administrador\AdministradorIngresar;
@@ -24,6 +25,7 @@ Route::get('/ingresar', SocioIngresar::class)->name('ingresar.socio')->middlewar
 
 Route::get('/generar-constancia-votacion/{votoId}', [PDFController::class, 'generarConstanciaVotacion'])->name('pdf.constancia.votacion');
 
+Route::get('/generar-excel', [ExcelController::class, 'export'])->name('generar.excel');
 
 //Route::get('/eleccion/{eleccion}/votacion/votar', VotacionVotar::class)->name('eleccion.votacion.votar')->middleware(['auth']);
 
