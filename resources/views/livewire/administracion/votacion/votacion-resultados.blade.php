@@ -83,9 +83,9 @@
 
                     <!--CONTENEDOR BOTONES-->
                     <div class="contenedor_botones_admin">
-                        <button>
+                        <a href="{{ route('export.excel.candidatos', $eleccionId) }}">
                             EXCEL <i class="fa-regular fa-file-excel"></i>
-                        </button>
+                        </a>
                     </div>
 
                     <!--TABLA-->
@@ -156,7 +156,7 @@
 
                     <!--CONTENEDOR BOTONES-->
                     <div class="contenedor_botones_admin">
-                        <a href="{{ route('generar.excel') }}">
+                        <a href="{{ route('export.excel.users') }}">
                             EXCEL <i class="fa-regular fa-file-excel"></i>
                         </a>
                     </div>
@@ -171,6 +171,8 @@
                                             Nº</th>
                                         <th>
                                             Nombres</th>
+                                        <th>
+                                            DNI</th>
                                         <th>
                                             Edad</th>
                                         <th>
@@ -192,6 +194,9 @@
                                             <td>
                                                 {{ $votante->nombres }} {{ $votante->apellido_paterno }}
                                                 {{ $votante->apellido_materno }}
+                                            </td>
+                                            <td>
+                                                {{ $votante->dni }}
                                             </td>
                                             <td>
                                                 {{ $votante->edad }}
@@ -237,7 +242,7 @@
 
                     <!--CONTENEDOR BOTONES-->
                     <div class="contenedor_botones_admin">
-                        <a href="{{ route('generar.excel') }}">
+                        <a href="{{ route('export.excel.users') }}">
                             EXCEL <i class="fa-regular fa-file-excel"></i>
                         </a>
                     </div>

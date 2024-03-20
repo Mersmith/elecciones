@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
 Route::get('/', InicioController::class)->name('inicio');
 
 Route::get('/admin', AdministradorIngresar::class)->name('ingresar.administrador')->middleware(['verificar.ingreso.administrador']);
@@ -26,6 +27,13 @@ Route::get('/ingresar', SocioIngresar::class)->name('ingresar.socio')->middlewar
 Route::get('/generar-constancia-votacion/{votoId}', [PDFController::class, 'generarConstanciaVotacion'])->name('pdf.constancia.votacion');
 
 Route::get('/generar-excel', [ExcelController::class, 'export'])->name('generar.excel');
+
+Route::controller(ExcelController::class)->group(function () {
+    Route::get('/export-excel-users', 'exportUsers')->name('export.excel.users');
+    Route::get('/export-excel-candidatos/eleccion/{id}', 'exportCandidatos')->name('export.excel.candidatos');
+
+    //Route::get('usuario/editar/{id}', 'vistaEditar')->name('usuario.vista.editar');
+});
 
 /*
 Route::get('/', function () {
