@@ -15,9 +15,9 @@
     </div>
 
     @if ($votantes->count())
-
         <!--CONTENEDOR PÁGINA ADMINISTRADOR-->
         <div class="contenedor_administrador_contenido">
+            <!--ESTADÍSTICA-->
             <div class="contenedor_panel_producto_admin">
                 <!--CONTENEDOR SUBTITULO-->
                 <div class="contenedor_subtitulo_admin">
@@ -32,7 +32,7 @@
                 @if (count($resultados))
                     @php
                         foreach ($resultados as $item) {
-                            array_push($label_chart_candidato_nombre, $item->nombres);
+                            array_push($label_chart_candidato_nombre, $item->numero_candidato);
                             array_push($data_chart_candidato_votos, $item->total_votos);
                         }
                     @endphp
@@ -46,7 +46,7 @@
                                 data: {
                                     labels: {{ Js::from($label_chart_candidato_nombre) }},
                                     datasets: [{
-                                        label: 'RESULSTADOS DE LOS 5 PRIMEROS EN LAS ELECCIONES',
+                                        label: 'RESULTADOS DE LOS 5 PRIMEROS CANDIDATOS',
                                         data: {{ Js::from($data_chart_candidato_votos) }},
                                         borderWidth: 1,
                                         backgroundColor: ['rgba(255, 99, 132, 0.8)', 'rgba(54, 162, 235, 0.8)',
@@ -70,62 +70,224 @@
                     @endscript
                 @endif
             </div>
-        </div>
 
-        <!--CONTENEDOR PÁGINA ADMINISTRADOR-->
-        <div class="contenedor_administrador_contenido">
+            <!--TABLA CANDIDATOS-->
             <div class="contenedor_panel_producto_admin">
-                <!--CONTENEDOR SUBTITULO-->
-                <div class="contenedor_subtitulo_admin">
-                    <h3>Candidatos ({{ $resultados->count() }}) <span>Los resultados son.</span></h3>
-                </div>
-                @foreach ($resultados as $resultado)
-                    @php
-                        $porcentajeVotos = ($resultado->total_votos / $votantes->count()) * 100;
-                    @endphp
-                    <li>N° {{ $resultado->numero_candidato }} - {{ $resultado->nombres }}
-                        {{ $resultado->apellido_paterno }}
-                        {{ $resultado->apellido_materno }} - Votos:
-                        {{ $resultado->total_votos }} ({{ number_format($porcentajeVotos, 2) }}%)</li>
-                @endforeach
+                @if ($resultados->count())
+                    <!--CONTENEDOR SUBTITULO-->
+                    <div class="contenedor_subtitulo_admin">
+                        <h3>Candidatos ({{ $resultados->count() }})
+                            <span>Los resultados son.</span>
+                        </h3>
+                    </div>
+
+                    <!--CONTENEDOR BOTONES-->
+                    <div class="contenedor_botones_admin">
+                        <button>
+                            EXCEL <i class="fa-regular fa-file-excel"></i>
+                        </button>
+                    </div>
+
+                    <!--TABLA-->
+                    <div class="tabla_administrador py-4 overflow-x-auto">
+                        <div class="inline-block min-w-full overflow-hidden">
+                            <table class="min-w-full leading-normal">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            Nº</th>
+                                        <th>
+                                            Número candidato</th>
+                                        <th>
+                                            Nombres</th>
+                                        <th>
+                                            Votos</th>
+                                        <th>
+                                            Porcentaje</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($resultados as $resultado)
+                                        @php
+                                            $porcentajeVotos = ($resultado->total_votos / $votantes->count()) * 100;
+                                        @endphp
+                                        <tr style="text-align: center;">
+                                            <td>
+                                                {{ $loop->iteration }}
+                                            </td>
+                                            <td>
+                                                {{ $resultado->numero_candidato }}
+                                            </td>
+                                            <td>
+                                                {{ $resultado->nombres }}
+                                                {{ $resultado->apellido_paterno }}
+                                                {{ $resultado->apellido_materno }}
+                                            </td>
+                                            <td>
+                                                {{ $resultado->total_votos }}
+                                            </td>
+                                            <td>
+                                                {{ number_format($porcentajeVotos, 2) }}%
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                @else
+                    <div class="contenedor_no_existe_elementos">
+                        <p>No hay candidatos.</p>
+                        <i class="fa-solid fa-spinner"></i>
+                    </div>
+                @endif
             </div>
-        </div>
 
-        <!--CONTENEDOR PÁGINA ADMINISTRADOR-->
-        <div class="contenedor_administrador_contenido">
+            <!--TABLA VOTANTES-->
             <div class="contenedor_panel_producto_admin">
-                <!--CONTENEDOR SUBTITULO-->
-                <div class="contenedor_subtitulo_admin">
-                    <h3>Votaron ({{ $votantes->count() }}) <span> Porcentaje:
-                            {{ number_format(($votantes->count() / $cantidadVotantes) * 100, 2) }}%</span></h3>
-                    <a href="{{ route('generar.excel') }}">EXCEL</a>
-                </div>
-                @foreach ($votantes as $votante)
-                    <li>{{ $votante->nombres }} {{ $votante->apellido_paterno }} {{ $votante->apellido_materno }}
-                        @if ($votante->edad > 70)
-                            - <span class="exonerado">EXONERADO</span>
-                        @endif
-                    </li>
-                @endforeach
+                @if ($votantes->count())
+                    <!--CONTENEDOR SUBTITULO-->
+                    <div class="contenedor_subtitulo_admin">
+                        <h3>Votaron ({{ $votantes->count() }})
+                            <span> Porcentaje:
+                                {{ number_format(($votantes->count() / $cantidadVotantes) * 100, 2) }}%</span>
+                        </h3>
+                    </div>
+
+                    <!--CONTENEDOR BOTONES-->
+                    <div class="contenedor_botones_admin">
+                        <a href="{{ route('generar.excel') }}">
+                            EXCEL <i class="fa-regular fa-file-excel"></i>
+                        </a>
+                    </div>
+
+                    <!--TABLA-->
+                    <div class="tabla_administrador py-4 overflow-x-auto">
+                        <div class="inline-block min-w-full overflow-hidden">
+                            <table class="min-w-full leading-normal">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            Nº</th>
+                                        <th>
+                                            Nombres</th>
+                                        <th>
+                                            Edad</th>
+                                        <th>
+                                            Exonerado</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($votantes as $votante)
+                                        <tr style="text-align: center;">
+                                            <td>
+                                                {{ $loop->iteration }}
+                                            </td>
+                                            <td>
+                                                {{ $votante->nombres }} {{ $votante->apellido_paterno }}
+                                                {{ $votante->apellido_materno }}
+                                            </td>
+                                            <td>
+                                                {{ $votante->edad }}
+                                            </td>
+                                            <td>
+                                                @if ($votante->edad > 70)
+                                                    <span class="exonerado">EXONERADO</span>
+                                                @endif
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                @else
+                    <div class="contenedor_no_existe_elementos">
+                        <p>No hay votantes.</p>
+                        <i class="fa-solid fa-spinner"></i>
+                    </div>
+                @endif
             </div>
-        </div>
 
-        <!--CONTENEDOR PÁGINA ADMINISTRADOR-->
-        <div class="contenedor_administrador_contenido">
+            <!--TABLA NO VOTARON-->
             <div class="contenedor_panel_producto_admin">
-                <!--CONTENEDOR SUBTITULO-->
-                <div class="contenedor_subtitulo_admin">
-                    <h3>No votaron ({{ $noVotantes->count() }}) <span> Porcentaje:
-                            {{ number_format(($noVotantes->count() / $cantidadVotantes) * 100, 2) }}%</span></h3>
-                </div>
-                @foreach ($noVotantes as $noVotante)
-                    <li>{{ $noVotante->nombres }} {{ $noVotante->apellido_paterno }}
-                        {{ $noVotante->apellido_materno }}
-                        @if ($noVotante->edad > 70)
-                            - <span class="exonerado">EXONERADO</span>
-                        @endif
-                    </li>
-                @endforeach
+                @if ($noVotantes->count())
+                    <!--CONTENEDOR SUBTITULO-->
+                    <div class="contenedor_subtitulo_admin">
+                        <h3>No votaron ({{ $noVotantes->count() }})
+                            <span> Porcentaje:
+                                {{ number_format(($noVotantes->count() / $cantidadVotantes) * 100, 2) }}%</span>
+                        </h3>
+                    </div>
+
+                    <!--CONTENEDOR BOTONES-->
+                    <div class="contenedor_botones_admin">
+                        <a href="{{ route('generar.excel') }}">
+                            EXCEL <i class="fa-regular fa-file-excel"></i>
+                        </a>
+                    </div>
+
+                    <!--TABLA-->
+                    <div class="tabla_administrador py-4 overflow-x-auto">
+                        <div class="inline-block min-w-full overflow-hidden">
+                            <table class="min-w-full leading-normal">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            Nº</th>
+                                        <th>
+                                            Código socio</th>
+                                        <th>
+                                            Nombres y apellidos</th>
+                                        <th>
+                                            DNI</th>
+                                        <th>
+                                            Fecha nacimiento</th>
+                                        <th>
+                                            Edad</th>
+                                        <th>
+                                            Exonerado</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($noVotantes as $noVotante)
+                                        <tr style="text-align: center;">
+                                            <td>
+                                                {{ $loop->iteration }}
+                                            </td>
+                                            <td>
+                                                {{ $noVotante->codigo }}
+                                            </td>
+                                            <td>
+                                                {{ $noVotante->nombres }} {{ $noVotante->apellido_paterno }}
+                                                {{ $noVotante->apellido_materno }}
+                                            </td>
+                                            <td>
+                                                {{ $noVotante->dni }}
+                                            </td>
+                                            <td>
+                                                {{ $noVotante->fecha_nacimiento }}
+                                            </td>
+                                            <td>
+                                                {{ $noVotante->edad }}
+                                            </td>
+                                            <td>
+                                                @if ($noVotante->edad > 70)
+                                                    <span class="exonerado">EXONERADO</span>
+                                                @endif
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                @else
+                    <div class="contenedor_no_existe_elementos">
+                        <p>No hay socios que no votaron.</p>
+                        <i class="fa-solid fa-spinner"></i>
+                    </div>
+                @endif
             </div>
         </div>
     @else
