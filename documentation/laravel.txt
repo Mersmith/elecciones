@@ -93,6 +93,7 @@ php artisan make:model ImagenPerfil -mfsc
 php artisan storage:link
 
 *****************************************************************
+
 UPDATE users SET `password` = RIGHT(password, 4);
 
 $users = User::all();
@@ -105,3 +106,7 @@ $users = User::all();
         }
 
 *****************************************************************
+
+composer require barryvdh/laravel-dompdf
+
+php artisan make:controller PDFController

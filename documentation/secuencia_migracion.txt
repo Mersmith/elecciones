@@ -1,3 +1,6 @@
+yyyy-mm-d hh:mm
+yyyy-mm-d
+
 1. users
 2. user_rols
 3. socios -> cambiar fechas al formato

@@ -61,7 +61,8 @@
                                                 {{ $voto->created_at }}
                                             </td>
                                             <td>
-                                                <a style="color: #009eff; font-weight: 700;" href="">
+                                                <a style="color: #009eff; font-weight: 700;"
+                                                    href="{{ route('pdf.constancia.votacion', $voto->id) }}">
                                                     <span><i class="fa-solid fa-eye"></i></span> VER VOTO
                                                 </a>
                                             </td>

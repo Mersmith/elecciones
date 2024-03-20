@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PDFController;
 use App\Http\Controllers\Web\InicioController;
 use App\Livewire\Sesion\Administrador\AdministradorIngresar;
 use App\Livewire\Sesion\Socio\SocioIngresar;
@@ -20,6 +21,9 @@ Route::get('/', InicioController::class)->name('inicio');
 Route::get('/admin', AdministradorIngresar::class)->name('ingresar.administrador')->middleware(['verificar.ingreso.administrador']);
 
 Route::get('/ingresar', SocioIngresar::class)->name('ingresar.socio')->middleware(['verificar.ingreso.socio']);
+
+Route::get('/generar-constancia-votacion/{votoId}', [PDFController::class, 'generarConstanciaVotacion'])->name('pdf.constancia.votacion');
+
 
 //Route::get('/eleccion/{eleccion}/votacion/votar', VotacionVotar::class)->name('eleccion.votacion.votar')->middleware(['auth']);
 
