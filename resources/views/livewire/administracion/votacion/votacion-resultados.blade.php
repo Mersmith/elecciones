@@ -99,9 +99,9 @@
                                         <th>
                                             Número candidato</th>
                                         <th>
-                                            Nombres</th>
+                                            Nombres y apellidos</th>
                                         <th>
-                                            Votos</th>
+                                            Cantidad votos</th>
                                         <th>
                                             Porcentaje</th>
                                     </tr>

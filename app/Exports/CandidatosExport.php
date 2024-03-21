@@ -4,6 +4,7 @@ namespace App\Exports;
 
 use App\Models\Eleccion;
 use App\Models\User;
+use App\Models\Votacion;
 use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Illuminate\Support\Facades\DB;
@@ -21,32 +22,47 @@ class CandidatosExport implements FromCollection
     {
         $eleccionId = $this->eleccionId;
 
-        $votantes = DB::table('socios')
+        $cantidad_votaron = Votacion::where('eleccion_id', $eleccionId)->count();
+
+        $resultados = DB::table('candidatos')
             ->leftJoin('votacions', function ($join) use ($eleccionId) {
-                $join->on('socios.id', '=', 'votacions.socio_id')
+                $join->on('candidatos.id', '=', 'votacions.candidato_id')
                     ->where('votacions.eleccion_id', '=', $eleccionId);
             })
-            ->leftJoin('candidatos', 'votacions.candidato_id', '=', 'candidatos.id')
-            ->select('socios.*', 'votacions.ip_voto', 'votacions.created_at', 'candidatos.numero_candidato')
-            ->whereNotNull('votacions.socio_id')
+            ->join('socios', 'candidatos.socio_id', '=', 'socios.id')
+            ->where('candidatos.eleccion_id', '=', $eleccionId)
+            ->groupBy(
+                'candidatos.id',
+                'candidatos.numero_candidato',
+                'socios.id',
+                'socios.nombres',
+                'socios.apellido_paterno',
+                'socios.apellido_materno'
+            )
+            ->select(
+                'candidatos.id as candidato_id',
+                'candidatos.numero_candidato',
+                'socios.id as socio_id',
+                'socios.nombres',
+                'socios.apellido_paterno',
+                'socios.apellido_materno',
+                DB::raw('COALESCE(count(votacions.id), 0) as total_votos')
+            )
+            ->orderBy('total_votos', 'desc')
             ->get();
 
         $data = [];
-        $data[] = ["N°", "Nombres", "Edad", "Exonerado mayor de 70 años", "Voto por", "IP voto", "Fecha voto"];
+        $data[] = ["N°", "Número candidato", "Nombres y apellidos", "Cantidad votos", "Porcentaje votos"];
 
-        foreach ($votantes as $key => $votante) {
-            $exonerado = '';
-            if ($votante->edad > 70) {
-                $exonerado = 'EXONERADO';
-            }
+        foreach ($resultados as $key => $resultado) {
+            $porcentajeVotos = ($resultado->total_votos / $cantidad_votaron) * 100;
+
             $data[] = [
                 $key + 1,
-                "{$votante->nombres}, {$votante->apellido_paterno}, {$votante->apellido_materno}",
-                $votante->edad,
-                $exonerado,
-                $votante->numero_candidato,
-                $votante->ip_voto,
-                $votante->created_at
+                $resultado->numero_candidato,
+                "{$resultado->nombres}, {$resultado->apellido_paterno}, {$resultado->apellido_materno}",
+                $resultado->total_votos,
+                $porcentajeVotos
             ];
         }
 
