@@ -31,8 +31,8 @@ Route::get('/generar-excel', [ExcelController::class, 'export'])->name('generar.
 Route::controller(ExcelController::class)->group(function () {
     Route::get('/export-excel-users', 'exportUsers')->name('export.excel.users');
     Route::get('/export-excel-candidatos/eleccion/{id}', 'exportCandidatos')->name('export.excel.candidatos');
-
-    //Route::get('usuario/editar/{id}', 'vistaEditar')->name('usuario.vista.editar');
+    Route::get('/export-excel-votaron/eleccion/{id}', 'exportVotaron')->name('export.excel.votaron');
+    Route::get('/export-excel-no-votaron/eleccion/{id}', 'exportNoVotaron')->name('export.excel.no.votaron');
 });
 
 /*

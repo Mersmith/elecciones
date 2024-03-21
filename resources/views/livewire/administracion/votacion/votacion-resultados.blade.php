@@ -156,7 +156,7 @@
 
                     <!--CONTENEDOR BOTONES-->
                     <div class="contenedor_botones_admin">
-                        <a href="{{ route('export.excel.users') }}">
+                        <a href="{{ route('export.excel.votaron', $eleccionId) }}">
                             EXCEL <i class="fa-regular fa-file-excel"></i>
                         </a>
                     </div>
@@ -170,9 +170,13 @@
                                         <th>
                                             Nº</th>
                                         <th>
+                                            Código socio</th>
+                                        <th>
                                             Nombres</th>
                                         <th>
                                             DNI</th>
+                                        <th>
+                                            Fecha nacimiento</th>
                                         <th>
                                             Edad</th>
                                         <th>
@@ -192,11 +196,17 @@
                                                 {{ $loop->iteration }}
                                             </td>
                                             <td>
+                                                {{ $votante->codigo }}
+                                            </td>
+                                            <td>
                                                 {{ $votante->nombres }} {{ $votante->apellido_paterno }}
                                                 {{ $votante->apellido_materno }}
                                             </td>
                                             <td>
                                                 {{ $votante->dni }}
+                                            </td>
+                                            <td>
+                                                {{ $votante->fecha_nacimiento }}
                                             </td>
                                             <td>
                                                 {{ $votante->edad }}
@@ -242,7 +252,7 @@
 
                     <!--CONTENEDOR BOTONES-->
                     <div class="contenedor_botones_admin">
-                        <a href="{{ route('export.excel.users') }}">
+                        <a href="{{ route('export.excel.no.votaron', $eleccionId) }}">
                             EXCEL <i class="fa-regular fa-file-excel"></i>
                         </a>
                     </div>
