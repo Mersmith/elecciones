@@ -1,8 +1,25 @@
+1. npm run build
+
+2. Comprimir proyecto en zip
+
 1. Crear la base de datos
 
-2.
+2. Subir y descomprimir el zip a la ruta principal del cPanel
+
+3. Modificar el .env
+
+4. Subir el .htaccess
+
+5. Dar todos los permisos a la carpeta public y storage
+
+5. En public eliminar la carpeta storage.
+public_html/public/storage
+Ya que acá se creara el symlink
+
+6. Crear el symlink
 Route::get('/storage-link', function(){
-    $targetFolder = storage_path('app/public');
-    $linkFolder = $_SERVER['DOCUMENT_ROOT'] . '/storage';
-    symlink($targetFolder, $linkFolder);
+    Artisan::call('storage:link');
 });
+Esto lo enlaza con public_html/storage/app/public/
+
+Cuando se da click a public_html/public/storage lleva a public_html/storage/app/public/

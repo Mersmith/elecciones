@@ -3,7 +3,7 @@ APP_ENV=local
 APP_KEY=base64:yjU/gcC7XZzss2l0J1XDCcWWBCn2zUHB9ERT5e3Dg4U=
 APP_DEBUG=true
 #APP_URL=http://localhost
-APP_URL=http://localhost:8000
+APP_URL=https://www.cooperativaelhueco.com
 #APP_URL=https://www.cooperativaelhueco.com
 
 LOG_CHANNEL=stack
