@@ -14,7 +14,7 @@ return new class extends Migration {
             $table->id();
 
             $table->unsignedBigInteger('eleccion_id');
-            $table->unsignedBigInteger('socio_id');
+            $table->unsignedBigInteger('socio_id')->nullable();
 
             $table->string('numero_candidato')->nullable();
             $table->integer('cantidad_votos')->default(0);
