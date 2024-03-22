@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-03-2024 a las 04:29:58
--- Versión del servidor: 10.4.27-MariaDB
--- Versión de PHP: 8.2.0
+-- Tiempo de generación: 22-03-2024 a las 19:58:05
+-- Versión del servidor: 10.4.32-MariaDB
+-- Versión de PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -43,7 +43,7 @@ CREATE TABLE `candidatos` (
 
 INSERT INTO `candidatos` (`id`, `eleccion_id`, `socio_id`, `numero_candidato`, `cantidad_votos`, `created_at`, `updated_at`) VALUES
 (1, 1, 1223, '01', 0, NULL, NULL),
-(2, 1, 1154, '02', 0, NULL, NULL),
+(2, 1, 1154, '02', 1, NULL, '2024-03-20 20:09:08'),
 (3, 1, 446, '03', 0, NULL, NULL),
 (4, 1, 679, '04', 0, NULL, NULL),
 (5, 1, 192, '05', 0, NULL, NULL),
@@ -52,7 +52,7 @@ INSERT INTO `candidatos` (`id`, `eleccion_id`, `socio_id`, `numero_candidato`, `
 (8, 1, 642, '08', 0, NULL, NULL),
 (9, 1, 997, '09', 0, NULL, NULL),
 (10, 1, 1242, '11', 0, NULL, NULL),
-(11, 1, 365, '12', 0, NULL, NULL),
+(11, 1, 365, '12', 2, NULL, '2024-03-20 20:29:24'),
 (12, 1, 1114, '13', 0, NULL, NULL),
 (13, 1, 489, '15', 0, NULL, NULL),
 (14, 1, 410, '16', 0, NULL, NULL),
@@ -76,7 +76,7 @@ INSERT INTO `candidatos` (`id`, `eleccion_id`, `socio_id`, `numero_candidato`, `
 (32, 1, 614, '34', 0, NULL, NULL),
 (33, 1, 501, '35', 0, NULL, NULL),
 (34, 1, 1139, '36', 0, NULL, NULL),
-(35, 1, 1058, '37', 0, NULL, NULL),
+(35, 1, 1058, '37', 1, NULL, '2024-03-20 14:55:58'),
 (36, 1, 566, '38', 0, NULL, NULL),
 (37, 1, 667, '39', 0, NULL, NULL),
 (38, 1, 1106, '40', 0, NULL, NULL),
@@ -84,8 +84,11 @@ INSERT INTO `candidatos` (`id`, `eleccion_id`, `socio_id`, `numero_candidato`, `
 (40, 1, 1272, '42', 0, NULL, NULL),
 (41, 1, 1032, '43', 0, NULL, NULL),
 (42, 1, 1140, '44', 0, NULL, NULL),
-(43, 1, 1294, '45', 0, NULL, NULL);
-(44, 1, NULL, '00', 0, NULL, NULL);
+(43, 1, 1294, '45', 0, NULL, NULL),
+(44, 2, 4, '01', 0, '2024-03-20 20:31:44', '2024-03-20 20:31:44'),
+(45, 2, 12, '02', 1, '2024-03-20 20:31:55', '2024-03-20 20:33:19'),
+(46, 2, 20, '03', 0, '2024-03-20 20:32:03', '2024-03-20 20:32:03'),
+(47, 1, NULL, '00', 2, NULL, '2024-03-22 14:32:06');
 
 -- --------------------------------------------------------
 
@@ -111,7 +114,8 @@ CREATE TABLE `eleccions` (
 --
 
 INSERT INTO `eleccions` (`id`, `nombre`, `slug`, `fecha_inicio_convocatoria`, `fecha_fin_convocatoria`, `fecha_inicio_elecciones`, `fecha_fin_elecciones`, `imagen_ruta`, `created_at`, `updated_at`) VALUES
-(1, 'ELECCIÓN DE TERCIOS DELEGADOS 2024', 'eleccion-de-tercios-delegados-2024', '2024-02-07 20:11:00', '2024-03-07 20:11:00', '2024-03-24 09:00:00', '2024-03-24 16:00:00', NULL, NULL, NULL);
+(1, 'ELECCIÓN DE TERCIOS DELEGADOS 2024', 'eleccion-de-tercios-delegados-2024', '2024-02-07 20:11:00', '2024-03-07 20:11:00', '2024-03-24 09:00:00', '2024-03-24 16:00:00', NULL, NULL, NULL),
+(2, 'ropa', 'ropa', '2024-02-29 15:30:00', '2024-03-19 15:30:00', '2024-03-20 15:31:00', '2024-03-20 21:31:00', NULL, '2024-03-20 20:31:16', '2024-03-20 20:31:16');
 
 -- --------------------------------------------------------
 
@@ -294,6 +298,14 @@ CREATE TABLE `sessions` (
   `payload` longtext NOT NULL,
   `last_activity` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `sessions`
+--
+
+INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
+('dW6BEUf5f4DJF1ctseclgXqFa3x37yHSefy4IDtS', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoibjJrbjFieXF0UktVVXowY2lTS0tpdHVzRzlwNWRZQkxDSkdiREN1cCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Njc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9hZG1pbmlzdHJhY2lvbi9lbGVjY2lvbi8xL3ZvdGFjaW9uL3Jlc3VsdGFkb3MiO31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO30=', 1711123725),
+('Nwr2eSOP7FnJByvwgalfg36bKhBSHfWuce37hqnN', 790, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiMERZbTYybUpFTThweldOdVlMWjlaUmViNmJhcnZIU3hJNmlucUpTZiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjc5MDt9', 1711122019);
 
 -- --------------------------------------------------------
 
@@ -915,7 +927,7 @@ INSERT INTO `socios` (`id`, `user_id`, `apellido_paterno`, `apellido_materno`, `
 (587, 588, 'VALENZUELA', 'BRAVO', 'NATIVIDAD ROSARIO', '653', NULL, '06220253', 'F', '1963-09-13', 61, 'INHABILITADO', 'SECUNDARIA', NULL, NULL, NULL),
 (588, 589, 'LUDEÑA', 'ESCALANTE', 'MILAGROS ELIZABETH', '654', NULL, '09053837', 'F', '1968-08-15', 56, 'HABILITADO', 'SUPERIOR', NULL, NULL, NULL),
 (589, 590, 'PAJARES', 'SIFUENTES', 'JESUS', '655', NULL, '09205504', 'F', '1960-01-03', 64, 'INHABILITADO', 'PRIMARIA', NULL, NULL, NULL),
-(590, 591, 'AGUILAR', 'MORI', 'YANET', '656', NULL, '08292668', 'F', '1966-01-08', 58, 'HABILITADO', 'SECUNDARIA', NULL, NULL, NULL),
+(590, 591, 'AGUILAR', 'MORI', 'YANET', '656', NULL, '08292668', 'F', '1966-01-08', 98, 'HABILITADO', 'SECUNDARIA', NULL, NULL, NULL),
 (591, 592, 'MENA', 'URETA', 'PEDRO JULIO', '658', NULL, '08508705', 'M', '1961-10-18', 63, 'HABILITADO', 'SECUNDARIA', NULL, NULL, NULL),
 (592, 593, 'MENDOZA', 'TINEO', 'CELSO', '659', NULL, '25423175', 'M', '1959-07-28', 65, 'INHABILITADO', 'PRIMARIA', NULL, NULL, NULL),
 (593, 594, 'HUAMAN', 'PUMA', 'ISIDORO', '660', NULL, '09073216', 'M', '1956-01-03', 68, 'HABILITADO', 'SECUNDARIA', NULL, NULL, NULL),
@@ -4298,6 +4310,18 @@ CREATE TABLE `votacions` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
+-- Volcado de datos para la tabla `votacions`
+--
+
+INSERT INTO `votacions` (`id`, `candidato_id`, `socio_id`, `eleccion_id`, `ip_voto`, `created_at`, `updated_at`) VALUES
+(1, 35, 524, 1, '127.0.0.1', '2024-03-20 14:55:58', '2024-03-20 14:55:58'),
+(2, 2, 1176, 1, '187.205.10.1', '2024-03-20 20:09:08', '2024-03-20 20:09:08'),
+(3, 11, 11, 1, '258.0.5.30', '2024-03-20 20:10:38', '2024-03-20 20:10:38'),
+(4, 11, 590, 1, '127.0.0.1', '2024-03-20 20:29:24', '2024-03-20 20:29:24'),
+(5, 45, 590, 2, '127.0.0.1', '2024-03-20 20:33:19', '2024-03-20 20:33:19'),
+(7, 47, 353, 1, '127.0.0.1', '2024-03-22 14:32:06', '2024-03-22 14:32:06');
+
+--
 -- Índices para tablas volcadas
 --
 
@@ -4407,13 +4431,13 @@ ALTER TABLE `votacions`
 -- AUTO_INCREMENT de la tabla `candidatos`
 --
 ALTER TABLE `candidatos`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT de la tabla `eleccions`
 --
 ALTER TABLE `eleccions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `failed_jobs`
@@ -4467,7 +4491,7 @@ ALTER TABLE `user_rols`
 -- AUTO_INCREMENT de la tabla `votacions`
 --
 ALTER TABLE `votacions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Restricciones para tablas volcadas
