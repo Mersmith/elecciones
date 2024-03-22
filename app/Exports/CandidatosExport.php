@@ -29,7 +29,7 @@ class CandidatosExport implements FromCollection
                 $join->on('candidatos.id', '=', 'votacions.candidato_id')
                     ->where('votacions.eleccion_id', '=', $eleccionId);
             })
-            ->join('socios', 'candidatos.socio_id', '=', 'socios.id')
+            ->leftJoin('socios', 'candidatos.socio_id', '=', 'socios.id')
             ->where('candidatos.eleccion_id', '=', $eleccionId)
             ->groupBy(
                 'candidatos.id',
@@ -56,11 +56,17 @@ class CandidatosExport implements FromCollection
 
         foreach ($resultados as $key => $resultado) {
             $porcentajeVotos = ($resultado->total_votos / $cantidad_votaron) * 100;
+            $nombres = '';
+            if ($resultado->nombres) {
+                $nombres = "{$resultado->nombres}, {$resultado->apellido_paterno}, {$resultado->apellido_materno}";
+            } else {
+                $nombres = 'VOTO EN BLANCO';
+            }
 
             $data[] = [
                 $key + 1,
                 $resultado->numero_candidato,
-                "{$resultado->nombres}, {$resultado->apellido_paterno}, {$resultado->apellido_materno}",
+                $nombres,
                 $resultado->total_votos,
                 $porcentajeVotos
             ];

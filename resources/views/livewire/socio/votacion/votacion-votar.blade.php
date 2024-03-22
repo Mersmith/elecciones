@@ -59,8 +59,13 @@
                                     <div class="candidato_nombre">
                                         <input type="radio" wire:model.live="candidatoId"
                                             value="{{ $candidato->candidato_id }}">
-                                        <p>{{ $candidato->nombres }} {{ $candidato->apellido_paterno }}
-                                            {{ $candidato->apellido_materno }}</p>
+                                        @if ($candidato->nombres)
+                                            <p>{{ $candidato->nombres }} {{ $candidato->apellido_paterno }}
+                                                {{ $candidato->apellido_materno }}</p>
+                                        @else
+                                            <p>VOTO EN BLANCO</p>
+                                        @endif
+
                                     </div>
                                     <div class="contenedor_numero_imagen">
                                         <div class="candidato_numero">
@@ -85,7 +90,7 @@
                     <div class="contenedor_votar_candidato_seleccionado_fijo">
                         @if ($candidatoId)
                             <div class="candidato_imagen_seleccionado">
-                                @if ($candidatoSeleccionado->socio->imagenPerfil)
+                                @if ($candidatoSeleccionado->socio?->imagenPerfil)
                                     <img
                                         src="{{ Storage::url($candidatoSeleccionado->socio->imagenPerfil->imagen_perfil_ruta) }}" />
                                 @else
@@ -93,7 +98,11 @@
                                 @endif
                             </div>
                             <span style="color: #009b54;">Seleccionaste este candidato</span>
-                            <p>{{ $candidatoSeleccionado->socio->nombres }}</p>
+                            @if ($candidatoSeleccionado->socio)
+                                <p>{{ $candidatoSeleccionado->socio->nombres }}</p>
+                            @else
+                                <p>VOTO EN BLANCO</p>
+                            @endif
                             <button wire:click="votarCandidato({{ $candidatoSeleccionado->id }})">Votar por el
                                 {{ $candidatoSeleccionado->numero_candidato }}</button>
                         @else

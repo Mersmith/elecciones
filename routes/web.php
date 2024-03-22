@@ -32,6 +32,8 @@ Route::controller(ExcelController::class)->group(function () {
     Route::get('/export-excel-users', 'exportUsers')->name('export.excel.users');
     Route::get('/export-excel-candidatos/eleccion/{id}', 'exportCandidatos')->name('export.excel.candidatos');
     Route::get('/export-excel-votaron/eleccion/{id}', 'exportVotaron')->name('export.excel.votaron');
+    Route::get('/export-excel-votaron-valido/eleccion/{id}', 'exportVotaronValido')->name('export.excel.votaron.valido');
+    Route::get('/export-excel-votaron-blanco/eleccion/{id}', 'exportVotaronBlanco')->name('export.excel.votaron.blanco');
     Route::get('/export-excel-no-votaron/eleccion/{id}', 'exportNoVotaron')->name('export.excel.no.votaron');
 });
 

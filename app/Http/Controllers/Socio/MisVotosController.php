@@ -17,7 +17,7 @@ class MisVotosController extends Controller
         $votos = DB::table('votacions')
             ->join('candidatos', 'votacions.candidato_id', '=', 'candidatos.id')
             ->join('eleccions', 'votacions.eleccion_id', '=', 'eleccions.id')
-            ->join('socios', 'candidatos.socio_id', '=', 'socios.id')
+            ->leftJoin('socios', 'candidatos.socio_id', '=', 'socios.id')
             ->where('votacions.socio_id', $socioId)
             ->select('votacions.*', 'socios.nombres as nombre_candidato', 'eleccions.nombre as nombre_eleccion')
             ->get();

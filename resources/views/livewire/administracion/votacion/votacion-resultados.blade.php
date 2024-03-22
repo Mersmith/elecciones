@@ -119,9 +119,13 @@
                                                 {{ $resultado->numero_candidato }}
                                             </td>
                                             <td>
-                                                {{ $resultado->nombres }}
-                                                {{ $resultado->apellido_paterno }}
-                                                {{ $resultado->apellido_materno }}
+                                                @if ($resultado->nombres)
+                                                    {{ $resultado->nombres }}
+                                                    {{ $resultado->apellido_paterno }}
+                                                    {{ $resultado->apellido_materno }}
+                                                @else
+                                                    VOTO EN BLANCO
+                                                @endif
                                             </td>
                                             <td>
                                                 {{ $resultado->total_votos }}
@@ -148,7 +152,7 @@
                 @if ($votantes->count())
                     <!--CONTENEDOR SUBTITULO-->
                     <div class="contenedor_subtitulo_admin">
-                        <h3>Votaron ({{ $votantes->count() }})
+                        <h3>Votos válidos ({{ $votantes->count() }})
                             <span> Porcentaje:
                                 {{ number_format(($votantes->count() / $cantidadVotantes) * 100, 2) }}%</span>
                         </h3>
@@ -156,7 +160,7 @@
 
                     <!--CONTENEDOR BOTONES-->
                     <div class="contenedor_botones_admin">
-                        <a href="{{ route('export.excel.votaron', $eleccionId) }}">
+                        <a href="{{ route('export.excel.votaron.valido', $eleccionId) }}">
                             EXCEL <i class="fa-regular fa-file-excel"></i>
                         </a>
                     </div>
@@ -191,6 +195,102 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($votantes as $votante)
+                                        <tr style="text-align: center;">
+                                            <td>
+                                                {{ $loop->iteration }}
+                                            </td>
+                                            <td>
+                                                {{ $votante->codigo }}
+                                            </td>
+                                            <td>
+                                                {{ $votante->nombres }} {{ $votante->apellido_paterno }}
+                                                {{ $votante->apellido_materno }}
+                                            </td>
+                                            <td>
+                                                {{ $votante->dni }}
+                                            </td>
+                                            <td>
+                                                {{ $votante->fecha_nacimiento }}
+                                            </td>
+                                            <td>
+                                                {{ $votante->edad }}
+                                            </td>
+                                            <td>
+                                                @if ($votante->edad > 70)
+                                                    <span class="exonerado">EXONERADO</span>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                {{ $votante->numero_candidato }}
+                                            </td>
+                                            <td>
+                                                {{ $votante->ip_voto }}
+                                            </td>
+                                            <td>
+                                                {{ $votante->created_at }}
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                @else
+                    <div class="contenedor_no_existe_elementos">
+                        <p>No hay votantes.</p>
+                        <i class="fa-solid fa-spinner"></i>
+                    </div>
+                @endif
+            </div>
+
+            <!--TABLA VOTANTES BLANCO-->
+            <div class="contenedor_panel_producto_admin">
+                @if ($votantesBlanco->count())
+                    <!--CONTENEDOR SUBTITULO-->
+                    <div class="contenedor_subtitulo_admin">
+                        <h3>Votos en blanco ({{ $votantesBlanco->count() }})
+                            <span> Porcentaje:
+                                {{ number_format(($votantesBlanco->count() / $cantidadVotantes) * 100, 2) }}%</span>
+                        </h3>
+                    </div>
+
+                    <!--CONTENEDOR BOTONES-->
+                    <div class="contenedor_botones_admin">
+                        <a href="{{ route('export.excel.votaron.blanco', $eleccionId) }}">
+                            EXCEL <i class="fa-regular fa-file-excel"></i>
+                        </a>
+                    </div>
+
+                    <!--TABLA-->
+                    <div class="tabla_administrador py-4 overflow-x-auto">
+                        <div class="inline-block min-w-full overflow-hidden">
+                            <table class="min-w-full leading-normal">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            Nº</th>
+                                        <th>
+                                            Código socio</th>
+                                        <th>
+                                            Nombres</th>
+                                        <th>
+                                            DNI</th>
+                                        <th>
+                                            Fecha nacimiento</th>
+                                        <th>
+                                            Edad</th>
+                                        <th>
+                                            Exonerado mayor de 70 años</th>
+                                        <th>
+                                            Voto por</th>
+                                        <th>
+                                            IP voto</th>
+                                        <th>
+                                            Fecha voto</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($votantesBlanco as $votante)
                                         <tr style="text-align: center;">
                                             <td>
                                                 {{ $loop->iteration }}

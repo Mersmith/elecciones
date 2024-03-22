@@ -55,7 +55,11 @@
                                                 {{ $voto->nombre_eleccion }}
                                             </td>
                                             <td>
-                                                {{ $voto->nombre_candidato }}
+                                                @if ($voto->nombre_candidato)
+                                                    {{ $voto->nombre_candidato }}
+                                                @else
+                                                    VOTO EN BLANCO
+                                                @endif
                                             </td>
                                             <td>
                                                 {{ $voto->created_at }}

@@ -37,14 +37,18 @@
                         <br>
 
                         <p><span>Votaste por:</p>
-                        @if ($candidato->socio->imagenPerfil)
+                        @if ($candidato->socio?->imagenPerfil)
                             <img src="{{ Storage::url($candidato->socio->imagenPerfil->imagen_perfil_ruta) }}" />
                         @else
                             <img src="{{ asset('imagenes/perfil/sin_foto_perfil.png') }}">
                         @endif
-                        <p><span>Candidato:</span> {{ $candidato->socio->nombres }}
-                            {{ $candidato->socio->apellido_paterno }}
-                            {{ $candidato->socio->apellido_materno }}</p>
+                        @if ($candidato->socio)
+                            <p><span>Candidato:</span> {{ $candidato->socio->nombres }}
+                                {{ $candidato->socio->apellido_paterno }}
+                                {{ $candidato->socio->apellido_materno }}</p>
+                        @else
+                            <p>VOTO EN BLANCO</p>
+                        @endif
                         <p><span>N° Candidato:</span> {{ $candidato->numero_candidato }} </p>
                         <p><span>Hora que votaste:</span> {{ $votacion->created_at }}</p>
                         <p><span>IP voto:</span> {{ $votacion->ip_voto }}</p>

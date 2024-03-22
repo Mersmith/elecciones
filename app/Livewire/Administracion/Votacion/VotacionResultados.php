@@ -13,9 +13,11 @@ class VotacionResultados extends Component
 {
     public $eleccionId;
     public $votantes;
+    public $votantesBlanco;
     public $noVotantes;
     public $resultados;
     public $cantidadVotantes = 0;
+    public $idVotoNulo = 47;
 
     public function mount($id)
     {
@@ -33,6 +35,18 @@ class VotacionResultados extends Component
             ->leftJoin('candidatos', 'votacions.candidato_id', '=', 'candidatos.id')
             ->select('socios.*', 'votacions.ip_voto', 'votacions.created_at', 'candidatos.numero_candidato')
             ->whereNotNull('votacions.socio_id')
+            ->where('votacions.candidato_id', '!=', $this->idVotoNulo)
+            ->get();
+
+        $this->votantesBlanco = DB::table('socios')
+            ->leftJoin('votacions', function ($join) use ($eleccionId) {
+                $join->on('socios.id', '=', 'votacions.socio_id')
+                    ->where('votacions.eleccion_id', '=', $eleccionId);
+            })
+            ->leftJoin('candidatos', 'votacions.candidato_id', '=', 'candidatos.id')
+            ->select('socios.*', 'votacions.ip_voto', 'votacions.created_at', 'candidatos.numero_candidato')
+            ->whereNotNull('votacions.socio_id')
+            ->where('votacions.candidato_id', '=', $this->idVotoNulo)
             ->get();
 
         $this->noVotantes = DB::table('socios')
@@ -49,7 +63,7 @@ class VotacionResultados extends Component
                 $join->on('candidatos.id', '=', 'votacions.candidato_id')
                     ->where('votacions.eleccion_id', '=', $eleccionId);
             })
-            ->join('socios', 'candidatos.socio_id', '=', 'socios.id')
+            ->leftJoin('socios', 'candidatos.socio_id', '=', 'socios.id')
             ->where('candidatos.eleccion_id', '=', $eleccionId)
             ->groupBy(
                 'candidatos.id',
